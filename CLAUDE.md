@@ -54,7 +54,9 @@ Hosted on GitHub Pages as a user-site (`https://marianolfunes.github.io`). Local
 | Design system (when needed) | `design-system.html` |
 | Static assets (images, fonts) | `assets/` |
 | Project doctrine | `CLAUDE.md` (this file) |
-| Auto-memory store | `~/.claude/projects/-Users-marianofunes-marianolfunes-github-io/memory/` |
+| Auto-memory store | `~/.claude/projects/-Users-marianofunes-marianolfunes-ops/memory/` (shared with `marianolfunes-ops`) |
+| Claude Code home base | `~/marianolfunes-ops/` (private ops engine). This site folder is opened as an additional working directory when authoring or editing a piece. |
+| Private ops engine (sibling repo) | `~/marianolfunes-ops/` → `https://github.com/marianolfunes/marianolfunes-ops` (PRIVATE) |
 
 ## Workflow
 
