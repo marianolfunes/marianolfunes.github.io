@@ -1,0 +1,16 @@
+# Sensitive / partner-confidential materials — never publish
+_private/
+
+# Claude Code workspace (drafts, settings, agent memory)
+.claude/
+
+# macOS
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
+
+# Local environment
+.env
+.env.*

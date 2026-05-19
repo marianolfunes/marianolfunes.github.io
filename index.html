@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mariano Funes — Operator notes from procurement, agents, and oil & gas</title>
+<meta name="description" content="Operator notes on procurement, agentic systems, and oil & gas. 25 years of procurement leadership in Argentine O&G. Building Procurement OS on Anthropic Managed Agents.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  body, h1, h2, h3, p, ul, ol, li, figure, blockquote { margin: 0; padding: 0; }
+  ul { list-style: none; }
+
+  :root {
+    --bg: #ffffff;
+    --text: #0a1729;
+    --text-muted: #5f6b7a;
+    --accent: #1f3a5f;
+    --accent-hover: #2c5283;
+    --rule: #e5e5e2;
+    --content-width: 720px;
+    --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, "Cascadia Code", monospace;
+  }
+
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-size: 18px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; transition: color 0.15s ease; }
+  a:hover { color: var(--accent-hover); }
+
+  .container {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* Header */
+  header {
+    border-bottom: 1px solid var(--rule);
+    padding: 24px 0;
+  }
+  header .nav-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .wordmark {
+    font-family: var(--font-sans);
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .wordmark:hover { color: var(--accent); }
+  .nav-links { display: flex; gap: 20px; font-size: 15px; }
+  .nav-links a { color: var(--text-muted); text-decoration: none; }
+  .nav-links a:hover { color: var(--accent); text-decoration: underline; }
+
+  /* Hero */
+  .hero { padding: 80px 0 64px; }
+  .hero h1 {
+    font-family: var(--font-sans);
+    font-size: 44px;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    margin-bottom: 24px;
+    color: var(--text);
+  }
+  .hero p {
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--text);
+    margin-bottom: 16px;
+  }
+  .hero .proofs {
+    margin-top: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 17px;
+  }
+  .hero .proofs a {
+    text-decoration: none;
+    color: var(--accent);
+  }
+  .hero .proofs a:hover { color: var(--accent-hover); text-decoration: underline; }
+  .hero .arrow { color: var(--accent); margin-right: 4px; }
+
+  /* Section divider — the "blue line" */
+  .blue-rule {
+    border: 0;
+    border-top: 2px solid var(--accent);
+    width: 56px;
+    margin: 64px 0 32px;
+  }
+
+  /* Pieces section */
+  .pieces h2 {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-bottom: 32px;
+  }
+  .piece {
+    padding: 32px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .piece:last-child { border-bottom: none; }
+  .piece h3 {
+    font-family: var(--font-sans);
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+    margin-bottom: 8px;
+    color: var(--text);
+  }
+  .piece .subtitle {
+    font-family: var(--font-sans);
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+  }
+  .piece .meta {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--text-muted);
+    text-transform: lowercase;
+    letter-spacing: 0.02em;
+    margin-bottom: 14px;
+  }
+  .piece .excerpt {
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--text);
+    margin-bottom: 12px;
+  }
+  .piece .read-link {
+    font-size: 15px;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .piece .read-link:hover { color: var(--accent-hover); text-decoration: underline; }
+  .piece .status {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+
+  /* Footer */
+  footer {
+    margin-top: 96px;
+    padding: 32px 0 48px;
+    border-top: 1px solid var(--rule);
+    font-size: 14px;
+    color: var(--text-muted);
+  }
+  footer .footer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  footer .footer-links { display: flex; gap: 16px; }
+  footer a { color: var(--text-muted); text-decoration: none; }
+  footer a:hover { color: var(--accent); text-decoration: underline; }
+  footer .built-with { font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); margin-top: 12px; width: 100%; }
+
+  /* Mobile */
+  @media (max-width: 640px) {
+    body { font-size: 17px; }
+    .hero { padding: 48px 0 40px; }
+    .hero h1 { font-size: 32px; }
+    .hero p { font-size: 17px; }
+    .pieces h2 { font-size: 24px; }
+    .piece h3 { font-size: 20px; }
+    .piece .subtitle { font-size: 17px; }
+    header { padding: 16px 0; }
+    footer { margin-top: 64px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="nav-row">
+      <a href="/" class="wordmark">Mariano Funes</a>
+      <ul class="nav-links">
+        <li><a href="about.html">about</a></li>
+        <li><a href="mailto:[your-email@example.com]">email</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+
+    <section class="hero">
+      <h1>Operator notes from procurement, agents, and oil &amp; gas.</h1>
+      <p>25 years of procurement leadership in Argentine oil &amp; gas. Now building Procurement OS — an agentic procurement system on Anthropic Managed Agents. This site is where I put what I'm thinking down in writing.</p>
+      <div class="proofs">
+        <a href="https://riskioapp.com"><span class="arrow">→</span>riskioapp.com (live)</a>
+        <a href="https://linkedin.com/in/marianofunes"><span class="arrow">→</span>linkedin.com/in/marianofunes</a>
+      </div>
+    </section>
+
+    <hr class="blue-rule">
+
+    <section class="pieces">
+      <h2>Pieces</h2>
+
+      <article class="piece">
+        <h3>Vaca Muerta needs $125–170B of execution.</h3>
+        <div class="subtitle">Where the cost gap to the Permian actually closes.</div>
+        <div class="meta">may 2026 · oil &amp; gas · procurement</div>
+        <p class="excerpt">McKinsey lays out the scale of the Vaca Muerta opportunity. The operator's lens adds the execution layer — multi-tier suppliers, the Argentine contractor-labor-operator nexus, and where the 35% cost gap to the Permian actually closes.</p>
+        <a href="pieces/vaca-muerta-execution-layer.html" class="read-link">Read →</a>
+      </article>
+
+      <!-- Future pieces will be added here as <article class="piece"> blocks -->
+
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-row">
+      <div>© 2026 Mariano Funes</div>
+      <div class="footer-links">
+        <a href="https://linkedin.com/in/marianofunes">LinkedIn</a>
+        <a href="mailto:[your-email@example.com]">Email</a>
+      </div>
+    </div>
+    <div class="built-with">Built with <a href="https://claude.com/claude-code">Claude Code</a></div>
+  </div>
+</footer>
+
+</body>
+</html>

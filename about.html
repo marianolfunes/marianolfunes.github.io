@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Mariano Funes</title>
+<meta name="description" content="Mariano Funes — 25 years procurement leadership in Argentine oil & gas. Building Procurement OS on Anthropic Managed Agents.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  body, h1, h2, h3, p, ul, ol, li, figure, blockquote { margin: 0; padding: 0; }
+  ul { list-style: none; }
+
+  :root {
+    --bg: #ffffff;
+    --text: #0a1729;
+    --text-muted: #5f6b7a;
+    --accent: #1f3a5f;
+    --accent-hover: #2c5283;
+    --rule: #e5e5e2;
+    --content-width: 720px;
+    --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, "Cascadia Code", monospace;
+  }
+
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-size: 18px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; transition: color 0.15s ease; }
+  a:hover { color: var(--accent-hover); }
+
+  .container {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* Header */
+  header {
+    border-bottom: 1px solid var(--rule);
+    padding: 24px 0;
+  }
+  header .nav-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .wordmark {
+    font-family: var(--font-sans);
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .wordmark:hover { color: var(--accent); }
+  .nav-links { display: flex; gap: 20px; font-size: 15px; }
+  .nav-links a { color: var(--text-muted); text-decoration: none; }
+  .nav-links a:hover { color: var(--accent); text-decoration: underline; }
+  .nav-links a.current { color: var(--text); }
+
+  /* Page title */
+  .page-title {
+    padding: 64px 0 32px;
+  }
+  .page-title h1 {
+    font-family: var(--font-sans);
+    font-size: 44px;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+    color: var(--text);
+  }
+
+  /* Sections */
+  section { margin-bottom: 64px; }
+  section h2 {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--accent);
+    display: block;
+  }
+  section p {
+    margin-bottom: 16px;
+    font-size: 18px;
+    line-height: 1.7;
+  }
+
+  /* Build inventory cards */
+  .builds { display: flex; flex-direction: column; gap: 28px; }
+  .build {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .build:last-child { border-bottom: none; }
+  .build h3 {
+    font-family: var(--font-sans);
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    margin-bottom: 6px;
+    color: var(--text);
+  }
+  .build .status {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--text-muted);
+    text-transform: lowercase;
+    letter-spacing: 0.02em;
+    margin-bottom: 10px;
+  }
+  .build p { font-size: 16px; line-height: 1.6; margin-bottom: 8px; }
+  .build a.proof-link {
+    font-size: 15px;
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .build a.proof-link:hover { color: var(--accent-hover); text-decoration: underline; }
+
+  /* CV timeline */
+  .cv-timeline { display: flex; flex-direction: column; gap: 12px; }
+  .cv-row {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 24px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .cv-row:last-child { border-bottom: none; }
+  .cv-row .years {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    color: var(--text-muted);
+    padding-top: 2px;
+  }
+  .cv-row .role {
+    font-size: 17px;
+    color: var(--text);
+  }
+  .cv-row .role .company {
+    font-weight: 600;
+  }
+  .cv-row .role .title {
+    color: var(--text-muted);
+    font-size: 16px;
+    display: block;
+    margin-top: 2px;
+  }
+
+  /* Education */
+  .education-row {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 24px;
+    padding: 10px 0;
+  }
+  .education-row .years {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    color: var(--text-muted);
+    padding-top: 2px;
+  }
+
+  /* Contact */
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 17px;
+  }
+  .contact-links a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .contact-links a:hover { color: var(--accent-hover); text-decoration: underline; }
+  .contact-links .arrow { color: var(--accent); margin-right: 6px; }
+
+  /* Footer */
+  footer {
+    margin-top: 96px;
+    padding: 32px 0 48px;
+    border-top: 1px solid var(--rule);
+    font-size: 14px;
+    color: var(--text-muted);
+  }
+  footer .footer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  footer .footer-links { display: flex; gap: 16px; }
+  footer a { color: var(--text-muted); text-decoration: none; }
+  footer a:hover { color: var(--accent); text-decoration: underline; }
+  footer .built-with { font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); margin-top: 12px; width: 100%; }
+
+  /* Placeholder hint comments — visible in browser dev tools, not on page */
+  .placeholder-hint {
+    background: #fff8e1;
+    border-left: 3px solid #d4a017;
+    padding: 8px 12px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: #6b5300;
+    margin: 12px 0;
+  }
+
+  /* Mobile */
+  @media (max-width: 640px) {
+    body { font-size: 17px; }
+    .page-title { padding: 48px 0 24px; }
+    .page-title h1 { font-size: 32px; }
+    section h2 { font-size: 20px; }
+    section p { font-size: 17px; }
+    .build h3 { font-size: 18px; }
+    .cv-row, .education-row { grid-template-columns: 80px 1fr; gap: 16px; }
+    .cv-row .years, .education-row .years { font-size: 13px; }
+    .cv-row .role { font-size: 16px; }
+    header { padding: 16px 0; }
+    footer { margin-top: 64px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="nav-row">
+      <a href="/" class="wordmark">Mariano Funes</a>
+      <ul class="nav-links">
+        <li><a href="about.html" class="current">about</a></li>
+        <li><a href="mailto:[your-email@example.com]">email</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+
+    <div class="page-title">
+      <h1>About</h1>
+    </div>
+
+    <section>
+      <p>Procurement leader for 25 years across Argentine oil &amp; gas — Director-level roles at Shell, ENAP Sipetrol, Archer, and San Antonio Internacional. Strategic Sourcing Manager at Clorox before that. Annual spend portfolios of USD 150–300M across Latin America.</p>
+      <p>Now building production-grade agentic systems on Anthropic Managed Agents. Riskio is the live SaaS for Argentine commercial-risk monitoring. Procurement OS V1.0 is the next thing, launching May 2026.</p>
+      <div class="placeholder-hint">EDIT ME: Bio v0 draft above — edit for voice, accuracy, and tone. Two paragraphs feels right; expand or tighten as needed.</div>
+    </section>
+
+    <section>
+      <h2>What I'm building</h2>
+
+      <div class="builds">
+
+        <div class="build">
+          <h3>Riskio</h3>
+          <div class="status">live</div>
+          <p>Commercial-risk monitoring SaaS for Argentine companies. Real-time supplier and counterparty intelligence on AFIP, BCRA, and Boletín Oficial data. Real paying customers.</p>
+          <a href="https://riskioapp.com" class="proof-link">→ riskioapp.com</a>
+        </div>
+
+        <div class="build">
+          <h3>Procurement OS V1.0</h3>
+          <div class="status">launching may 2026</div>
+          <p>Autonomous procurement agent — expediting, tendering, spend analysis, compliance, supplier qualification. Built on Anthropic Managed Agents framework.</p>
+        </div>
+
+        <div class="build">
+          <h3>Spend Compliance Agent</h3>
+          <div class="status">proposal in review</div>
+          <p>Agent-based contract / price / scope compliance system for enterprise services procurement. Proposal currently under review with a Fortune 500 oilfield-services client.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <section>
+      <h2>CV</h2>
+
+      <div class="placeholder-hint">EDIT ME: Replace placeholder year ranges below with accurate dates. Year-only format (e.g., 2018–2022). Add or remove rows as needed. Full career — no role-count limit.</div>
+
+      <div class="cv-timeline">
+
+        <div class="cv-row">
+          <div class="years">[YYYY]–present</div>
+          <div class="role">
+            <span class="company">Riskio &amp; Procurement OS</span>
+            <span class="title">Founder · Building agentic systems on Claude Code &amp; Anthropic Managed Agents</span>
+          </div>
+        </div>
+
+        <div class="cv-row">
+          <div class="years">[YYYY]–[YYYY]</div>
+          <div class="role">
+            <span class="company">Shell</span>
+            <span class="title">Director, Procurement</span>
+          </div>
+        </div>
+
+        <div class="cv-row">
+          <div class="years">[YYYY]–[YYYY]</div>
+          <div class="role">
+            <span class="company">ENAP Sipetrol</span>
+            <span class="title">Director, Procurement</span>
+          </div>
+        </div>
+
+        <div class="cv-row">
+          <div class="years">[YYYY]–[YYYY]</div>
+          <div class="role">
+            <span class="company">Archer</span>
+            <span class="title">Director, Procurement</span>
+          </div>
+        </div>
+
+        <div class="cv-row">
+          <div class="years">[YYYY]–[YYYY]</div>
+          <div class="role">
+            <span class="company">San Antonio Internacional</span>
+            <span class="title">Director, Procurement</span>
+          </div>
+        </div>
+
+        <div class="cv-row">
+          <div class="years">[YYYY]–[YYYY]</div>
+          <div class="role">
+            <span class="company">Clorox</span>
+            <span class="title">Strategic Sourcing Manager</span>
+          </div>
+        </div>
+
+        <!-- Add additional roles here as <div class="cv-row">…</div> -->
+
+      </div>
+    </section>
+
+    <section>
+      <h2>Education</h2>
+      <div class="education-row">
+        <div class="years">[YYYY]</div>
+        <div class="role">
+          <span class="company">[University Name]</span>
+          <span class="title">MBA, Magna Cum Laude</span>
+        </div>
+      </div>
+      <div class="placeholder-hint">EDIT ME: Add education details — institution, degree, year. Add additional rows for other credentials (CPN, CCAF when applicable, certifications, etc.).</div>
+    </section>
+
+    <section>
+      <h2>Contact</h2>
+      <div class="contact-links">
+        <a href="https://linkedin.com/in/marianofunes"><span class="arrow">→</span>linkedin.com/in/marianofunes</a>
+        <a href="mailto:[your-email@example.com]"><span class="arrow">→</span>[your-email@example.com]</a>
+      </div>
+      <div class="placeholder-hint">EDIT ME: Replace [your-email@example.com] with the email you want publicly visible. Update mailto: links in header and footer too.</div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-row">
+      <div>© 2026 Mariano Funes</div>
+      <div class="footer-links">
+        <a href="https://linkedin.com/in/marianofunes">LinkedIn</a>
+        <a href="mailto:[your-email@example.com]">Email</a>
+      </div>
+    </div>
+    <div class="built-with">Built with <a href="https://claude.com/claude-code">Claude Code</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
