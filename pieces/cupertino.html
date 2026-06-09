@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cupertino Aerial Intelligence — Mariano Funes</title>
+<meta name="description" content="Cupertino Aerial Intelligence — a drone-services venture co-founded by Mariano Funes (2021–2023). Aerial inspection and intelligence for oil &amp; gas, energy, utilities, and agro.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  body, h1, h2, h3, p, ul, ol, li, figure { margin: 0; padding: 0; }
+  :root {
+    --bg: #ffffff; --text: #0a1729; --text-muted: #5f6b7a;
+    --accent: #1f3a5f; --accent-hover: #2c5283; --rule: #e5e5e2;
+    --content-width: 920px;
+    --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  }
+  html { -webkit-text-size-adjust: 100%; }
+  body { background: var(--bg); color: var(--text); font-family: var(--font-sans); font-size: 18px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+  a { color: var(--accent); text-underline-offset: 3px; }
+  .container { max-width: var(--content-width); margin: 0 auto; padding: 0 24px; }
+
+  header { border-bottom: 1px solid var(--rule); padding: 18px 0; }
+  header .nav-row { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+  .wordmark { font-size: 17px; font-weight: 700; letter-spacing: -0.01em; color: var(--text); text-decoration: none; }
+  .nav-links { display: flex; gap: 18px; font-size: 14px; list-style: none; }
+  .nav-links a { color: var(--text-muted); text-decoration: none; }
+  .nav-links a:hover { color: var(--accent); }
+
+  .page-title { padding: 60px 0 8px; max-width: 720px; }
+  .page-title .kicker { font-family: var(--font-mono); font-size: 13px; color: var(--text-muted); text-transform: lowercase; letter-spacing: 0.04em; margin-bottom: 16px; }
+  .page-title h1 { font-size: 38px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; }
+  .lede { font-size: 19px; line-height: 1.6; color: var(--text); margin: 22px 0 6px; max-width: 64ch; }
+  .lede a { color: var(--accent); }
+  .deck-note { font-family: var(--font-mono); font-size: 12.5px; color: var(--text-muted); margin-top: 18px; }
+
+  .slides { margin: 40px 0 8px; display: flex; flex-direction: column; gap: 40px; }
+  figure.slide { margin: 0; }
+  figure.slide img { width: 100%; height: auto; display: block; border: 1px solid var(--rule); border-radius: 10px; box-shadow: 0 6px 24px rgba(10,23,41,0.07); }
+  figure.slide figcaption { font-size: 15px; color: var(--text-muted); line-height: 1.55; margin-top: 12px; border-left: 2px solid var(--accent); padding-left: 13px; max-width: 68ch; }
+  figure.slide figcaption strong { color: var(--text); font-weight: 600; }
+
+  .backlink { display: inline-block; margin: 8px 0 0; font-size: 15px; color: var(--accent); text-decoration: none; }
+  .backlink:hover { text-decoration: underline; }
+
+  .cases { margin: 36px 0 8px; }
+  .cases h2 { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.09em; color: var(--text-muted); margin-bottom: 18px; }
+  .case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .case-card { border: 1px solid var(--rule); border-radius: 10px; overflow: hidden; text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: box-shadow .16s ease, transform .16s ease, border-color .16s ease; }
+  .case-card:hover { box-shadow: 0 8px 26px rgba(10,23,41,0.09); transform: translateY(-2px); border-color: #cdd6e1; }
+  .case-card .ct { aspect-ratio: 34 / 15; overflow: hidden; background: #0a1729; }
+  .case-card .ct img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .case-card .cb { padding: 13px 16px 16px; }
+  .case-card h3 { font-size: 17px; font-weight: 700; letter-spacing: -0.01em; color: var(--text); }
+  .case-card .cs { font-family: var(--font-mono); font-size: 11.5px; color: var(--text-muted); text-transform: lowercase; margin: 3px 0 6px; }
+  .case-card p { font-size: 14px; color: var(--text-muted); line-height: 1.5; }
+  @media (max-width: 640px) { .case-grid { grid-template-columns: 1fr; } }
+
+  footer { margin-top: 64px; padding: 32px 0 48px; border-top: 1px solid var(--rule); font-size: 14px; color: var(--text-muted); }
+  footer .built-with { font-family: var(--font-mono); font-size: 12px; }
+
+  @media (max-width: 640px) {
+    body { font-size: 17px; }
+    .page-title { padding: 40px 0 8px; }
+    .page-title h1 { font-size: 28px; }
+    .lede { font-size: 17px; }
+    .slides { gap: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="nav-row">
+      <a href="../index.html" class="wordmark">Mariano Funes</a>
+      <ul class="nav-links">
+        <li><a href="../index.html#work">work</a></li>
+        <li><a href="../index.html#writing">writing</a></li>
+        <li><a href="../index.html#contact">contact</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+
+    <div class="page-title">
+      <div class="kicker">drone tech · venture · 2021–2023</div>
+      <h1>Cupertino Aerial Intelligence</h1>
+      <p class="lede">A drone-services venture I co-founded — aerial inspection and intelligence for oil &amp; gas, energy, utilities, and agro. Images and video from the air, turned into information for integrity, monitoring, security, and emergency response. Exited in 2023 as capital ran short. See also the <a href="grain-export-supply-chain.html">grain export supply chain</a> case.</p>
+    </div>
+
+    <section class="cases">
+      <h2>Selected cases</h2>
+      <div class="case-grid">
+        <a class="case-card" href="grain-export-supply-chain.html">
+          <div class="ct"><img src="../assets/grain-export/grain-card.jpg" alt="Grain export supply chain" loading="lazy"></div>
+          <div class="cb"><h3>Grain export supply chain</h3><div class="cs">drone tech × supply chain</div><p>Silo bags to bulk carriers — the whole chain, from the air.</p></div>
+        </a>
+        <a class="case-card" href="ypf-oil-gas.html">
+          <div class="ct"><img src="../assets/ypf/ypf-mapa2d.jpg" alt="YPF oil &amp; gas inspection" loading="lazy"></div>
+          <div class="cb"><h3>YPF — oil &amp; gas</h3><div class="cs">infrastructure inspection</div><p>Orthomosaic, 3D, measurements, flagged issues, risk-tiered site map.</p></div>
+        </a>
+        <a class="case-card" href="construccion-infraestructura.html">
+          <div class="ct"><img src="../assets/construccion/con-avance.jpg" alt="Construction and infrastructure" loading="lazy"></div>
+          <div class="cb"><h3>Construction &amp; infrastructure</h3><div class="cs">surveying · earthworks</div><p>Progress monitoring, cut-and-fill, 3D models, linear works.</p></div>
+        </a>
+        <a class="case-card" href="#deck">
+          <div class="ct"><img src="../assets/cupertino/cup-card.jpg" alt="Cupertino — company overview" loading="lazy"></div>
+          <div class="cb"><h3>Cupertino — overview</h3><div class="cs">company &amp; capabilities</div><p>The full picture — sectors, team, tech stack, solution lines.</p></div>
+        </a>
+      </div>
+    </section>
+
+    <div class="deck-note" id="deck" style="margin-top:40px;">The full overview deck (Spanish), as it was:</div>
+
+    <div class="slides">
+      <figure class="slide">
+        <img src="../assets/cupertino/cup-cover.jpg" alt="Cupertino — smart information through unmanned aerial systems" loading="lazy">
+        <figcaption><strong>Smart information through unmanned aerial systems.</strong></figcaption>
+      </figure>
+      <figure class="slide">
+        <img src="../assets/cupertino/cup-sectores.jpg" alt="Sectors served by Cupertino" loading="lazy">
+        <figcaption><strong>Sectors</strong> — oil &amp; gas, process industry, electrical transmission, solar, telecom, construction.</figcaption>
+      </figure>
+      <figure class="slide">
+        <img src="../assets/cupertino/cup-tech.jpg" alt="Cupertino team and technology" loading="lazy">
+        <figcaption><strong>Team + tech</strong> — 2,632 verified flights, 308 hours; ANAC-certified pilots; Pix4D, DroneDeploy, DJI Thermal, Raptor Maps in the stack.</figcaption>
+      </figure>
+      <figure class="slide">
+        <img src="../assets/cupertino/cup-soluciones.jpg" alt="Cupertino solution lines" loading="lazy">
+        <figcaption><strong>Five solution lines</strong> — Inspector (industrial inspection), Monitor (asset/site tracking), Secure (security), Response (emergency), Manager (in-company program).</figcaption>
+      </figure>
+      <figure class="slide">
+        <img src="../assets/cupertino/cup-resultados.jpg" alt="Cupertino results and value proposition" loading="lazy">
+        <figcaption><strong>The outcome</strong> — efficiency, better process control, lower risk to people, environment and assets. Smart information for decisions.</figcaption>
+      </figure>
+    </div>
+
+    <div style="display:flex; gap:24px; flex-wrap:wrap; margin-top:8px;">
+      <a href="grain-export-supply-chain.html" class="backlink">→ Grain export supply chain case</a>
+      <a href="../index.html" class="backlink">← Back to home</a>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <div>© 2026 Mariano Funes · Cupertino Aerial Intelligence S.R.L. (2021–2023)</div>
+    <div class="built-with">Built with <a href="https://claude.com/claude-code">Claude Code</a></div>
+  </div>
+</footer>
+
+</body>
+</html>

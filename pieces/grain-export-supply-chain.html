@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grain Export Supply Chain — drone intelligence — Mariano Funes</title>
+<meta name="description" content="Drone intelligence mapped onto the full grain-export supply chain — silo bags, silos, plants, port terminals, bulk carriers. A Cupertino Aerial Intelligence case.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  body, h1, h2, h3, p, ul, ol, li, figure { margin: 0; padding: 0; }
+  :root {
+    --bg: #ffffff; --text: #0a1729; --text-muted: #5f6b7a;
+    --accent: #1f3a5f; --accent-hover: #2c5283; --rule: #e5e5e2;
+    --content-width: 920px;
+    --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  }
+  html { -webkit-text-size-adjust: 100%; }
+  body { background: var(--bg); color: var(--text); font-family: var(--font-sans); font-size: 18px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+  a { color: var(--accent); text-underline-offset: 3px; }
+  .container { max-width: var(--content-width); margin: 0 auto; padding: 0 24px; }
+
+  header { border-bottom: 1px solid var(--rule); padding: 18px 0; }
+  header .nav-row { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+  .wordmark { font-size: 17px; font-weight: 700; letter-spacing: -0.01em; color: var(--text); text-decoration: none; }
+  .nav-links { display: flex; gap: 18px; font-size: 14px; list-style: none; }
+  .nav-links a { color: var(--text-muted); text-decoration: none; }
+  .nav-links a:hover { color: var(--accent); }
+
+  .page-title { padding: 60px 0 8px; max-width: 760px; }
+  .page-title .kicker { font-family: var(--font-mono); font-size: 13px; color: var(--text-muted); text-transform: lowercase; letter-spacing: 0.04em; margin-bottom: 16px; }
+  .page-title h1 { font-size: 38px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; }
+  .lede { font-size: 19px; line-height: 1.6; color: var(--text); margin: 22px 0 6px; max-width: 64ch; }
+  .lede a { color: var(--accent); }
+  .deck-note { font-family: var(--font-mono); font-size: 12.5px; color: var(--text-muted); margin-top: 18px; }
+
+  .slides { margin: 40px 0 8px; display: flex; flex-direction: column; gap: 40px; }
+  figure.slide { margin: 0; }
+  figure.slide img { width: 100%; height: auto; display: block; border: 1px solid var(--rule); border-radius: 10px; box-shadow: 0 6px 24px rgba(10,23,41,0.07); }
+  figure.slide figcaption { font-size: 15px; color: var(--text-muted); line-height: 1.55; margin-top: 12px; border-left: 2px solid var(--accent); padding-left: 13px; max-width: 68ch; }
+  figure.slide figcaption strong { color: var(--text); font-weight: 600; }
+
+  .backlink { display: inline-block; margin: 8px 0 0; font-size: 15px; color: var(--accent); text-decoration: none; }
+  .backlink:hover { text-decoration: underline; }
+
+  footer { margin-top: 64px; padding: 32px 0 48px; border-top: 1px solid var(--rule); font-size: 14px; color: var(--text-muted); }
+  footer .built-with { font-family: var(--font-mono); font-size: 12px; }
+
+  @media (max-width: 640px) {
+    body { font-size: 17px; }
+    .page-title { padding: 40px 0 8px; }
+    .page-title h1 { font-size: 27px; }
+    .lede { font-size: 17px; }
+    .slides { gap: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="nav-row">
+      <a href="../index.html" class="wordmark">Mariano Funes</a>
+      <ul class="nav-links">
+        <li><a href="../index.html#work">work</a></li>
+        <li><a href="../index.html#writing">writing</a></li>
+        <li><a href="../index.html#contact">contact</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+
+    <div class="page-title">
+      <div class="kicker">drone tech · supply chain · grain export</div>
+      <h1>Grain export supply chain, seen from the air</h1>
+      <p class="lede">A <a href="cupertino.html">Cupertino</a> case applying drone intelligence across the grain-export supply chain — silo bags, silos, production plants, port terminals, and the bulk carriers. Documentation, asset integrity, and risk reduction at every link.</p>
+      <div class="deck-note">Below: real deck pages (Spanish), as they were.</div>
+    </div>
+
+    <div class="slides">
+      <figure class="slide">
+        <img src="../assets/grain-export/grain-chain.jpg" alt="Grain export supply chain — the full chain" loading="lazy">
+        <figcaption><strong>The full chain</strong> — bulk carriers → port terminals → production plants → silo storage → silo-bag storage. Drones add eyes at every link.</figcaption>
+      </figure>
+      <figure class="slide">
+        <img src="../assets/grain-export/grain-bulk.jpg" alt="Bulk carrier hold pre-inspection" loading="lazy">
+        <figcaption><strong>Bulk carriers</strong> — remote, documented pre-inspection of cargo holds at the pilot station, before berthing, from a service launch without boarding. Cuts logistics risk and sharpens planning.</figcaption>
+      </figure>
+      <figure class="slide">
+        <img src="../assets/grain-export/grain-terminales.jpg" alt="Terminals, plants and silos inspection" loading="lazy">
+        <figcaption><strong>Terminals, plants &amp; silos</strong> — structural condition and asset integrity, documented; deterioration detection, work progress, confined spaces.</figcaption>
+      </figure>
+      <figure class="slide">
+        <img src="../assets/grain-export/grain-silobolsas.jpg" alt="Silo bag monitoring with thermal imaging" loading="lazy">
+        <figcaption><strong>Silo bags</strong> — integrity and <strong>thermal-anomaly</strong> monitoring, stock checks, ground level, security. Situational control of stored grain, with deviations flagged.</figcaption>
+      </figure>
+    </div>
+
+    <div style="display:flex; gap:24px; flex-wrap:wrap; margin-top:8px;">
+      <a href="cupertino.html" class="backlink">→ Back to Cupertino Aerial Intelligence</a>
+      <a href="../index.html" class="backlink">← Back to home</a>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <div>© 2026 Mariano Funes · Cupertino Aerial Intelligence S.R.L. (2021–2023)</div>
+    <div class="built-with">Built with <a href="https://claude.com/claude-code">Claude Code</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
