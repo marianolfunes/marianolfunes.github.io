@@ -3,74 +3,98 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Transformations — Mariano Funes</title>
-<meta name="description" content="Anonymized supply-chain and procurement transformations in Argentine oil &amp; gas — the operator's diagnosis and redesign, in charts.">
+<title>Organizational transformations — Mariano Funes</title>
+<meta name="description" content="Supply chain and procurement organizations rebuilt at Clorox, ENAP and Archer DLS: diagnose, redesign, execute.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; }
-  body, h1, h2, h3, p, ul, ol, li, figure, blockquote { margin: 0; padding: 0; }
+  body, h1, h2, h3, p, ul, ol, li, figure { margin: 0; padding: 0; }
   ul { list-style: none; }
   :root {
-    --bg: #ffffff; --text: #0a1729; --text-muted: #5f6b7a;
+    --bg: #ffffff; --text: #0f172a; --text-muted: #5f6b7a;
     --accent: #1f3a5f; --accent-hover: #2c5283; --rule: #e5e5e2;
-    --content-width: 760px;
+    --navy-muted: #f3f6fa; --navy-border: #dde6f0;
+    --content-width: 920px;
     --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
     --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
-    /* spend-band scale: light = transactional noise, dark = real money */
-    --b1: #c7d2e0; --b2: #7d96b5; --b3: #41618c; --b4: #1f3a5f;
   }
   html { -webkit-text-size-adjust: 100%; }
-  body { background: var(--bg); color: var(--text); font-family: var(--font-sans);
-    font-size: 18px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+  body { background: var(--bg); color: var(--text); font-family: var(--font-sans); font-size: 18px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
   a { color: var(--accent); text-underline-offset: 3px; }
   .container { max-width: var(--content-width); margin: 0 auto; padding: 0 24px; }
 
   header { border-bottom: 1px solid var(--rule); padding: 18px 0; }
   header .nav-row { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
   .wordmark { font-size: 17px; font-weight: 700; letter-spacing: -0.01em; color: var(--text); text-decoration: none; }
-  .nav-links { display: flex; gap: 18px; font-size: 14px; }
+  .nav-links { display: flex; gap: 18px; font-size: 14px; list-style: none; }
   .nav-links a { color: var(--text-muted); text-decoration: none; }
   .nav-links a:hover { color: var(--accent); }
 
-  .page-title { padding: 64px 0 8px; }
+  .page-title { padding: 60px 0 8px; max-width: 760px; }
   .page-title .kicker { font-family: var(--font-mono); font-size: 13px; color: var(--text-muted); text-transform: lowercase; letter-spacing: 0.04em; margin-bottom: 16px; }
-  .page-title h1 { font-size: 40px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; }
-  .lede { font-size: 20px; line-height: 1.6; color: var(--text); margin: 24px 0 8px; max-width: 56ch; }
+  .page-title h1 { font-size: 38px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; }
+  .opening { font-size: 19px; line-height: 1.6; color: var(--text); margin: 22px 0 6px; max-width: 64ch; }
 
-  .case { padding: 40px 0; border-top: 1px solid var(--rule); margin-top: 32px; }
-  .case .case-label { font-family: var(--font-sans); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.09em; color: var(--text-muted); margin-bottom: 14px; }
-  .case h2 { font-size: 26px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 12px; }
-  .case p { font-size: 17.5px; line-height: 1.7; margin-bottom: 16px; max-width: 60ch; }
+  /* section heads */
+  .diagram-head { display: flex; align-items: baseline; gap: 12px; margin: 56px 0 20px; flex-wrap: wrap; }
+  .diagram-head h2 { font-size: 21px; font-weight: 800; letter-spacing: -0.02em; }
+  .diagram-head .hdot { width: 9px; height: 9px; border-radius: 50%; background: var(--accent); display: inline-block; align-self: center; }
+  .diagram-head .sub { font-family: var(--font-mono); font-size: 12.5px; color: var(--text-muted); }
 
-  /* Chart */
-  figure.chart { margin: 36px 0 8px; }
-  figure.chart svg { width: 100%; height: auto; display: block; }
-  .chart-title { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
-  .chart-sub { font-family: var(--font-mono); font-size: 12.5px; color: var(--text-muted); margin-bottom: 18px; }
-  figcaption { font-size: 15px; color: var(--text-muted); line-height: 1.6; margin-top: 16px; border-left: 2px solid var(--accent); padding-left: 14px; }
-  figcaption strong { color: var(--text); font-weight: 600; }
-  .legend { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 16px; font-size: 13px; color: var(--text-muted); }
-  .legend span { display: inline-flex; align-items: center; gap: 7px; }
-  .legend i { width: 12px; height: 12px; border-radius: 2px; display: inline-block; }
-  .svg-label { font-family: var(--font-sans); font-size: 13px; fill: var(--text-muted); }
-  .svg-axis { font-family: var(--font-sans); font-size: 14px; font-weight: 600; fill: var(--text); }
-  .svg-val { font-family: var(--font-mono); font-size: 12.5px; fill: #fff; }
-  .svg-val-dark { font-family: var(--font-mono); font-size: 12.5px; fill: var(--text); }
+  /* ============ DIAGRAM 1 — the playbook ============ */
+  .panel { background: var(--bg); border: 1px solid var(--rule); border-radius: 16px; padding: 26px 26px 22px; box-shadow: 0 8px 30px rgba(15,23,42,0.06); }
+  .play { display: flex; flex-direction: column; }
+  .phase { border: 1px solid var(--navy-border); border-left: 3px solid var(--accent); border-radius: 12px; background: linear-gradient(180deg, #fbfcfe, #fff); padding: 16px 18px 14px; }
+  .phase .ph-row { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 4px; }
+  .phase .ph-name { font-size: 16px; font-weight: 800; letter-spacing: -0.01em; }
+  .phase .ph-what { font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); }
+  .phase .items { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 9px; }
+  .phase .items span { font-size: 13.5px; border: 1px solid var(--rule); border-radius: 7px; padding: 5px 11px; background: #fafaf9; color: var(--text); }
+  .play .flow { display: flex; align-items: center; gap: 10px; padding: 8px 0 8px 26px; }
+  .play .flow .fline { width: 1.5px; height: 22px; background: #c3cfdd; }
+  .play .flow .ftxt { font-family: var(--font-mono); font-size: 11.5px; color: var(--accent); letter-spacing: 0.06em; text-transform: uppercase; }
+  .play-note { font-family: var(--font-mono); font-size: 12.5px; color: var(--text-muted); margin-top: 18px; padding-top: 14px; border-top: 1px dashed var(--rule); line-height: 1.6; }
 
-  .placeholder-hint { background: #fff8e1; border-left: 3px solid #d4a017; padding: 8px 12px; font-family: var(--font-mono); font-size: 13px; color: #6b5300; margin: 16px 0; line-height: 1.5; }
-  .stub { border: 1px dashed var(--rule); border-radius: 6px; padding: 28px; text-align: center; color: var(--text-muted); font-family: var(--font-mono); font-size: 13px; margin: 32px 0; }
+  /* ============ DIAGRAM 2 — before and after ============ */
+  .ba-table { display: flex; flex-direction: column; }
+  .ba-head { display: grid; grid-template-columns: 72px minmax(0,0.9fr) 20px minmax(0,1.4fr); gap: 10px; padding-bottom: 9px; }
+  .ba-head span { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); }
+  .ba-head .h-before { grid-column: 2; }
+  .ba-head .h-after { grid-column: 4; }
+  .ba-row { display: grid; grid-template-columns: 72px minmax(0,0.9fr) 20px minmax(0,1.4fr); align-items: center; gap: 10px; padding: 8px 0; border-top: 1px solid var(--rule); }
+  .ba-dim { font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); }
+  .ba-before { background: #f5f5f4; border: 1px solid var(--rule); border-radius: 8px; padding: 8px 11px; font-size: 13px; color: var(--text-muted); white-space: nowrap; }
+  .ba-arrow { text-align: center; color: var(--accent); font-weight: 700; }
+  .ba-after { background: var(--navy-muted); border: 1px solid var(--navy-border); border-left: 3px solid var(--accent); border-radius: 8px; padding: 8px 11px; font-size: 13px; color: var(--text); font-weight: 600; white-space: nowrap; }
+  .ba-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 22px; padding-top: 20px; border-top: 1px solid var(--rule); }
+  .quad-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 16px; }
+  .qc { border: 1px solid var(--rule); border-radius: 10px; padding: 12px 13px 11px; background: #fff; }
+  .qc .qc-co { font-size: 14px; font-weight: 700; letter-spacing: -0.01em; }
+  .qc .qc-yr { font-family: var(--font-mono); font-size: 10.5px; color: var(--text-muted); margin-bottom: 8px; }
+  .qc ul { display: flex; flex-direction: column; gap: 3px; }
+  .qc li { font-family: var(--font-mono); font-size: 12px; color: var(--accent); }
+  @media (max-width: 760px) { .ba-cards, .quad-cards { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 640px) {
+    .ba-head { display: none; }
+    .ba-row { grid-template-columns: 1fr 20px 1fr; }
+    .ba-dim { grid-column: 1 / -1; margin-bottom: 2px; }
+    .ba-before, .ba-after { white-space: normal; }
+    .ba-cards { grid-template-columns: 1fr; }
+  }
 
-  footer { margin-top: 72px; padding: 32px 0 48px; border-top: 1px solid var(--rule); font-size: 14px; color: var(--text-muted); }
+  .backlink { display: inline-block; font-size: 15px; color: var(--accent); text-decoration: none; margin-top: 48px; padding-top: 28px; border-top: 1px solid var(--rule); }
+  .backlink:hover { text-decoration: underline; }
+
+  footer { margin-top: 64px; padding: 32px 0 48px; border-top: 1px solid var(--rule); font-size: 14px; color: var(--text-muted); }
   footer .built-with { font-family: var(--font-mono); font-size: 12px; }
 
   @media (max-width: 640px) {
     body { font-size: 17px; }
     .page-title { padding: 40px 0 8px; }
-    .page-title h1 { font-size: 30px; }
-    .lede { font-size: 18px; }
-    .case h2 { font-size: 22px; }
+    .page-title h1 { font-size: 28px; }
+    .opening { font-size: 17px; }
   }
 </style>
 </head>
@@ -93,83 +117,77 @@
   <div class="container">
 
     <div class="page-title">
-      <div class="kicker">transformations · oil &amp; gas · argentina</div>
-      <h1>Two transformations, told in the charts a CV can't carry.</h1>
-      <p class="lede">Field-operations procurement is buried in transactional noise while the real spend — and the real risk — sit concentrated and unmanaged. The job is always the same: stop hand-touching the noise, put expert attention on the concentration. Two cases, both companies anonymized.</p>
+      <div class="kicker">transformations · supply chain &amp; procurement · 2007–2014</div>
+      <h1>Organizational transformations</h1>
+      <p class="opening">Between 2007 and 2014 I rebuilt the supply chain and procurement organizations of three companies: Clorox, ENAP and Archer DLS. Each followed the same sequence: diagnose, redesign, execute.</p>
     </div>
 
-    <!-- ============ CASE 1 — the centerpiece ============ -->
-    <section class="case">
-      <div class="case-label">Case 01 · oilfield-services operator · ~$100M spend</div>
-      <h2>A procurement function drowning in noise</h2>
-      <p>An oilfield-services operator in Argentina: roughly $100M of annual spend across 47,000+ purchase orders, a team buried in transactional work, no category management, maturity diagnosed near the bottom of the local oil &amp; gas benchmark.</p>
-
-      <figure class="chart">
-        <div class="chart-title">Where the orders go vs. where the money goes</div>
-        <div class="chart-sub">share of purchase orders (47,000+) → share of spend (~$100M), by order size</div>
-        <svg viewBox="0 0 760 470" role="img" aria-label="Inversion between share of purchase orders and share of spend by order size">
-          <!-- axis titles -->
-          <text x="175" y="28" text-anchor="middle" class="svg-axis">Purchase orders</text>
-          <text x="585" y="28" text-anchor="middle" class="svg-axis">Spend</text>
-
-          <!-- ribbons (same category left→right), drawn first, low opacity -->
-          <polygon points="220,40 540,40 540,83 220,42" fill="var(--b4)" opacity="0.45"/>
-          <polygon points="220,42 540,83 540,137 220,46" fill="var(--b3)" opacity="0.45"/>
-          <polygon points="220,46 540,137 540,310 220,82" fill="var(--b2)" opacity="0.45"/>
-          <polygon points="220,82 540,310 540,400 220,400" fill="var(--b1)" opacity="0.55"/>
-
-          <!-- LEFT bar: orders (x 130..220) -->
-          <rect x="130" y="40" width="90" height="2"   fill="var(--b4)"/>
-          <rect x="130" y="42" width="90" height="4"   fill="var(--b3)"/>
-          <rect x="130" y="46" width="90" height="36"  fill="var(--b2)"/>
-          <rect x="130" y="82" width="90" height="318" fill="var(--b1)"/>
-
-          <!-- RIGHT bar: spend (x 540..630) -->
-          <rect x="540" y="40"  width="90" height="43"  fill="var(--b4)"/>
-          <rect x="540" y="83"  width="90" height="54"  fill="var(--b3)"/>
-          <rect x="540" y="137" width="90" height="173" fill="var(--b2)"/>
-          <rect x="540" y="310" width="90" height="90"  fill="var(--b1)"/>
-
-          <!-- left value labels (outside, left) -->
-          <text x="120" y="245" text-anchor="end" class="svg-val-dark">89%</text>
-          <text x="120" y="68"  text-anchor="end" class="svg-val-dark">10%</text>
-
-          <!-- right value labels (inside dark bands, white) -->
-          <text x="585" y="66"  text-anchor="middle" class="svg-val">12%</text>
-          <text x="585" y="114" text-anchor="middle" class="svg-val">15%</text>
-          <text x="585" y="228" text-anchor="middle" class="svg-val">48%</text>
-          <text x="585" y="360" text-anchor="middle" class="svg-val-dark">25%</text>
-
-          <!-- baseline -->
-          <line x1="130" y1="400" x2="630" y2="400" stroke="var(--rule)" stroke-width="1"/>
-          <text x="175" y="424" text-anchor="middle" class="svg-label">47,000+ orders</text>
-          <text x="585" y="424" text-anchor="middle" class="svg-label">~$100M</text>
-        </svg>
-        <div class="legend">
-          <span><i style="background:var(--b1)"></i>under $5k / order</span>
-          <span><i style="background:var(--b2)"></i>$5k–50k</span>
-          <span><i style="background:var(--b3)"></i>$50k–150k</span>
-          <span><i style="background:var(--b4)"></i>over $150k</span>
+    <!-- ============ DIAGRAM 1 — THE PLAYBOOK ============ -->
+    <div class="diagram-head">
+      <span class="hdot"></span>
+      <h2>The sequence</h2>
+    </div>
+    <div class="panel">
+      <div class="play">
+        <div class="phase">
+          <div class="ph-row"><span class="ph-name">Diagnose</span><span class="ph-what">measure the current state</span></div>
+          <div class="items">
+            <span>spend analysis</span><span>transactional analysis</span><span>systems</span><span>procedures</span><span>maturity</span><span>people</span><span>structure</span>
+          </div>
         </div>
-        <figcaption><strong>89% of the purchase orders were under $5,000 — and they moved just 25% of the money.</strong> Under 1% of orders, the ones over $150k, moved 12%. The team's effort and the company's spend were pointing in opposite directions: everyone was hand-processing the noise while the concentrated spend went unmanaged.</figcaption>
-      </figure>
+        <div class="flow"><span class="fline"></span></div>
+        <div class="phase">
+          <div class="ph-row"><span class="ph-name">Redesign</span><span class="ph-what">define the target organization</span></div>
+          <div class="items">
+            <span>structure</span><span>category management</span><span>procedures</span><span>systems and technology</span><span>KPIs and dashboard</span>
+          </div>
+        </div>
+        <div class="flow"><span class="fline"></span></div>
+        <div class="phase">
+          <div class="ph-row"><span class="ph-name">Execute</span><span class="ph-what">implement</span></div>
+          <div class="items">
+            <span>organization delivery</span><span>change management</span><span>systems implementation</span><span>procedures live</span>
+          </div>
+        </div>
+      </div>
+    </div>
 
-      <p>Built category management around the concentrated spend, pushed the low-value tail onto blanket orders and P-cards so it stopped consuming buyers, simplified the approval chains, and stood up e-sourcing and KPIs — resizing the team toward expertise, not transaction count.</p>
-      <p>Structural savings in the millions per year, a measurably higher-maturity function, and buyers freed from the tail to work the spend that actually moved the company.</p>
-    </section>
+    <!-- ============ DIAGRAM 2 — BEFORE AND AFTER ============ -->
+    <div class="diagram-head">
+      <span class="hdot"></span>
+      <h2>Before and after</h2>
+      <span class="sub">the same shifts across all three organizations</span>
+    </div>
+    <div class="panel">
+      <div class="ba-table">
+        <div class="ba-head"><span class="h-before">Before</span><span class="h-after">After</span></div>
+        <div class="ba-row"><span class="ba-dim">Focus</span><span class="ba-before">transactional focus</span><span class="ba-arrow">→</span><span class="ba-after">strategic sourcing</span></div>
+        <div class="ba-row"><span class="ba-dim">Volume</span><span class="ba-before">high transaction load</span><span class="ba-arrow">→</span><span class="ba-after">reduced transactional tail</span></div>
+        <div class="ba-row"><span class="ba-dim">Performance</span><span class="ba-before">no KPIs, no reporting</span><span class="ba-arrow">→</span><span class="ba-after">KPIs and dashboard</span></div>
+        <div class="ba-row"><span class="ba-dim">Roles</span><span class="ba-before">blurred roles, cross-reporting</span><span class="ba-arrow">→</span><span class="ba-after">clear roles and responsibilities</span></div>
+        <div class="ba-row"><span class="ba-dim">Systems</span><span class="ba-before">systems underused</span><span class="ba-arrow">→</span><span class="ba-after">integrated systems · ERP blanket orders · MRP · WMS</span></div>
+        <div class="ba-row"><span class="ba-dim">Procedures</span><span class="ba-before">non-standard procedures, weak control</span><span class="ba-arrow">→</span><span class="ba-after">defined procedures, approval matrix</span></div>
+        <div class="ba-row"><span class="ba-dim">Contracts</span><span class="ba-before">low contract coverage</span><span class="ba-arrow">→</span><span class="ba-after">spend under contract, framework agreements</span></div>
+      </div>
+      <div class="ba-cards">
+        <div class="qc">
+          <div class="qc-co">Clorox</div><div class="qc-yr">south latam · 2007–09</div>
+          <ul><li>USD 150M spend</li><li>4 countries</li></ul>
+        </div>
+        <div class="qc">
+          <div class="qc-co">ENAP</div><div class="qc-yr">upstream · 2011–13</div>
+          <ul><li>USD 250M spend</li><li>3 countries</li></ul>
+        </div>
+        <div class="qc">
+          <div class="qc-co">Archer DLS</div><div class="qc-yr">latam · 2013–14</div>
+          <ul><li>USD 300M spend</li><li>3 countries</li></ul>
+        </div>
+      </div>
+    </div>
 
-    <!-- ============ CASE 2 — stub for next charts ============ -->
-    <section class="case">
-      <div class="case-label">Case 02 · drilling-services operator · supply chain build-out</div>
-      <h2>Building a strategic supply chain under siege</h2>
-      <p>A drilling-services operator in Argentina, mid-2010s: import restrictions, currency controls, a government local-content mandate, and a fleet growing five- to six-fold — all at once. The supply chain had to become a strategic function while keeping rigs supplied through the crunch.</p>
-      <div class="stub">CHARTS NEXT — (1) before/after maturity lift across 9 dimensions, (2) 3-year cumulative value curve, drawn to match the centerpiece.</div>
-      <p>Stood up category management, MRP / WMS / TMS, foreign-trade, contract governance and corporate security from near-zero — and delivered savings and cost-avoidance through the worst of the import and FX squeeze.</p>
-    </section>
-
-    <div class="placeholder-hint">NOTE — All figures anonymized and de-identified. No company names, employee names, vendor names, or third-party report content. Numbers shown are order-of-magnitude / proportional, framed as Mariano's own analysis and contribution.</div>
-
-    <p style="margin-top:28px;"><a href="../index.html" style="color:var(--accent); font-size:15px; text-decoration:none;">← Back to home</a></p>
+    <div>
+      <a href="../index.html" class="backlink">← Back to home</a>
+    </div>
 
   </div>
 </main>
@@ -177,7 +195,7 @@
 <footer>
   <div class="container">
     <div>© 2026 Mariano Funes</div>
-    <div class="built-with">Built with <a href="https://claude.com/claude-code">Claude Code</a> — inline SVG, no chart library.</div>
+    <div class="built-with">Built with <a href="https://claude.com/claude-code">Claude Code</a></div>
   </div>
 </footer>
 

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spend Compliance Agent — Mariano Funes</title>
+<meta name="description" content="An agent that reads service contracts, understands what each rate includes and excludes, and checks every purchase order for linkage, price, and scope compliance. Built with Claude Code, run against a real ERP extract.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  body, h1, h2, h3, p, ul, ol, li, figure { margin: 0; padding: 0; }
+  ul { list-style: none; }
+  :root {
+    --bg: #ffffff; --text: #0f172a; --text-muted: #5f6b7a;
+    --accent: #1f3a5f; --rule: #e5e5e2;
+    --content-width: 920px;
+    --teal: #2a4d42; --teal-dark: #1a2f27; --teal-muted: #eef2ef;
+    --amber: #b45309; --amber-bg: #fef6e7; --amber-bd: #f3d9a6;
+    --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  }
+  html { -webkit-text-size-adjust: 100%; }
+  body { background: var(--bg); color: var(--text); font-family: var(--font-sans); font-size: 18px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+  a { color: var(--accent); text-underline-offset: 3px; }
+  .container { max-width: var(--content-width); margin: 0 auto; padding: 0 24px; }
+
+  header { border-bottom: 1px solid var(--rule); padding: 18px 0; }
+  header .nav-row { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+  .wordmark { font-size: 17px; font-weight: 700; letter-spacing: -0.01em; color: var(--text); text-decoration: none; }
+  .nav-links { display: flex; gap: 18px; font-size: 14px; list-style: none; }
+  .nav-links a { color: var(--text-muted); text-decoration: none; }
+  .nav-links a:hover { color: var(--accent); }
+
+  .page-title { padding: 60px 0 8px; max-width: 900px; }
+  .page-title .kicker { font-family: var(--font-mono); font-size: 13px; color: var(--text-muted); text-transform: lowercase; letter-spacing: 0.04em; margin-bottom: 16px; }
+  .page-title .kicker .building { color: var(--teal); font-weight: 500; }
+  .page-title h1 { font-size: 38px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; }
+  .lede { font-size: 19px; line-height: 1.6; color: var(--text); margin: 22px 0 6px; }
+
+  /* section heads */
+  .s-head { display: flex; align-items: baseline; gap: 12px; margin: 52px 0 18px; flex-wrap: wrap; }
+  .s-head h2 { font-size: 21px; font-weight: 800; letter-spacing: -0.02em; }
+  .s-head .hdot { width: 9px; height: 9px; border-radius: 50%; background: var(--teal); display: inline-block; align-self: center; }
+  .s-head .sub { font-family: var(--font-mono); font-size: 12.5px; color: var(--text-muted); }
+  .narr { font-size: 17px; line-height: 1.7; color: var(--text); margin-bottom: 4px; }
+
+  .panel { background: var(--bg); border: 1px solid var(--rule); border-radius: 16px; padding: 26px 26px 22px; box-shadow: 0 8px 30px rgba(15,23,42,0.06); margin-top: 18px; }
+
+  /* ===== double charge ===== */
+  .dc { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .dc-card { border: 1px solid var(--rule); border-radius: 12px; padding: 15px 16px 14px; background: #fff; }
+  .dc-card .dc-lab { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 10px; }
+  .dc-rate { font-size: 16px; font-weight: 700; letter-spacing: -0.01em; }
+  .dc-incl { font-size: 12.5px; color: var(--text-muted); margin-top: 6px; line-height: 1.5; }
+  .dc-line { display: flex; align-items: center; justify-content: space-between; gap: 10px; border: 1px solid var(--rule); border-radius: 8px; padding: 8px 11px; margin-top: 8px; font-size: 13.5px; background: #fafaf9; }
+  .dc-line .amt { font-family: var(--font-mono); font-weight: 600; }
+  .dc-line.ok { border-color: #bfe3dd; background: var(--teal-muted); }
+  .dc-line.bad { border-color: var(--amber-bd); background: var(--amber-bg); }
+  .dc-line .mk { font-family: var(--font-mono); font-size: 11px; }
+  .dc-line.ok .mk { color: var(--teal-dark); }
+  .dc-line.bad .mk { color: var(--amber); }
+  .dc-find { margin-top: 16px; border-left: 3px solid var(--teal); background: var(--teal-muted); border-radius: 0 10px 10px 0; padding: 13px 16px; font-size: 14.5px; line-height: 1.6; }
+  .dc-find b { font-weight: 700; }
+
+  /* ===== three dimensions ===== */
+  .dims { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .dim { border: 1px solid var(--rule); border-radius: 12px; padding: 15px 16px 14px; background: #fff; }
+  .dim .d-n { font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); }
+  .dim .d-name { font-size: 16px; font-weight: 800; letter-spacing: -0.01em; margin: 2px 0 8px; }
+  .dim .d-q { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+  .dim .d-states { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
+  .dim .d-states span { font-family: var(--font-mono); font-size: 10.5px; border: 1px solid var(--rule); border-radius: 5px; padding: 2px 7px; background: #fafaf9; color: var(--text-muted); }
+
+  /* ===== architecture pipeline ===== */
+  .orch { border: 1.5px solid var(--teal); background: var(--teal-muted); border-radius: 12px; padding: 12px 16px; display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+  .orch b { font-size: 14px; font-weight: 800; letter-spacing: -0.01em; }
+  .orch .o-sub { font-family: var(--font-mono); font-size: 11.5px; color: var(--teal-dark); }
+  .vdown { display: flex; justify-content: center; color: var(--teal); font-size: 14px; padding: 5px 0; }
+  .pipe { display: flex; flex-direction: column; gap: 8px; }
+  .step { display: grid; grid-template-columns: 24px 1fr; gap: 13px; border: 1px solid var(--rule); border-radius: 11px; padding: 11px 14px; background: #fff; }
+  .step.sub { border-left: 3px solid var(--teal); }
+  .step .n { font-family: var(--font-mono); font-size: 12px; color: var(--teal-dark); font-weight: 600; padding-top: 1px; }
+  .step .s-row { display: flex; align-items: baseline; gap: 9px; flex-wrap: wrap; }
+  .step .s-name { font-size: 14.5px; font-weight: 700; letter-spacing: -0.01em; }
+  .tag { font-family: var(--font-mono); font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.06em; border-radius: 5px; padding: 2px 7px; }
+  .tag.sa { background: var(--teal); color: #fff; }
+  .tag.il { background: #eef0f2; color: var(--text-muted); }
+  .step .does { font-size: 12.5px; color: var(--text-muted); margin-top: 3px; line-height: 1.5; }
+  .step .uses { font-family: var(--font-mono); font-size: 10.5px; color: var(--teal-dark); margin-top: 6px; }
+  .db-note { margin-top: 14px; padding-top: 13px; border-top: 1px solid var(--rule); font-size: 13px; color: var(--text-muted); line-height: 1.55; }
+  .ex-lab { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-muted); margin-bottom: 14px; }
+  .ex-note { font-size: 13.5px; color: var(--text-muted); line-height: 1.6; margin-top: 14px; }
+
+  /* ===== trial ===== */
+  .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .stat { border: 1px solid var(--rule); border-radius: 11px; padding: 13px 14px; background: #fff; }
+  .stat .v { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; }
+  .stat .k { font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin-top: 4px; }
+  .stat .v small { display: block; font-size: 11px; font-weight: 400; color: var(--text-muted); letter-spacing: 0; margin-top: 2px; }
+  .finding { margin-top: 18px; border: 1px solid var(--amber-bd); background: var(--amber-bg); border-radius: 12px; padding: 16px 18px; }
+  .finding .f-lab { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--amber); font-weight: 600; margin-bottom: 10px; }
+  .finding .f-stats { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-bottom: 11px; }
+  .finding .f-stats div { font-size: 13px; }
+  .finding .f-stats b { font-family: var(--font-mono); font-weight: 700; font-size: 15px; }
+  .cvp { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .cvp-side { background: #fff; border: 1px solid var(--amber-bd); border-radius: 10px; padding: 13px 15px; }
+  .cvp-lab { font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--amber); font-weight: 600; margin-bottom: 10px; }
+  .cvp-list { display: flex; flex-direction: column; gap: 5px; }
+  .cvp-list li { font-size: 12.5px; color: var(--text); line-height: 1.4; padding-left: 13px; position: relative; }
+  .cvp-list li::before { content: "›"; position: absolute; left: 2px; color: var(--teal); font-weight: 700; }
+  .cvp-generic { background: var(--amber-bg); border: 1px dashed var(--amber-bd); border-radius: 8px; padding: 16px 12px; text-align: center; margin-bottom: 11px; }
+  .cvp-generic code { font-family: var(--font-mono); font-size: 12px; color: var(--text); }
+  .cvp-generic .x42 { display: block; font-family: var(--font-mono); font-size: 10.5px; color: var(--amber); margin-top: 7px; }
+  .cvp-note { font-size: 12.5px; color: var(--text-muted); line-height: 1.55; }
+  .result { margin-top: 16px; background: var(--teal); color: #fff; border-radius: 12px; padding: 15px 18px; font-size: 16px; line-height: 1.5; }
+  .result b { font-weight: 800; }
+  .trial-src { font-family: var(--font-mono); font-size: 11.5px; color: var(--text-muted); margin-top: 14px; }
+  @media (max-width: 640px){ .cvp { grid-template-columns: 1fr; } }
+
+  .related { margin-top: 44px; font-size: 15px; color: var(--text-muted); }
+  .related a { color: var(--accent); }
+  .backlink { display: inline-block; font-size: 15px; color: var(--accent); text-decoration: none; margin-top: 18px; }
+  .backlink:hover { text-decoration: underline; }
+
+  footer { margin-top: 56px; padding: 32px 0 48px; border-top: 1px solid var(--rule); font-size: 14px; color: var(--text-muted); }
+  footer .built-with { font-family: var(--font-mono); font-size: 12px; }
+
+  @media (max-width: 760px) {
+    .dims { grid-template-columns: 1fr; }
+    .stat-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 640px) {
+    body { font-size: 17px; }
+    .page-title { padding: 40px 0 8px; }
+    .page-title h1 { font-size: 28px; }
+    .lede { font-size: 17px; }
+    .panel { padding: 20px 16px; }
+    .dc { grid-template-columns: 1fr; }
+    .stat-grid { grid-template-columns: 1fr 1fr; }
+    .step { grid-template-columns: 1fr; gap: 4px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="nav-row">
+      <a href="../index.html" class="wordmark">Mariano Funes</a>
+      <ul class="nav-links">
+        <li><a href="../index.html#work">work</a></li>
+        <li><a href="../index.html#writing">writing</a></li>
+        <li><a href="../index.html#contact">contact</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+
+    <div class="page-title">
+      <div class="kicker">agentic ai · spend compliance</div>
+      <h1>Spend Compliance Agent</h1>
+      <p class="lede">When a procurement contract is signed, its terms are loaded into the ERP by hand. Across several countries or regions, the purchase orders drift from the contract — in price, in scope, in whether they reference it at all. This agent reads the contract and checks the spend against it.</p>
+    </div>
+
+    <!-- ===== WHAT IT CHECKS ===== -->
+    <div class="s-head">
+      <span class="hdot"></span>
+      <h2>What it checks</h2>
+      <span class="sub">every PO, three questions</span>
+    </div>
+    <div class="dims">
+      <div class="dim">
+        <div class="d-n">01</div>
+        <div class="d-name">Linkage</div>
+        <div class="d-q">Is the PO tied to a contract at all?</div>
+        <div class="d-states"><span>linked</span><span>unlinked</span><span>off-contract</span></div>
+      </div>
+      <div class="dim">
+        <div class="d-n">02</div>
+        <div class="d-name">Price</div>
+        <div class="d-q">Does the PO price match the contracted rate?</div>
+        <div class="d-states"><span>compliant</span><span>non-compliant</span></div>
+      </div>
+      <div class="dim">
+        <div class="d-n">03</div>
+        <div class="d-name">Scope</div>
+        <div class="d-q">Is the PO charging for something the rate already includes?</div>
+        <div class="d-states"><span>compliant</span><span>double charge</span><span>scope gap</span></div>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="ex-lab">Example — a double charge</div>
+      <div class="dc">
+        <div class="dc-card">
+          <div class="dc-lab">Contract</div>
+          <div class="dc-rate">Day rate $1,500 — all-inclusive</div>
+          <div class="dc-incl">Transport, mobilization and materials are inside the rate.</div>
+        </div>
+        <div class="dc-card">
+          <div class="dc-lab">Purchase order</div>
+          <div class="dc-line ok"><span>Line 1 — day rate</span><span class="amt">$1,500 <span class="mk">✓</span></span></div>
+          <div class="dc-line bad"><span>Line 2 — transport</span><span class="amt">$400 <span class="mk">✗</span></span></div>
+        </div>
+      </div>
+      <p class="ex-note">Line 2 bills $400 for transport the day rate already covers. A line-by-line check passes it; read against the contract, it's a double charge.</p>
+    </div>
+
+    <!-- ===== ARCHITECTURE ===== -->
+    <div class="s-head">
+      <span class="hdot"></span>
+      <h2>Architecture</h2>
+      <span class="sub">1 orchestrator · 3 subagents · 2 inline steps · 11 skills</span>
+    </div>
+    <div class="panel">
+      <div class="orch">
+        <b>Orchestrator</b>
+        <span class="o-sub">Claude Code + CLAUDE.md · runs the pipeline, evaluates each step, switches to reasoning on pattern-level failure</span>
+      </div>
+      <div class="vdown">↓</div>
+      <div class="pipe">
+        <div class="step sub">
+          <div class="n">1</div>
+          <div>
+            <div class="s-row"><span class="s-name">Contract Interpretation</span><span class="tag sa">subagent</span></div>
+            <div class="does">Reads contract PDFs. Extracts pricing, UOM, scope — and the inclusions and exclusions that define what each rate covers.</div>
+            <div class="uses">pdf-reader · db-manager · schema-validator · confidence-scorer</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="n">2</div>
+          <div>
+            <div class="s-row"><span class="s-name">PO Processing</span><span class="tag il">inline</span></div>
+            <div class="does">Loads the ERP extract, normalizes it via field mapping, routes each PO by available matching path.</div>
+            <div class="uses">excel-loader · field-mapper · db-manager · schema-validator</div>
+          </div>
+        </div>
+        <div class="step sub">
+          <div class="n">3</div>
+          <div>
+            <div class="s-row"><span class="s-name">Matching</span><span class="tag sa">subagent</span></div>
+            <div class="does">Links each PO to its contract — direct lookup, or semantic matching when there is no reference. "Crane services" matches "lifting and hoisting"; "crane inspection" does not.</div>
+            <div class="uses">db-manager · fuzzy-matcher · confidence-scorer</div>
+          </div>
+        </div>
+        <div class="step sub">
+          <div class="n">4</div>
+          <div>
+            <div class="s-row"><span class="s-name">Compliance</span><span class="tag sa">subagent</span></div>
+            <div class="does">Scores linkage, price and scope per PO. Holds the contract's inclusions and exclusions in context to catch overlaps and double charges.</div>
+            <div class="uses">db-manager · price-comparator · uom-converter · clustering-engine</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="n">5</div>
+          <div>
+            <div class="s-row"><span class="s-name">Report Generation</span><span class="tag il">inline</span></div>
+            <div class="does">Queries the database and formats the compliance report. Deliverables are queries, not separate analysis.</div>
+            <div class="uses">db-manager · report-writer</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== THE TEST ===== -->
+    <div class="s-head">
+      <span class="hdot"></span>
+      <h2>The test</h2>
+      <span class="sub">one contract against a year of spend</span>
+    </div>
+    <p class="narr">A single supplier contract, checked against a full year of the company's purchase orders — straight from the ERP.</p>
+    <div class="panel">
+      <div class="stat-grid">
+        <div class="stat"><div class="v">8,704</div><div class="k">purchase orders</div></div>
+        <div class="stat"><div class="v">$252.4M</div><div class="k">spend</div></div>
+        <div class="stat"><div class="v">445</div><div class="k">suppliers</div></div>
+        <div class="stat"><div class="v">39</div><div class="k">countries</div></div>
+      </div>
+      <div class="finding">
+        <div class="f-lab">The contract priced 8 named services. Every PO collapsed them into one line.</div>
+        <div class="cvp">
+          <div class="cvp-side">
+            <div class="cvp-lab">What the contract priced — 8 services</div>
+            <ul class="cvp-list">
+              <li>Registro de hidrocarburos marino c/crom</li>
+              <li>Registro de hidrocarburos terrestre</li>
+              <li>Análisis de fluidos — marina / terrestre</li>
+              <li>Paleontólogo</li>
+              <li>Mud Logger / control geológico</li>
+              <li>Ayudante laminador · materiales</li>
+            </ul>
+          </div>
+          <div class="cvp-side">
+            <div class="cvp-lab">What every PO said — 42 times</div>
+            <div class="cvp-generic"><code>OUTSIDE SERVICES, INSP - REPAIR AND CONSUMABLES</code></div>
+            <div class="cvp-note">One line, repeated. No price on the rate card, no service named.</div>
+          </div>
+        </div>
+        <div class="result">The agent flagged <b>35 POs · 42 lines · $970K</b> of non-compliant spend — in minutes.</div>
+      </div>
+    </div>
+
+    <div>
+      <a href="../index.html" class="backlink">← Back to home</a>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <div>© 2026 Mariano Funes</div>
+    <div class="built-with">Built with and run on <a href="https://claude.com/claude-code">Claude Code</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
