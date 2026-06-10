@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seven Deadly Sins for Procurement Organizations — Mariano Funes</title>
+<meta name="description" content="Supplier markets are VUCA. Seven pitfalls a procurement organization has to avoid — from the orphaned department to risk blindness. By Mariano Funes (2024).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  body, h1, h2, h3, p, ul, ol, li, figure { margin: 0; padding: 0; }
+  ul, ol { list-style: none; }
+  :root {
+    --bg: #ffffff; --text: #0f172a; --text-muted: #5f6b7a;
+    --accent: #1f3a5f; --accent-hover: #2c5283; --rule: #e5e5e2;
+    --content-width: 920px;
+    --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  }
+  html { -webkit-text-size-adjust: 100%; }
+  body { background: var(--bg); color: var(--text); font-family: var(--font-sans); font-size: 18px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+  a { color: var(--accent); text-underline-offset: 3px; }
+  .container { max-width: var(--content-width); margin: 0 auto; padding: 0 24px; }
+
+  header { border-bottom: 1px solid var(--rule); padding: 18px 0; }
+  header .nav-row { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+  .wordmark { font-size: 17px; font-weight: 700; letter-spacing: -0.01em; color: var(--text); text-decoration: none; }
+  .nav-links { display: flex; gap: 18px; font-size: 14px; list-style: none; }
+  .nav-links a { color: var(--text-muted); text-decoration: none; }
+  .nav-links a:hover { color: var(--accent); }
+
+  .page-title { padding: 56px 0 8px; }
+  .page-title .kicker { font-family: var(--font-mono); font-size: 13px; color: var(--text-muted); text-transform: lowercase; letter-spacing: 0.04em; margin-bottom: 16px; }
+  .page-title h1 { font-size: 38px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; max-width: 22ch; }
+  .byline { font-family: var(--font-mono); font-size: 13px; color: var(--text-muted); margin-top: 16px; }
+
+  .hero { margin: 26px 0 8px; }
+  .hero img { width: 100%; height: auto; display: block; border: 1px solid var(--rule); border-radius: 12px; box-shadow: 0 8px 30px rgba(15,23,42,0.08); }
+
+  .article { margin-top: 26px; }
+  .article > p { font-size: 18px; line-height: 1.72; margin: 0 0 18px; max-width: 70ch; }
+
+  .sins { display: flex; flex-direction: column; gap: 4px; margin-top: 14px; counter-reset: sin; }
+  .sin { display: grid; grid-template-columns: 52px 1fr; gap: 18px; padding: 22px 0; border-top: 1px solid var(--rule); }
+  .sin .num { font-family: var(--font-mono); font-size: 30px; font-weight: 500; color: var(--accent); line-height: 1; padding-top: 4px; }
+  .sin h3 { font-size: 20px; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 7px; }
+  .sin p { font-size: 17px; line-height: 1.62; color: var(--text); max-width: 66ch; }
+
+  .source-note { font-family: var(--font-mono); font-size: 12.5px; color: var(--text-muted); margin-top: 30px; padding-top: 18px; border-top: 1px solid var(--rule); }
+  .backlink { display: inline-block; font-size: 15px; color: var(--accent); text-decoration: none; margin-top: 14px; }
+  .backlink:hover { text-decoration: underline; }
+
+  footer { margin-top: 56px; padding: 32px 0 48px; border-top: 1px solid var(--rule); font-size: 14px; color: var(--text-muted); }
+  footer .built-with { font-family: var(--font-mono); font-size: 12px; }
+
+  @media (max-width: 640px) {
+    body { font-size: 17px; }
+    .page-title { padding: 40px 0 8px; }
+    .page-title h1 { font-size: 28px; }
+    .article > p, .sin p { font-size: 16.5px; }
+    .sin { grid-template-columns: 40px 1fr; gap: 12px; }
+    .sin .num { font-size: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="nav-row">
+      <a href="../index.html" class="wordmark">Mariano Funes</a>
+      <ul class="nav-links">
+        <li><a href="../index.html#work">work</a></li>
+        <li><a href="../index.html#writing">writing</a></li>
+        <li><a href="../index.html#contact">contact</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+
+    <div class="page-title">
+      <div class="kicker">writing · procurement · 2024</div>
+      <h1>Seven Deadly Sins for Procurement Organizations</h1>
+      <div class="byline">Mariano Funes · February 22, 2024</div>
+    </div>
+
+    <figure class="hero">
+      <img src="../assets/seven-sins/sins-hero.jpg" alt="A stained-glass compass surrounded by charts and trend lines — navigating volatile markets" loading="lazy">
+    </figure>
+
+    <div class="article">
+      <p>Supplier Markets today can be defined as VUCA: Volatile, Uncertain, Complex, and Ambiguous. In this framework Procurement Organizations needs to avoid some pitfalls:</p>
+
+      <ol class="sins">
+        <li class="sin">
+          <div class="num">1</div>
+          <div>
+            <h3>Orphaned Department</h3>
+            <p>Seems a bit odd, but even today there are big companies without a CPO – or a single procurement officer - in charge of their 3rd party spend. That leads to inefficient resources utilization, increased cost of goods and services, high exposure to risks, from supply, financial, strategic to reputational. This also encompass those companies that merely adds Procurement responsibilities to Supply Chain without proper specialization: Moving stuff is quite different than dealmaking in changing markets.</p>
+          </div>
+        </li>
+        <li class="sin">
+          <div class="num">2</div>
+          <div>
+            <h3>Complexity Crusader</h3>
+            <p>Medium and big sized organizations tend to be in love with complex procedures and processes. Procurement needs to champion simplification, embrace agility. Challenge the processes in terms of cost-benefit-risk and speed. Avoid falling in the resource-consuming complexity trap. Embrace simplicity and then leverage in using your ERP and then digitalization. (ERP underutilization is as common as breathing)</p>
+          </div>
+        </li>
+        <li class="sin">
+          <div class="num">3</div>
+          <div>
+            <h3>Notary Gigs</h3>
+            <p>Sometimes, Maverick Buying or noncompliance events, fuels Audit and Compliance departments to create documental and transactional burden to the procurement processes without assessing organizational costs and real effectiveness. As an example, there are many Contracting and Procurement Procedures that states the infamous 3 proposals to comply with any acquisition process. Lazy auditors understand that if you have 3 quotes, processes are transparent and under control. This results in Procurement departments adding some "notary" functions even for spend not under its management.</p>
+          </div>
+        </li>
+        <li class="sin">
+          <div class="num">4</div>
+          <div>
+            <h3>Red Queen Effect</h3>
+            <p>A famous quote from Lewis Carroll's classic: "Through the Looking-Glass": The Red Queen tells Alice "Now, here, you see, it takes all the running you can do, to keep in the same place." Tied to the notary gigs, red tape, complex processes, and lack of digitalization the Red Queen effect is one of the biggest Procurement department pitfalls: Resources time and soul are consumed by worthless transactions and operations. At the end of the day and weeks people works as hell only to be in the same place, just delivering transactions.</p>
+          </div>
+        </li>
+        <li class="sin">
+          <div class="num">5</div>
+          <div>
+            <h3>Savings Monotheism</h3>
+            <p>If you only advertise one product, odds are you are to only sell this very one. Is tempting to position procurement as a Savings provider, gives power but after getting the easy ones, the rest are complex to get. Savings is only one function on many, some of them more important.</p>
+          </div>
+        </li>
+        <li class="sin">
+          <div class="num">6</div>
+          <div>
+            <h3>Centripetal Organization</h3>
+            <p>Several forces affect the procurement department, one of the most powerful are the internal politics and bureaucracy. A balance procurement department needs at least to devote half of the time at the marketplace: Developing market intelligence, feeding the category management process, nurturing supplier relationships, analyzing market forces and searching for innovation. On the contrary, team resources are generally kidnapped by the organization devoting most of the energy performing internal tasks.</p>
+          </div>
+        </li>
+        <li class="sin">
+          <div class="num">7</div>
+          <div>
+            <h3>Risk Blindness</h3>
+            <p>A balanced internal and external Procurement is key to implement a Supply Risk Management program. Marketplace and suppliers need to be reviewed. A risk plan including external risks assessment, sourcing alternatives and impacts to the E2E supply chain and each Line of Business P&amp;L needs to be developed. A reasonable Supply Risk Management program will increase the organization resilience and adaptability.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+
+    <p class="source-note">First published on LinkedIn, February 2024.</p>
+    <div>
+      <a href="../index.html" class="backlink">← Back to home</a>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <div>© 2026 Mariano Funes</div>
+    <div class="built-with">Built with <a href="https://claude.com/claude-code">Claude Code</a></div>
+  </div>
+</footer>
+
+</body>
+</html>

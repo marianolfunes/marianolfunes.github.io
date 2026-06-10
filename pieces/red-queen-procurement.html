@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Procurement Operations: Solving the Red Queen effect — Mariano Funes</title>
+<meta name="description" content="Red tape, notary gigs and no digitalization consume a procurement team's time only to keep it in the same place. A three-step action plan to free resources for category management. By Mariano Funes (2024).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  body, h1, h2, h3, p, ul, ol, li, figure { margin: 0; padding: 0; }
+  ul { list-style: none; }
+  :root {
+    --bg: #ffffff; --text: #0f172a; --text-muted: #5f6b7a;
+    --accent: #1f3a5f; --accent-hover: #2c5283; --rule: #e5e5e2;
+    --content-width: 920px;
+    --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  }
+  html { -webkit-text-size-adjust: 100%; }
+  body { background: var(--bg); color: var(--text); font-family: var(--font-sans); font-size: 18px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+  a { color: var(--accent); text-underline-offset: 3px; }
+  .container { max-width: var(--content-width); margin: 0 auto; padding: 0 24px; }
+
+  header { border-bottom: 1px solid var(--rule); padding: 18px 0; }
+  header .nav-row { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+  .wordmark { font-size: 17px; font-weight: 700; letter-spacing: -0.01em; color: var(--text); text-decoration: none; }
+  .nav-links { display: flex; gap: 18px; font-size: 14px; list-style: none; }
+  .nav-links a { color: var(--text-muted); text-decoration: none; }
+  .nav-links a:hover { color: var(--accent); }
+
+  .page-title { padding: 60px 0 8px; }
+  .page-title .kicker { font-family: var(--font-mono); font-size: 13px; color: var(--text-muted); text-transform: lowercase; letter-spacing: 0.04em; margin-bottom: 16px; }
+  .page-title h1 { font-size: 36px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.12; max-width: 24ch; }
+  .byline { font-family: var(--font-mono); font-size: 13px; color: var(--text-muted); margin-top: 16px; }
+
+  .article { margin-top: 30px; }
+  .article p { font-size: 18px; line-height: 1.72; margin: 0 0 18px; max-width: 70ch; }
+  .article h2 { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; margin: 34px 0 6px; }
+  .article .step { font-size: 19px; font-weight: 700; letter-spacing: -0.01em; margin: 26px 0 8px; }
+  .article .step span { font-family: var(--font-mono); color: var(--accent); margin-right: 8px; }
+  .article ul { margin: 0 0 16px; max-width: 70ch; }
+  .article li { font-size: 17px; line-height: 1.55; margin-bottom: 9px; padding-left: 22px; position: relative; }
+  .article li::before { content: "—"; position: absolute; left: 0; color: var(--accent); }
+
+  /* ===== transaction treemap ===== */
+  .tm { display: flex; align-items: stretch; gap: 16px; margin: 26px 0 8px; }
+  .tm-before { flex: 0 0 30%; background: #8c9197; border-radius: 5px; position: relative; min-height: 290px; }
+  .tm-arrow { display: flex; align-items: center; color: var(--accent); font-size: 26px; font-weight: 800; }
+  .tm-after { flex: 1; display: flex; gap: 3px; min-height: 290px; }
+  .tm-after div { position: relative; }
+  .tm-blanket { flex: 0 0 52%; background: #2f4b7c; border-radius: 5px 0 0 5px; }
+  .tm-right { flex: 1; display: flex; flex-direction: column; gap: 3px; }
+  .tm-nonproc { flex: 0 0 40%; background: #41639e; border-radius: 0 5px 0 0; }
+  .tm-rb { flex: 1; display: flex; gap: 3px; }
+  .tm-cards { flex: 0 0 42%; background: #5e80ba; }
+  .tm-man { flex: 1; display: flex; flex-direction: column; gap: 3px; }
+  .tm-manopt { flex: 1; background: #9aa0a6; }
+  .tm-manual { flex: 1; background: #74797f; border-radius: 0 0 5px 0; }
+  .tm span { position: absolute; left: 9px; bottom: 8px; right: 9px; font-size: 11.5px; font-weight: 700; line-height: 1.18; color: #fff; }
+  .tm-caption { font-family: var(--font-mono); font-size: 12.5px; color: var(--text-muted); margin: 6px 2px 26px; line-height: 1.5; }
+
+  .source-note { font-family: var(--font-mono); font-size: 12.5px; color: var(--text-muted); margin-top: 30px; padding-top: 18px; border-top: 1px solid var(--rule); }
+  .backlink { display: inline-block; font-size: 15px; color: var(--accent); text-decoration: none; margin-top: 14px; }
+  .backlink:hover { text-decoration: underline; }
+
+  footer { margin-top: 56px; padding: 32px 0 48px; border-top: 1px solid var(--rule); font-size: 14px; color: var(--text-muted); }
+  footer .built-with { font-family: var(--font-mono); font-size: 12px; }
+
+  @media (max-width: 640px) {
+    body { font-size: 17px; }
+    .page-title { padding: 40px 0 8px; }
+    .page-title h1 { font-size: 27px; }
+    .article p, .article li { font-size: 16.5px; }
+    .tm { flex-direction: column; }
+    .tm-arrow { justify-content: center; transform: rotate(90deg); }
+    .tm-before, .tm-after { min-height: 180px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="nav-row">
+      <a href="../index.html" class="wordmark">Mariano Funes</a>
+      <ul class="nav-links">
+        <li><a href="../index.html#work">work</a></li>
+        <li><a href="../index.html#writing">writing</a></li>
+        <li><a href="../index.html#contact">contact</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+
+    <div class="page-title">
+      <div class="kicker">writing · procurement · 2024</div>
+      <h1>Procurement Operations: Solving the Red Queen effect</h1>
+      <div class="byline">Mariano Funes · March 4, 2024</div>
+    </div>
+
+    <article class="article">
+      <p>A famous quote from Lewis Carroll's classic: "Through the Looking-Glass": The Red Queen tells Alice "Now, here, you see, it takes all the running you can do, to keep in the same place." Tied to the notary gigs, red tape, complex processes, and lack of digitalization the Red Queen effect is one of the biggest Procurement department pitfalls: Resources time and soul are consumed by worthless transactions and operations. At the end of the day and weeks people works as hell only to be in the same place, just delivering transactions.</p>
+
+      <div class="tm">
+        <div class="tm-before"><span>All Transactions</span></div>
+        <div class="tm-arrow">&rarr;</div>
+        <div class="tm-after">
+          <div class="tm-blanket"><span>Blanket Orders / Catalogs</span></div>
+          <div class="tm-right">
+            <div class="tm-nonproc"><span>Non Procurable</span></div>
+            <div class="tm-rb">
+              <div class="tm-cards"><span>Cards and Others</span></div>
+              <div class="tm-man">
+                <div class="tm-manopt"><span>Manual Transactions Optimized</span></div>
+                <div class="tm-manual"><span>Manual Transactions</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tm-caption">The same transaction volume, re-sorted: blanket orders and catalogs absorb the bulk, non-procurable spend is taken out, and manual transactions shrink to a managed target.</div>
+
+      <h2>Action Plan</h2>
+      <p>Need to address processes in order to free resources and be able to achieve the fun stuff: Category Management. To have optimized Procurement Operations need to focus in transactions and processes: The following steps address both of them:</p>
+
+      <div class="step"><span>1.</span>Transactional Analysis</div>
+      <ul>
+        <li>Data Capture</li>
+        <li>Data Analysis</li>
+        <li>Procurement Procedures &amp; Authorization Manual</li>
+        <li>ERP process flow and usage review</li>
+      </ul>
+
+      <div class="step"><span>2.</span>Fixing</div>
+      <ul>
+        <li>Transactional-reviewed Procurement Procedures &amp; Authorizations Manual</li>
+        <li>Non-Procurable Spend: Redefine categories</li>
+        <li>Procurable Spend: Threshold for Procurement involvement for non-core categories</li>
+        <li>Procurable Spend: Blanket Orders boost Plan and implementations</li>
+        <li>Manual transactions: Increase time coverage</li>
+        <li>Other: Corporate and Procurement cards use and catalogs</li>
+        <li>ERP leverage: Digitalization and document repositories.</li>
+      </ul>
+
+      <div class="step"><span>3.</span>Continuous improvement</div>
+      <ul>
+        <li>Manual transactions reduction as a target</li>
+      </ul>
+    </article>
+
+    <p class="source-note">First published on LinkedIn, March 2024.</p>
+    <div>
+      <a href="../index.html" class="backlink">← Back to home</a>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <div>© 2026 Mariano Funes</div>
+    <div class="built-with">Built with <a href="https://claude.com/claude-code">Claude Code</a></div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All companies need a DOGE — Mariano Funes</title>
+<meta name="description" content="DOGE reported $170B in savings through spend control, organizational optimization and deregulation. Why incremental cost reductions are not enough, and what its method offers companies in disrupted markets. By Mariano Funes (2025).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  body, h1, h2, h3, p, ul, ol, li, figure, table { margin: 0; padding: 0; }
+  ul { list-style: none; }
+  :root {
+    --bg: #ffffff; --text: #0f172a; --text-muted: #5f6b7a;
+    --accent: #1f3a5f; --accent-hover: #2c5283; --rule: #e5e5e2;
+    --content-width: 920px;
+    --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  }
+  html { -webkit-text-size-adjust: 100%; }
+  body { background: var(--bg); color: var(--text); font-family: var(--font-sans); font-size: 18px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+  a { color: var(--accent); text-underline-offset: 3px; }
+  .container { max-width: var(--content-width); margin: 0 auto; padding: 0 24px; }
+
+  header { border-bottom: 1px solid var(--rule); padding: 18px 0; }
+  header .nav-row { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+  .wordmark { font-size: 17px; font-weight: 700; letter-spacing: -0.01em; color: var(--text); text-decoration: none; }
+  .nav-links { display: flex; gap: 18px; font-size: 14px; list-style: none; }
+  .nav-links a { color: var(--text-muted); text-decoration: none; }
+  .nav-links a:hover { color: var(--accent); }
+
+  .page-title { padding: 56px 0 8px; }
+  .page-title .kicker { font-family: var(--font-mono); font-size: 13px; color: var(--text-muted); text-transform: lowercase; letter-spacing: 0.04em; margin-bottom: 16px; }
+  .page-title h1 { font-size: 38px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; max-width: 20ch; }
+  .page-title .dek { font-size: 19px; color: var(--text-muted); margin-top: 12px; }
+  .byline { font-family: var(--font-mono); font-size: 13px; color: var(--text-muted); margin-top: 16px; }
+
+  .article { margin-top: 30px; }
+  .article p { font-size: 18px; line-height: 1.72; margin: 0 0 18px; max-width: 70ch; }
+
+  /* savings hero card */
+  .savings-card { background: #0e1726; border-radius: 14px; padding: 34px 28px 30px; text-align: center; margin: 28px 0; }
+  .savings-card .sc-label { font-size: 20px; font-weight: 600; color: #d7dee7; letter-spacing: 0.01em; }
+  .savings-card .sc-num { font-size: 72px; font-weight: 800; color: #e3bb55; letter-spacing: -0.02em; line-height: 1; margin: 8px 0 16px; }
+  .savings-card .sc-cap { color: #9fb3c8; font-size: 13.5px; line-height: 1.55; max-width: 58ch; margin: 0 auto; }
+
+  /* data tables */
+  .dt-wrap { overflow-x: auto; margin: 24px 0 26px; }
+  table.dt { width: 100%; border-collapse: collapse; font-size: 13.5px; line-height: 1.45; min-width: 760px; }
+  table.dt caption { caption-side: top; text-align: left; font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); margin-bottom: 9px; text-transform: lowercase; letter-spacing: 0.03em; }
+  table.dt th, table.dt td { border: 1px solid #d9d9d4; padding: 9px 11px; vertical-align: top; text-align: left; }
+  table.dt thead th { background: #f3f4f3; font-weight: 700; font-size: 12.5px; }
+  table.dt td.cat { font-weight: 700; font-size: 13px; background: #5f6b7a; color: #fff; vertical-align: middle; white-space: nowrap; }
+  table.dt td.num { font-family: var(--font-mono); white-space: nowrap; }
+  table.dt td.diff { font-weight: 600; color: var(--accent); }
+  table.dt ul { list-style: none; padding: 0; margin: 0; }
+  table.dt ul li { padding-left: 12px; position: relative; margin-bottom: 3px; }
+  table.dt ul li::before { content: "–"; position: absolute; left: 0; color: var(--text-muted); }
+  table.dt .step { font-family: var(--font-mono); text-align: center; width: 44px; }
+  table.dt .nm { font-weight: 600; }
+
+  .source-note { font-family: var(--font-mono); font-size: 12.5px; color: var(--text-muted); margin-top: 30px; padding-top: 18px; border-top: 1px solid var(--rule); }
+  .source-note a { color: var(--accent); }
+  .backlink { display: inline-block; font-size: 15px; color: var(--accent); text-decoration: none; margin-top: 14px; }
+  .backlink:hover { text-decoration: underline; }
+
+  footer { margin-top: 56px; padding: 32px 0 48px; border-top: 1px solid var(--rule); font-size: 14px; color: var(--text-muted); }
+  footer .built-with { font-family: var(--font-mono); font-size: 12px; }
+
+  @media (max-width: 640px) {
+    body { font-size: 17px; }
+    .page-title { padding: 40px 0 8px; }
+    .page-title h1 { font-size: 28px; }
+    .article p { font-size: 16.5px; }
+    .savings-card .sc-num { font-size: 54px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="nav-row">
+      <a href="../index.html" class="wordmark">Mariano Funes</a>
+      <ul class="nav-links">
+        <li><a href="../index.html#work">work</a></li>
+        <li><a href="../index.html#writing">writing</a></li>
+        <li><a href="../index.html#contact">contact</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+
+    <div class="page-title">
+      <div class="kicker">writing · cost &amp; organization · 2025</div>
+      <h1>All companies need a DOGE</h1>
+      <div class="dek">Incremental cost reductions are not enough</div>
+      <div class="byline">Mariano Funes · May 21, 2025</div>
+    </div>
+
+    <article class="article">
+      <p>Led by Elon, Department of Government Efficiency (DOGE) is a temporary US Government Organization that focuses on cutting wasteful spending and modernizing government.</p>
+
+      <p>DOGE reported significant cost savings introducing Spend Control, Organizational Optimization and Deregulation Efforts to the US Government. Savings so far are estimated to 170 bn to May 11th.</p>
+
+      <div class="savings-card">
+        <div class="sc-label">Estimated Savings</div>
+        <div class="sc-num">$170B</div>
+        <div class="sc-cap">Combination of asset sales, contract/lease cancellations and renegotiations, fraud and improper payment deletion, grant cancellations, interest savings, programmatic changes, regulatory savings, and workforce reductions.</div>
+      </div>
+
+      <p>It can classify DOGE actions in main categories and subcategories with some examples:</p>
+
+      <div class="dt-wrap">
+        <table class="dt">
+          <caption>doge actions — categories, savings and examples</caption>
+          <thead>
+            <tr>
+              <th>Main Category</th><th>Subcategory</th><th>Description</th><th>Savings ($ bn)</th><th>Specific Examples</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="cat" rowspan="4">Spend Control</td>
+              <td class="nm">Goods and Services</td><td>Terminated 10,248 federal contracts</td><td class="num">32.0</td>
+              <td><ul><li>Terminated 120 contracts with ceiling of $3.1 bn</li><li>Cancelled HR IT program, 780% over budget</li><li>Terminated multiple Department of the Interior contracts</li></ul></td>
+            </tr>
+            <tr>
+              <td class="nm">Real Estate</td><td>Terminated 563 leases</td><td class="num">0.3</td>
+              <td><ul><li>Terminated National Park Service lease in Charles Town, WV</li><li>Consolidated Washington, D.C. offices</li><li>Terminated GSA lease in Washington, D.C.</li></ul></td>
+            </tr>
+            <tr>
+              <td class="nm">Grants</td><td>Terminated 12,256 grants</td><td class="num">39.0</td>
+              <td><ul><li>Terminated USAID grants to GAVI Foundation</li><li>Terminated NEH grants for merit-based causes</li><li>Terminated DoL DEI grants</li></ul></td>
+            </tr>
+            <tr>
+              <td class="nm">Operational Costs</td><td>Implemented cost-saving measures</td><td class="num">TBD</td>
+              <td><ul><li>De-activated 500,000 credit cards</li><li>Terminated unused software licenses</li><li>Reduced unnecessary travel</li></ul></td>
+            </tr>
+            <tr>
+              <td class="cat" rowspan="3">Organizational Optimization</td>
+              <td class="nm">Workforce Reductions</td><td>Reduced federal workforce</td><td class="num">TBD</td>
+              <td><ul><li>Offered 75,000 employee buyouts</li><li>Eliminated 55,000 positions</li><li>Reduced IRS staff by 40%</li></ul></td>
+            </tr>
+            <tr>
+              <td class="nm">Process Improvements</td><td>Modernized government processes</td><td class="num">TBD</td>
+              <td><ul><li>Implemented OPM digital transformation</li><li>Streamlined CMS Navigator program</li><li>Migrated SSA COBOL systems</li></ul></td>
+            </tr>
+            <tr>
+              <td class="nm">Department Closures</td><td>Closed or reduced federal departments</td><td class="num">TBD</td>
+              <td><ul><li>Shut down USAID, absorbed by State Department</li><li>Reduced Department of Education operations</li><li>Scaled back CFPB</li></ul></td>
+            </tr>
+            <tr>
+              <td class="cat">Deregulation Efforts</td>
+              <td class="nm">—</td><td>Repealed burdensome regulations</td><td class="num">28.7</td>
+              <td><ul><li>Repealed energy efficiency standards for appliances</li><li>Streamlined natural gas export permitting</li><li>Simplified electricity transmission regulations</li></ul></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Also it organized in small cells and seems to follow a specific methodology.</p>
+
+      <div class="dt-wrap">
+        <table class="dt">
+          <caption>the methodology, in five steps</caption>
+          <thead>
+            <tr><th class="step">Step</th><th>Name</th><th>Short Description</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="step">1</td><td class="nm">Identify Inefficiencies</td><td>Review federal spending and operations to pinpoint waste and redundancies.</td></tr>
+            <tr><td class="step">2</td><td class="nm">Terminate Unnecessary Agreements</td><td>Cancel non-essential contracts, grants, and leases based on inefficiencies.</td></tr>
+            <tr><td class="step">3</td><td class="nm">Repeal Burdensome Regulations</td><td>Eliminate outdated or restrictive regulations to reduce compliance costs.</td></tr>
+            <tr><td class="step">4</td><td class="nm">Optimize Workforce and Technology</td><td>Implement workforce reductions and modernize processes with technology upgrades.</td></tr>
+            <tr><td class="step">5</td><td class="nm">Report Transparently</td><td>Document actions and outcomes publicly for accountability.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>The US Government but also all companies were built on decisions taken over the years like geological layers.</p>
+
+      <p>Companies relies on a standard rule of X% savings target over years, well aligned to a yearly budget process.</p>
+
+      <p>But is this enough today?</p>
+
+      <p>With current disruption environment, with hyper-accelerating technology and continuous disruptions, seems not to be the case.</p>
+
+      <p>What is differential in the DOGE methodology compared to the standard procurement cost savings and organizational restructuring processes?</p>
+
+      <div class="dt-wrap">
+        <table class="dt">
+          <caption>doge methodology vs. standard corporate practice</caption>
+          <thead>
+            <tr><th class="step">Step</th><th>Name</th><th>DOGE Methodology</th><th>Standard Corporate Practice</th><th>Differential (DOGE)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="step">1</td><td class="nm">Identify Inefficiencies</td><td>Centralized, data-driven review across all departments.</td><td>Budget-driven with incremental focus.</td><td class="diff">Centralized analytics</td></tr>
+            <tr><td class="step">2</td><td class="nm">Terminate Unnecessary Agreements</td><td>Mass termination of contracts, grants, leases.</td><td>Prioritizing continuity.</td><td class="diff">Mass termination</td></tr>
+            <tr><td class="step">3</td><td class="nm">Repeal Burdensome Regulations</td><td>Rapid repeal using executive authority.</td><td>Bureaucratic compliance.</td><td class="diff">Regulation repeal</td></tr>
+            <tr><td class="step">4</td><td class="nm">Optimize Workforce and Technology</td><td>Rapid, cross-department workforce and tech optimization.</td><td>Gradual workforce growth; slow tech adoption.</td><td class="diff">Rapid optimization</td></tr>
+            <tr><td class="step">5</td><td class="nm">Report Transparently</td><td>Public, real-time dashboard reporting.</td><td>Limited internal reporting; periodic disclosures.</td><td class="diff">Real-time transparency</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>DOGE methodology seems an opportunity especially for companies playing in markets being under disruption.</p>
+
+      <p>Any corporation will be brave enough to implement DOGE?</p>
+    </article>
+
+    <p class="source-note">First published on <a href="https://marianofunes.substack.com/p/all-companies-need-a-doge" target="_blank" rel="noopener">Substack</a>, May 2025.</p>
+    <div>
+      <a href="../index.html" class="backlink">← Back to home</a>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <div>© 2026 Mariano Funes</div>
+    <div class="built-with">Built with <a href="https://claude.com/claude-code">Claude Code</a></div>
+  </div>
+</footer>
+
+</body>
+</html>

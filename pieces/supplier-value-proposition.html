@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Supplier Value Proposition — Mariano Funes</title>
+<meta name="description" content="Companies craft an Employee and a Customer Value Proposition. They rarely craft a Supplier Value Proposition — yet it exists, and its defects are paid back in price. By Mariano Funes (2024).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  body, h1, h2, h3, p, ul, ol, li, figure, table { margin: 0; padding: 0; }
+  ul { list-style: none; }
+  :root {
+    --bg: #ffffff; --text: #0f172a; --text-muted: #5f6b7a;
+    --accent: #1f3a5f; --accent-hover: #2c5283; --rule: #e5e5e2;
+    --pos-bg: #e7f4e8; --pos-bd: #c4e3c6; --neg-bg: #f6e2d4; --neg-bd: #e9c5ab;
+    --content-width: 920px;
+    --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  }
+  html { -webkit-text-size-adjust: 100%; }
+  body { background: var(--bg); color: var(--text); font-family: var(--font-sans); font-size: 18px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+  a { color: var(--accent); text-underline-offset: 3px; }
+  .container { max-width: var(--content-width); margin: 0 auto; padding: 0 24px; }
+
+  header { border-bottom: 1px solid var(--rule); padding: 18px 0; }
+  header .nav-row { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+  .wordmark { font-size: 17px; font-weight: 700; letter-spacing: -0.01em; color: var(--text); text-decoration: none; }
+  .nav-links { display: flex; gap: 18px; font-size: 14px; list-style: none; }
+  .nav-links a { color: var(--text-muted); text-decoration: none; }
+  .nav-links a:hover { color: var(--accent); }
+
+  .page-title { padding: 60px 0 8px; }
+  .page-title .kicker { font-family: var(--font-mono); font-size: 13px; color: var(--text-muted); text-transform: lowercase; letter-spacing: 0.04em; margin-bottom: 16px; }
+  .page-title h1 { font-size: 38px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; max-width: 22ch; }
+  .byline { font-family: var(--font-mono); font-size: 13px; color: var(--text-muted); margin-top: 16px; }
+
+  .article { margin-top: 30px; }
+  .article p { font-size: 18px; line-height: 1.72; margin: 0 0 18px; max-width: 70ch; }
+  .article .lead { font-weight: 600; color: var(--text); margin-bottom: 10px; }
+  .article ul { margin: 0 0 20px; max-width: 70ch; }
+  .article li { font-size: 17.5px; line-height: 1.6; margin-bottom: 11px; padding-left: 22px; position: relative; }
+  .article li::before { content: "—"; position: absolute; left: 0; color: var(--accent); }
+
+  /* impact table */
+  .svp-wrap { margin: 28px 0 26px; overflow-x: auto; }
+  table.svp { width: 100%; border-collapse: collapse; font-size: 14px; line-height: 1.45; min-width: 720px; }
+  table.svp th, table.svp td { border: 1px solid #d9d9d4; padding: 10px 12px; vertical-align: top; text-align: left; }
+  table.svp thead th { font-weight: 700; font-size: 13.5px; }
+  table.svp thead .impact { text-align: center; background: #f3f4f3; }
+  table.svp thead .h-pos { background: var(--pos-bg); border-color: var(--pos-bd); text-align: center; }
+  table.svp thead .h-neg { background: var(--neg-bg); border-color: var(--neg-bd); text-align: center; }
+  table.svp td.kf { font-weight: 600; width: 20%; background: #fafaf9; }
+  table.svp td.pos { background: var(--pos-bg); border-color: var(--pos-bd); width: 40%; }
+  table.svp td.neg { background: var(--neg-bg); border-color: var(--neg-bd); width: 40%; }
+
+  .source-note { font-family: var(--font-mono); font-size: 12.5px; color: var(--text-muted); margin-top: 30px; padding-top: 18px; border-top: 1px solid var(--rule); }
+  .source-note a { color: var(--accent); }
+  .backlink { display: inline-block; font-size: 15px; color: var(--accent); text-decoration: none; margin-top: 14px; }
+  .backlink:hover { text-decoration: underline; }
+
+  footer { margin-top: 56px; padding: 32px 0 48px; border-top: 1px solid var(--rule); font-size: 14px; color: var(--text-muted); }
+  footer .built-with { font-family: var(--font-mono); font-size: 12px; }
+
+  @media (max-width: 640px) {
+    body { font-size: 17px; }
+    .page-title { padding: 40px 0 8px; }
+    .page-title h1 { font-size: 28px; }
+    .article p, .article li { font-size: 16.5px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="nav-row">
+      <a href="../index.html" class="wordmark">Mariano Funes</a>
+      <ul class="nav-links">
+        <li><a href="../index.html#work">work</a></li>
+        <li><a href="../index.html#writing">writing</a></li>
+        <li><a href="../index.html#contact">contact</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+
+    <div class="page-title">
+      <div class="kicker">writing · procurement · 2024</div>
+      <h1>Supplier Value Proposition</h1>
+      <div class="byline">Mariano Funes · April 14, 2024</div>
+    </div>
+
+    <article class="article">
+      <p>Companies invest significant effort crafting Employee Value Proposition (EVP) and Customer Value Proposition (CVP). In order to attract, retain and nurture relationships with employees and customers.</p>
+
+      <p>HR teams devote time and energy in defining, capturing, and hopefully implementing a unique set of Compensation, Benefits, Career Development, and Organizational Culture.</p>
+
+      <p>Sales and Marketing teams define a statement that comprise all the benefits that the product or service delivers to its customers or prospect customers. Generally, includes key differentiators, unique features, benefits, and value-added services customers would receive in exchange of a price.</p>
+
+      <p class="lead">The EVP and CVP share the same structure:</p>
+      <ul>
+        <li>A price (Salary and Sales Price)</li>
+        <li>Elements that are not a price but provides an increased value.</li>
+        <li>Elements that are not a price but provides a decreased value, in this case not openly discussed as a part of EVP or CVP.</li>
+      </ul>
+
+      <p>EVP or CVP exists even when the organization has not openly defined them.</p>
+
+      <p>Same happen with Supplier Value Proposition (SVP), it exists even it is difficult to find an organization that have worked in it or developed it.</p>
+
+      <p class="lead">The SVP comprises:</p>
+      <ul>
+        <li>A price for the product or service.</li>
+        <li>Elements that are not a price but provides an increased in value.</li>
+        <li>Elements that are not a price but provides a decreased in value or cost.</li>
+      </ul>
+
+      <p class="lead">Why does companies don't even pay attention to the SVP?</p>
+      <ul>
+        <li>Common misperception is buying organization has generally the power in a commercial transaction: Supplier or Buyer power are defined by market forces and competitive positioning. There are Buyer Markets or Supplier Markets depending on the Supply, Demand, and other forces.</li>
+        <li>Organizational cost-to-serve is minimized: For each transaction the organization has a cost to serve for its suppliers, from delivery conditions, payment terms, account payable process, dispute resolutions, etc. All these factors are minimized by the organization.</li>
+        <li>Defective SVP is reflected in Price or Total Cost of Ownership: Suppliers can increase prices, lower the service level, or lose interest in the account when SVP does not meet standards. Consequences are indirect reflected, not directly on the faulty department of the organization originating the gap.</li>
+        <li>SVP is complex and several actors intervene: Divisions or departments influence the SVP, maximizing their own objectives which more than often are not aligned in optimizing the SVP.</li>
+      </ul>
+
+      <p>Influencing factors to SVP can be strategic or Operational.</p>
+      <p>Strategic: ESG approach and cultural fit.<br>Operational: Affects the day-to-day operations and are part of the cost of serve of the buying organization.</p>
+
+      <p class="lead">Examples of Operational Key factors on a Supplier Value Proposition:</p>
+
+      <div class="svp-wrap">
+        <table class="svp">
+          <thead>
+            <tr>
+              <th></th>
+              <th class="impact" colspan="2">Impact on Supplier Value Proposition</th>
+            </tr>
+            <tr>
+              <th>Key Factor</th>
+              <th class="h-pos">Positive</th>
+              <th class="h-neg">Negative</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="kf">Payment Terms compliance</td>
+              <td class="pos">Compliance with Payment Terms Agreed. KPI for On-Time Payment. Any terms modifications are negotiated.</td>
+              <td class="neg">Use account payables as variable to optimize cashflow irrespective of terms agreed. Modify payment terms unilaterally</td>
+            </tr>
+            <tr>
+              <td class="kf">Payment Process</td>
+              <td class="pos">Online process and access. Free information flow.</td>
+              <td class="neg">Still manually. Information offline and at request. Difficult to obtain.</td>
+            </tr>
+            <tr>
+              <td class="kf">Contract Terms Agreement</td>
+              <td class="pos">Enough to protect buyer interest. Commercially sound. Agile process and negotiations.</td>
+              <td class="neg">Contract terms far beyond commercial and risk reasonability. Rigid process with no low commercial awareness, extreme risk averse.</td>
+            </tr>
+            <tr>
+              <td class="kf">Goods and Service Receipt Process</td>
+              <td class="pos">Agile and concise. Disputes can be solved fast.</td>
+              <td class="neg">Several approval layers, takes weeks. Disputes resolutions are tedious, delaying payments.</td>
+            </tr>
+            <tr>
+              <td class="kf">Account reconciliation</td>
+              <td class="pos">Fast process, high responsiveness. KPIs for Accounts reconciled.</td>
+              <td class="neg">Tedious. No single contact. No reconciliation for months or years. Nobody cares.</td>
+            </tr>
+            <tr>
+              <td class="kf">Contract Manager - Procurement Focal Point</td>
+              <td class="pos">Clear Roles &amp; Responsibilities. Agile escalation process.</td>
+              <td class="neg">Diffuse responsibilities. Many contact points with unclear Roles and Responsibilities. No escalation process.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="lead">How an organization can evolve, incorporate the SVP concept and be the Customer of Choice?</p>
+      <ul>
+        <li>Be conscious that the Supplier Value Proposition exists. Cost of serve is translated to prices and is paid by the organization. For example, a record of late payments will be included in prices sooner or later.</li>
+        <li>Listed to the Supplier Base: what are the pains points in serving the buying organization?</li>
+        <li>Provide visibility to the concept within the organization.</li>
+      </ul>
+
+      <p>Influencing the SVP is a matter of Short-term vs Long -term together with individual department optimization vs general organizational optimization.</p>
+
+      <p>But the prize is big: Winning organizations not only attract and retain the best talent and the right customers, also attract great suppliers, which are essential part of the Value Chain.</p>
+    </article>
+
+    <p class="source-note">Originally published on <a href="https://www.linkedin.com/posts/marianofunes_supplier-value-proposition-how-difficult-activity-7185471602065620992-0cci" target="_blank" rel="noopener">LinkedIn</a>, April 2024.</p>
+    <div>
+      <a href="../index.html" class="backlink">← Back to home</a>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <div>© 2026 Mariano Funes</div>
+    <div class="built-with">Built with <a href="https://claude.com/claude-code">Claude Code</a></div>
+  </div>
+</footer>
+
+</body>
+</html>

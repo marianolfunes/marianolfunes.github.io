@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Procurement: Priorities, Risk and Basic Strategies — Mariano Funes</title>
+<meta name="description" content="The Kraljic matrix as a working tool: classify spend by supply risk and procurement potential, then set priorities and pick a basic strategy per quadrant. By Mariano Funes (2024).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  body, h1, h2, h3, p, ul, ol, li, figure { margin: 0; padding: 0; }
+  ul { list-style: none; }
+  :root {
+    --bg: #ffffff; --text: #0f172a; --text-muted: #5f6b7a;
+    --accent: #1f3a5f; --accent-hover: #2c5283; --rule: #e5e5e2;
+    --navy: #2f4b7c;
+    --content-width: 920px;
+    --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  }
+  html { -webkit-text-size-adjust: 100%; }
+  body { background: var(--bg); color: var(--text); font-family: var(--font-sans); font-size: 18px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+  a { color: var(--accent); text-underline-offset: 3px; }
+  .container { max-width: var(--content-width); margin: 0 auto; padding: 0 24px; }
+
+  header { border-bottom: 1px solid var(--rule); padding: 18px 0; }
+  header .nav-row { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+  .wordmark { font-size: 17px; font-weight: 700; letter-spacing: -0.01em; color: var(--text); text-decoration: none; }
+  .nav-links { display: flex; gap: 18px; font-size: 14px; list-style: none; }
+  .nav-links a { color: var(--text-muted); text-decoration: none; }
+  .nav-links a:hover { color: var(--accent); }
+
+  .page-title { padding: 56px 0 8px; }
+  .page-title .kicker { font-family: var(--font-mono); font-size: 13px; color: var(--text-muted); text-transform: lowercase; letter-spacing: 0.04em; margin-bottom: 16px; }
+  .page-title h1 { font-size: 36px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.12; max-width: 22ch; }
+  .page-title .dek { font-size: 19px; color: var(--text-muted); margin-top: 12px; }
+  .byline { font-family: var(--font-mono); font-size: 13px; color: var(--text-muted); margin-top: 16px; }
+
+  .article { margin-top: 30px; }
+  .article p { font-size: 18px; line-height: 1.72; margin: 0 0 18px; max-width: 70ch; }
+  .article h2 { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; margin: 34px 0 6px; }
+  .kfig { margin: 26px 0; }
+  .kfig img { width: 100%; height: auto; display: block; border: 1px solid var(--rule); border-radius: 12px; box-shadow: 0 6px 22px rgba(15,23,42,0.06); }
+
+  /* matrix panel */
+  .kbox { border: 1px solid var(--rule); border-radius: 14px; padding: 24px 22px 20px; margin: 26px 0; box-shadow: 0 6px 22px rgba(15,23,42,0.05); }
+  .kbox .ktitle { font-weight: 700; font-size: 15px; margin-bottom: 18px; }
+
+  /* definition matrix */
+  .kmx { display: grid; grid-template-columns: 24px 1fr; grid-template-rows: 1fr 24px; gap: 10px; max-width: 480px; margin: 0 auto; }
+  .kmx .yax { grid-column: 1; grid-row: 1; writing-mode: vertical-rl; transform: rotate(180deg); display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-muted); }
+  .kmx .grid { grid-column: 2; grid-row: 1; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 4px; }
+  .kmx .xax { grid-column: 2; grid-row: 2; text-align: center; font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-muted); align-self: center; }
+  .kq { background: var(--navy); color: #fff; display: flex; align-items: center; justify-content: center; min-height: 92px; font-weight: 700; font-size: 14.5px; text-align: center; border-radius: 4px; }
+  .kfactors { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 18px; }
+  .kfactors div { border: 1px solid var(--rule); border-radius: 9px; padding: 11px 13px; background: #fafaf9; font-size: 13px; line-height: 1.5; }
+  .kfactors b { display: block; font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); margin-bottom: 5px; }
+
+  /* strategy matrix */
+  .ksub { font-family: var(--font-mono); font-size: 11.5px; color: var(--text-muted); margin-bottom: 16px; }
+  .ksgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .ksq { border: 1px solid var(--rule); border-top: 3px solid var(--navy); border-radius: 10px; padding: 14px 16px; background: #fff; }
+  .ksq .qn { font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-muted); }
+  .ksq .sn { font-size: 16px; font-weight: 800; letter-spacing: -0.01em; margin: 2px 0 10px; }
+  .ksq ul { display: flex; flex-direction: column; gap: 4px; }
+  .ksq li { font-size: 13px; color: var(--text); line-height: 1.4; padding-left: 13px; position: relative; }
+  .ksq li::before { content: "·"; position: absolute; left: 3px; color: var(--navy); font-weight: 700; }
+  .kaxis-note { font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); margin-top: 14px; text-align: center; }
+
+  .source-note { font-family: var(--font-mono); font-size: 12.5px; color: var(--text-muted); margin-top: 30px; padding-top: 18px; border-top: 1px solid var(--rule); }
+  .source-note a { color: var(--accent); }
+  .backlink { display: inline-block; font-size: 15px; color: var(--accent); text-decoration: none; margin-top: 14px; }
+  .backlink:hover { text-decoration: underline; }
+
+  footer { margin-top: 56px; padding: 32px 0 48px; border-top: 1px solid var(--rule); font-size: 14px; color: var(--text-muted); }
+  footer .built-with { font-family: var(--font-mono); font-size: 12px; }
+
+  @media (max-width: 640px) {
+    body { font-size: 17px; }
+    .page-title { padding: 40px 0 8px; }
+    .page-title h1 { font-size: 27px; }
+    .article p { font-size: 16.5px; }
+    .ksgrid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="nav-row">
+      <a href="../index.html" class="wordmark">Mariano Funes</a>
+      <ul class="nav-links">
+        <li><a href="../index.html#work">work</a></li>
+        <li><a href="../index.html#writing">writing</a></li>
+        <li><a href="../index.html#contact">contact</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+
+    <div class="page-title">
+      <div class="kicker">writing · procurement · 2024</div>
+      <h1>Procurement: Priorities, Risk and Basic Strategies</h1>
+      <div class="dek">Procurement View — the Kraljic Matrix</div>
+      <div class="byline">Mariano Funes · August 3, 2024</div>
+    </div>
+
+    <article class="article">
+      <p>One thing is for sure in Procurement: You will have less resources than you need, and little time for decision-making.</p>
+
+      <p>Either if you are an individual contributor or a CPO, you will need to set or check priorities, manage risk and apply strategies in a timely manner.</p>
+
+      <p>Published in Harvard Business Review — 1983, the Karljic matrix is a Easy-to-apply spend or category classification framework.</p>
+
+      <p>It has two Axis: one measures Supply Risk and the other Procurement Potential measured as Spend or Profit.</p>
+
+      <figure class="kfig">
+        <img src="../assets/kraljic/kraljic-matrix.jpg" alt="Two-axis Kraljic matrix — Supply Risk (number of supply sources, source-switching difficulty, systemic risk) against Procurement Potential (spend as a percent, profit and business impact), with the four quadrants: Bottleneck, Critical, Routine, Leverage." loading="lazy">
+      </figure>
+
+      <p>The key factor lies in Supply Risk, for each SKU or homogeneous category:</p>
+
+      <p>Number of Supply Sources is the first measure, a higher number of supply sources is generally related with lower supply risk, as diversification helps to balance the likelihood of failure within the supplier base.</p>
+
+      <p>Supply-switching difficulty can be generated by external limitation, i.e. government approvals or internal R&amp;D approval. Sometimes internal limitations are due to the status quo attachment, notably this type of risk avoidance culture can generate risk within the supply chain. Testing, approving and finally adding a supplier also represent a cost, which needs to be balance with the lower risk of a diversified supplier base.</p>
+
+      <p>The systemic risk is a complex aspect. Diversification in two or more suppliers can produce the same supply risk than a single source. Suppliers can share the same key upstream supplier base, being in the same geographic area or use a freight lane that is exposed to the same choke point.</p>
+
+      <h2>Basic Strategies</h2>
+
+      <figure class="kfig">
+        <img src="../assets/kraljic/kraljic-strategies.jpg" alt="Basic strategies per Kraljic quadrant — Bottleneck: Supply Continuity; Critical: Relationship Management; Routine: Minimize Total Cost; Leverage: Leverage Buying Power — with the tactics for each." loading="lazy">
+      </figure>
+
+      <p>The combination of Supply Risk and Procurement Potential generates for quadrants with different Basic strategies.</p>
+
+      <p>For Bottleneck the main strategy is Supply Continuity, where to develop supply alternatives, either with active market research or by working in the specification or eventually commoditizing the item. Spend or Category aggregation is a tool to increase procurement potential and eventually more supply sources. Last resort are to lock supply or a long term supply agreement in order to get a more safe supply assurance.</p>
+
+      <p>The Critical area shares the specification review and commoditization, but its big procurement potential allows a bigger toolbox: Collaboration and Alliances, with a closer long term relationship are key to the overarching strategy of Relationship Management. At last vertical integration evaluation, as the big spend may make it economically possible.</p>
+
+      <p>The Leverage area is where to increase competition to get the easy implement cost reductions.</p>
+
+      <p>And at last Routine, where the first degree action is to challenge if it is really procurable spend. And focus in reduction or elimination of the transactional costs using automatization tools.</p>
+
+      <h2>Conclusion</h2>
+
+      <p>The Procurement View — Kraljic Matrix can help to map Supply Risks, set or check Priorities and establish basic Strategies in an process that can be straightforward applied for an SKU, a Category or the total 3rd party spend of an organization.</p>
+    </article>
+
+    <p class="source-note">First published on <a href="https://defectivemarkets.medium.com/procurement-priorities-risk-and-basic-strategies-34270460ce1e" target="_blank" rel="noopener">Medium</a>, August 2024.</p>
+    <div>
+      <a href="../index.html" class="backlink">← Back to home</a>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <div>© 2026 Mariano Funes</div>
+    <div class="built-with">Built with <a href="https://claude.com/claude-code">Claude Code</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
