@@ -42,7 +42,7 @@ Hosted on GitHub Pages as a user-site (`https://marianolfunes.github.io`). Local
 ## Security
 
 - No credentials, no API keys, no private data in the repo. Anything sensitive stays out — this is a public site.
-- No analytics or third-party trackers unless explicitly added with intent.
+- Analytics: Cloudflare Web Analytics only (cookieless beacon, public token, on every page). No other analytics or third-party trackers.
 - External links open in new tab; user-submitted content (if ever added) is treated as untrusted.
 
 ## Where things live
