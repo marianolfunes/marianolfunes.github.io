@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sending files is old — how coding tools created new ways to communicate knowledge — Mariano Funes</title>
+<meta name="description" content="With Claude Code, Markdown is the default communication vehicle — easy for the agent, tedious for the human reader. A note on switching outputs to HTML, and why coding tools quietly created a richer way to share knowledge.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  body, h1, h2, h3, p, ul, ol, li, figure, figcaption, blockquote { margin: 0; padding: 0; }
+  :root {
+    --bg: #ffffff; --text: #0a1729; --text-muted: #5f6b7a;
+    --accent: #1f3a5f; --accent-hover: #2c5283; --rule: #e5e5e2;
+    --teal: #0f766e; --teal-dark: #115e59; --teal-muted: #f0fdfa;
+    --skel: #d9dde3; --skel-soft: #e9ecf0;
+    --content-width: 760px;
+    --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  }
+  html { -webkit-text-size-adjust: 100%; }
+  body { background: var(--bg); color: var(--text); font-family: var(--font-sans); font-size: 18px; line-height: 1.65; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  a { color: var(--accent); text-underline-offset: 3px; transition: color .15s ease; }
+  a:hover { color: var(--accent-hover); }
+  .container { max-width: var(--content-width); margin: 0 auto; padding: 0 24px; }
+
+  header { border-bottom: 1px solid var(--rule); padding: 18px 0; }
+  header .nav-row { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+  .wordmark { font-size: 17px; font-weight: 700; letter-spacing: -0.01em; color: var(--text); text-decoration: none; }
+  .nav-links { display: flex; gap: 18px; font-size: 14px; list-style: none; }
+  .nav-links a { color: var(--text-muted); text-decoration: none; }
+  .nav-links a:hover { color: var(--accent); }
+
+  .page-title { padding: 60px 0 8px; max-width: 700px; }
+  .page-title .kicker { font-family: var(--font-mono); font-size: 13px; color: var(--text-muted); text-transform: lowercase; letter-spacing: 0.04em; margin-bottom: 16px; }
+  .page-title h1 { font-size: 40px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.08; }
+  .page-title .deck { font-size: 21px; font-weight: 500; line-height: 1.4; color: var(--text-muted); margin-top: 14px; letter-spacing: -0.01em; }
+
+  /* article prose */
+  article { padding-top: 8px; }
+  article p { margin: 22px 0; }
+  article p.first { font-size: 19px; }
+  code { font-family: var(--font-mono); font-size: 0.88em; background: #f4f5f7; border: 1px solid var(--rule); border-radius: 5px; padding: 1px 5px; }
+
+  /* pull quotes */
+  figure.quote { margin: 34px 0; border-left: 3px solid var(--teal); padding: 4px 0 4px 22px; }
+  figure.quote blockquote { font-size: 20px; line-height: 1.5; letter-spacing: -0.01em; color: var(--text); }
+  figure.quote figcaption { font-family: var(--font-mono); font-size: 13px; color: var(--text-muted); margin-top: 12px; }
+  figure.quote figcaption a { color: var(--text-muted); }
+  figure.quote figcaption a:hover { color: var(--accent); }
+
+  /* visual panel */
+  .panel { background: var(--bg); border: 1px solid var(--rule); border-radius: 16px; padding: 26px 26px 20px; box-shadow: 0 8px 30px rgba(10,23,41,0.06); margin: 40px 0; }
+  .panel.bleed { max-width: 920px; margin-left: 50%; transform: translateX(-50%); }
+  .fig-cap { font-family: var(--font-mono); font-size: 12.5px; color: var(--text-muted); text-align: center; margin-top: 16px; }
+  .fig-title { font-size: 17px; font-weight: 700; letter-spacing: -0.01em; text-align: center; color: var(--text); margin-bottom: 22px; }
+  .fig-cap .src { display: block; font-size: 11.5px; }
+  .fig-cap a { color: var(--text-muted); text-underline-offset: 2px; }
+  .fig-cap a:hover { color: var(--accent); }
+  .panel svg { display: block; width: 100%; height: auto; }
+
+  /* eight-kinds grid */
+  .kinds { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .kind { border: 1px solid var(--rule); border-radius: 14px; padding: 20px 16px 18px; text-align: center; background: #fcfcfb; }
+  .kind .ic { height: 56px; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; }
+  .kind .ic svg { width: 48px; height: 48px; }
+  .kind b { display: block; font-size: 16px; font-weight: 700; letter-spacing: -0.01em; }
+  .kind span { display: block; font-size: 12.5px; color: var(--text-muted); margin-top: 3px; line-height: 1.4; }
+
+  .backlink { display: inline-block; font-size: 15px; color: var(--accent); text-decoration: none; }
+  .backlink:hover { text-decoration: underline; }
+
+  footer { margin-top: 56px; padding: 32px 0 48px; border-top: 1px solid var(--rule); font-size: 14px; color: var(--text-muted); }
+  footer .footer-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  footer .built-with { font-family: var(--font-mono); font-size: 12px; width: 100%; margin-top: 12px; }
+  footer a { color: var(--text-muted); text-decoration: none; }
+  footer a:hover { color: var(--accent); text-decoration: underline; }
+
+  @media (max-width: 760px) {
+    .panel.bleed { max-width: 100%; margin-left: 0; transform: none; }
+  }
+  @media (max-width: 620px) {
+    body { font-size: 17px; }
+    .page-title { padding: 40px 0 8px; }
+    .page-title h1 { font-size: 30px; }
+    .page-title .deck { font-size: 18px; }
+    .panel { padding: 18px 16px 14px; }
+    .kinds { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="nav-row">
+      <a href="../index.html" class="wordmark">Mariano Funes</a>
+      <ul class="nav-links">
+        <li><a href="../index.html#work">work</a></li>
+        <li><a href="../index.html#writing">writing</a></li>
+        <li><a href="../index.html#contact">contact</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+
+    <div class="page-title">
+      <div class="kicker">jun 2026 · ai · communication</div>
+      <h1>Sending files is old</h1>
+      <p class="deck">How coding tools added new ways to communicate knowledge.</p>
+    </div>
+
+    <article>
+      <p class="first">Using Claude Code means dealing with <code>.md</code> files as a communication vehicle. This is even more acute when building an agentic app. The <code>.md</code> file system is core, as it comprises the way the prompt stack and harnesses are structured and read by agents. But when asking for reports Claude outputs are <code>.md</code> files by default: easy for the agent, tedious and limited for the human reader.</p>
+
+      <p>Started using html files as output and improved reading, reducing cognition weariness as you can use charts, diagrams and other visual aids.</p>
+
+      <div class="panel">
+        <p class="fig-title">Eight kinds of information a single HTML file can carry</p>
+        <div class="kinds">
+          <div class="kind">
+            <div class="ic"><svg viewBox="0 0 48 48" fill="none" stroke="#1f3a5f" stroke-width="1.6"><rect x="8" y="12" width="32" height="24" rx="2"/><line x1="8" y1="20" x2="40" y2="20"/><line x1="19" y1="12" x2="19" y2="36"/><line x1="29" y1="12" x2="29" y2="36"/><line x1="8" y1="28" x2="40" y2="28"/></svg></div>
+            <b>Tables</b><span>Real rows &amp; columns</span>
+          </div>
+          <div class="kind">
+            <div class="ic"><svg viewBox="0 0 48 48" fill="none"><rect x="7" y="17" width="8" height="8" rx="1.5" fill="#0a1729"/><rect x="17" y="17" width="8" height="8" rx="1.5" fill="#0f766e"/><rect x="27" y="17" width="8" height="8" rx="1.5" fill="#cdb8a0"/><rect x="37" y="17" width="6" height="8" rx="1.5" fill="#fff" stroke="#c9ccd2" stroke-width="1.3"/><text x="9" y="35" font-family="JetBrains Mono,monospace" font-size="6.5" fill="#5f6b7a">font: serif</text></svg></div>
+            <b>Design</b><span>Color, type, spacing</span>
+          </div>
+          <div class="kind">
+            <div class="ic"><svg viewBox="0 0 48 48" fill="none" stroke="#1f3a5f" stroke-width="1.6"><circle cx="17" cy="17" r="6"/><rect x="29" y="11" width="11" height="11" rx="1.5"/><polyline points="9,37 19,27 27,33 39,23" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <b>Illustrations</b><span>Inline SVG diagrams</span>
+          </div>
+          <div class="kind">
+            <div class="ic"><svg viewBox="0 0 48 48" fill="none"><rect x="8" y="12" width="32" height="24" rx="3" fill="#0a1729"/><line x1="14" y1="20" x2="30" y2="20" stroke="#aeb6c2" stroke-width="1.8" stroke-linecap="round"/><line x1="14" y1="25" x2="34" y2="25" stroke="#5f6b7a" stroke-width="1.8" stroke-linecap="round"/><line x1="14" y1="30" x2="24" y2="30" stroke="#aeb6c2" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+            <b>Code</b><span>Highlighted snippets</span>
+          </div>
+          <div class="kind">
+            <div class="ic"><svg viewBox="0 0 48 48" fill="none"><line x1="9" y1="18" x2="39" y2="18" stroke="#e0e3e8" stroke-width="4" stroke-linecap="round"/><line x1="9" y1="18" x2="28" y2="18" stroke="#0f766e" stroke-width="4" stroke-linecap="round"/><circle cx="28" cy="18" r="5.5" fill="#fff" stroke="#0f766e" stroke-width="2"/><line x1="9" y1="30" x2="39" y2="30" stroke="#e0e3e8" stroke-width="4" stroke-linecap="round"/><line x1="9" y1="30" x2="18" y2="30" stroke="#9aa3b0" stroke-width="4" stroke-linecap="round"/><circle cx="18" cy="30" r="5.5" fill="#fff" stroke="#9aa3b0" stroke-width="2"/></svg></div>
+            <b>Interaction</b><span>Sliders, toggles, JS</span>
+          </div>
+          <div class="kind">
+            <div class="ic"><svg viewBox="0 0 48 48" fill="none" stroke="#1f3a5f" stroke-width="1.6"><rect x="6" y="19" width="10" height="10" rx="2"/><rect x="19" y="19" width="10" height="10" rx="2" fill="#eef0e9"/><rect x="32" y="19" width="10" height="10" rx="2" fill="#0a1729"/><line x1="16" y1="24" x2="19" y2="24" marker-end="url(#a1)"/><line x1="29" y1="24" x2="32" y2="24" marker-end="url(#a1)"/><defs><marker id="a1" markerWidth="5" markerHeight="5" refX="3" refY="2.5" orient="auto"><path d="M0,0 L4,2.5 L0,5" fill="none" stroke="#7d96b5" stroke-width="1.2"/></marker></defs></svg></div>
+            <b>Workflows</b><span>Boxes, arrows, flow</span>
+          </div>
+          <div class="kind">
+            <div class="ic"><svg viewBox="0 0 48 48" fill="none"><path d="M11,10 L11,37 L40,37" stroke="#9aa3b0" stroke-width="1.6" stroke-linecap="round"/><circle cx="19" cy="29" r="2.2" fill="#0a1729"/><circle cx="27" cy="22" r="2.2" fill="#5f6b7a"/><circle cx="33" cy="26" r="2.2" fill="#0a1729"/><circle cx="36" cy="16" r="2.2" fill="#5f6b7a"/></svg></div>
+            <b>Spatial</b><span>Canvas &amp; coordinates</span>
+          </div>
+          <div class="kind">
+            <div class="ic"><svg viewBox="0 0 48 48" fill="none"><rect x="9" y="13" width="30" height="22" rx="2.5" fill="#eef0e9" stroke="#c9ccd2" stroke-width="1.4"/><circle cx="32" cy="20" r="3" fill="#cdb8a0"/><path d="M13,32 L21,23 L27,29 L31,25 L35,32 Z" fill="#b9bfc8"/></svg></div>
+            <b>Images</b><span>Embedded figures</span>
+          </div>
+        </div>
+        <p class="fig-cap"><span class="src">Adapted from <a href="https://claude.com/blog/using-claude-code-the-unreasonable-effectiveness-of-html" target="_blank" rel="noopener">Thariq Shihipar, “The unreasonable effectiveness of HTML.”</a></span></p>
+      </div>
+
+      <p>Confirming this I read this from Thariq <a href="https://x.com/trq212" target="_blank" rel="noopener">@trq212</a>, in Claude Blog, May 30th: <em>Using Claude Code: The unreasonable effectiveness of HTML</em>.</p>
+
+      <figure class="quote">
+        <blockquote>"Instead, I've started preferring HTML as an output format instead of Markdown and increasingly see this pattern being applied by others on the Claude Code team. In this post, I share why and how our team uses HTML to produce richer, more readable Claude Code outputs."</blockquote>
+        <figcaption>Thariq Shihipar — <a href="https://claude.com/blog/using-claude-code-the-unreasonable-effectiveness-of-html" target="_blank" rel="noopener">The unreasonable effectiveness of HTML</a>, Claude blog, May 30, 2026.</figcaption>
+      </figure>
+
+      <div class="panel bleed">
+        <svg viewBox="0 0 1180 540" role="img" aria-label="The same payments spec shown as a 240-line Markdown file versus a structured HTML page">
+          <!-- labels -->
+          <text x="24" y="26" font-family="JetBrains Mono,monospace" font-size="15" letter-spacing="1.5" fill="#5f6b7a">MARKDOWN</text>
+          <text x="624" y="26" font-family="JetBrains Mono,monospace" font-size="15" letter-spacing="1.5" fill="#5f6b7a">HTML</text>
+
+          <!-- ===== MARKDOWN CARD ===== -->
+          <rect x="24" y="44" width="536" height="468" rx="14" fill="#ffffff" stroke="#e5e5e2" stroke-width="1.5"/>
+          <text x="48" y="86" font-family="JetBrains Mono,monospace" font-size="16" fill="#0a1729">payments-spec.md</text>
+          <text x="536" y="86" text-anchor="end" font-family="JetBrains Mono,monospace" font-size="14" fill="#9aa3b0">240 lines</text>
+          <line x1="48" y1="102" x2="536" y2="102" stroke="#eceef1" stroke-width="1.5"/>
+          <text x="48" y="132" font-family="JetBrains Mono,monospace" font-size="14" fill="#5f6b7a"># Payments Service Spec</text>
+          <text x="48" y="154" font-family="JetBrains Mono,monospace" font-size="14" fill="#9aa3b0">## 1. Overview and goals</text>
+          <!-- skeleton lines -->
+          <g fill="#dcdfe4">
+            <rect x="48" y="172" width="430" height="7" rx="3.5"/>
+            <rect x="48" y="190" width="360" height="7" rx="3.5"/>
+            <rect x="48" y="208" width="404" height="7" rx="3.5"/>
+            <rect x="48" y="226" width="250" height="7" rx="3.5" fill="#b8bdc6"/>
+            <rect x="48" y="244" width="412" height="7" rx="3.5"/>
+            <rect x="48" y="262" width="330" height="7" rx="3.5"/>
+            <rect x="48" y="280" width="386" height="7" rx="3.5"/>
+            <rect x="48" y="298" width="300" height="7" rx="3.5"/>
+            <rect x="48" y="316" width="270" height="7" rx="3.5" fill="#b8bdc6"/>
+            <rect x="48" y="334" width="420" height="7" rx="3.5"/>
+            <rect x="48" y="352" width="350" height="7" rx="3.5"/>
+            <rect x="48" y="370" width="396" height="7" rx="3.5"/>
+            <rect x="48" y="388" width="312" height="7" rx="3.5"/>
+            <rect x="48" y="406" width="368" height="7" rx="3.5"/>
+            <rect x="48" y="424" width="240" height="7" rx="3.5"/>
+          </g>
+          <line x1="48" y1="452" x2="536" y2="452" stroke="#e0e3e8" stroke-width="1.4" stroke-dasharray="4 5"/>
+          <text x="292" y="480" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="13" fill="#9aa3b0">··· 214 more lines ···</text>
+
+          <!-- ===== HTML CARD ===== -->
+          <rect x="624" y="44" width="532" height="468" rx="14" fill="#ffffff" stroke="#e5e5e2" stroke-width="1.5"/>
+          <!-- browser chrome -->
+          <path d="M624 58 a14 14 0 0 1 14 -14 h504 a14 14 0 0 1 14 14 v34 h-532 Z" fill="#f4f5f3"/>
+          <circle cx="648" cy="75" r="5" fill="#d8dbe0"/><circle cx="666" cy="75" r="5" fill="#d8dbe0"/><circle cx="684" cy="75" r="5" fill="#d8dbe0"/>
+          <text x="890" y="80" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="13" fill="#9aa3b0">payments-spec.html</text>
+          <line x1="624" y1="92" x2="1156" y2="92" stroke="#eceef1" stroke-width="1.5"/>
+          <!-- title -->
+          <text x="652" y="140" font-family="Inter,sans-serif" font-size="30" font-weight="800" letter-spacing="-0.5" fill="#0a1729">Payments Service</text>
+          <text x="652" y="164" font-family="Inter,sans-serif" font-size="14" fill="#9aa3b0">Spec · v2 · 6 sections</text>
+          <!-- tabs -->
+          <rect x="652" y="180" width="96" height="30" rx="8" fill="#eef2f6" stroke="#1f3a5f" stroke-width="1.5"/>
+          <text x="700" y="200" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" font-weight="700" fill="#1f3a5f">Overview</text>
+          <rect x="756" y="180" width="62" height="30" rx="8" fill="#fff" stroke="#dadde2" stroke-width="1.3"/>
+          <text x="787" y="200" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" fill="#5f6b7a">API</text>
+          <rect x="826" y="180" width="84" height="30" rx="8" fill="#fff" stroke="#dadde2" stroke-width="1.3"/>
+          <text x="868" y="200" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" fill="#5f6b7a">Rollout</text>
+          <!-- Goals -->
+          <text x="652" y="248" font-family="Inter,sans-serif" font-size="16" font-weight="700" fill="#0a1729">Goals</text>
+          <g fill="#dcdfe4"><rect x="652" y="262" width="300" height="7" rx="3.5"/><rect x="652" y="280" width="330" height="7" rx="3.5"/><rect x="652" y="298" width="250" height="7" rx="3.5"/></g>
+          <!-- stat box -->
+          <rect x="986" y="222" width="158" height="92" rx="11" fill="#f0fdfa" stroke="#b9e4de" stroke-width="1.4"/>
+          <text x="1004" y="252" font-family="Inter,sans-serif" font-size="12.5" fill="#5f6b7a">p99 latency target</text>
+          <text x="1004" y="290" font-family="Inter,sans-serif" font-size="30" font-weight="800" letter-spacing="-0.5" fill="#115e59">180 ms</text>
+          <!-- bar chart -->
+          <text x="652" y="350" font-family="Inter,sans-serif" font-size="16" font-weight="700" fill="#0a1729">Volume by region</text>
+          <g>
+            <rect x="652" y="404" width="40" height="60" rx="2" fill="#cdd6df"/>
+            <rect x="704" y="376" width="40" height="88" rx="2" fill="#1f3a5f"/>
+            <rect x="756" y="430" width="40" height="34" rx="2" fill="#cdd6df"/>
+            <rect x="808" y="392" width="40" height="72" rx="2" fill="#cdd6df"/>
+          </g>
+          <g font-family="Inter,sans-serif" font-size="12" fill="#9aa3b0" text-anchor="middle">
+            <text x="672" y="482">US</text><text x="724" y="482">EU</text><text x="776" y="482">APAC</text><text x="828" y="482">LatAm</text>
+          </g>
+          <!-- open questions -->
+          <text x="924" y="350" font-family="Inter,sans-serif" font-size="16" font-weight="700" fill="#0a1729">Open questions</text>
+          <g><circle cx="930" cy="374" r="3" fill="#9aa3b0"/><rect x="944" y="370" width="190" height="7" rx="3.5" fill="#dcdfe4"/>
+             <circle cx="930" cy="398" r="3" fill="#9aa3b0"/><rect x="944" y="394" width="158" height="7" rx="3.5" fill="#dcdfe4"/>
+             <circle cx="930" cy="422" r="3" fill="#9aa3b0"/><rect x="944" y="418" width="176" height="7" rx="3.5" fill="#dcdfe4"/></g>
+        </svg>
+        <p class="fig-cap">Same content — structured for reading instead of scrolling.<span class="src">Adapted from <a href="https://claude.com/blog/using-claude-code-the-unreasonable-effectiveness-of-html" target="_blank" rel="noopener">Thariq Shihipar, “The unreasonable effectiveness of HTML.”</a></span></p>
+      </div>
+
+      <p>And then, listened to a great podcast from the AI Daily Brief on a linked topic:</p>
+
+      <figure class="quote">
+        <blockquote>"Now, for decades, knowledge workers have packaged thinking into different types of documents, decks, spreadsheets, PDFs, e-mail threads, shared folders, etcetera, whatever the menu of formats available was. Importantly, though, that menu wasn't chosen because the formats were the best way to carry knowledge, necessarily."</blockquote>
+        <figcaption>The AI Daily Brief — <a href="https://open.spotify.com/episode/3cFgShICw47xuTZc0YnFEB" target="_blank" rel="noopener">"10+ Things You Should Build With AI Instead of Sending Files"</a>, June 2026.</figcaption>
+      </figure>
+
+      <p>An example is this very website, <a href="https://marianolfunes.github.io" target="_blank" rel="noopener">marianolfunes.github.io</a>, which feels more comfortable to share things: Own format, not prepackaged, with multimedia, and evolving. Allows a way to share knowledge, experiences and be a communication channel with its own objectives, built with little effort.</p>
+    </article>
+
+    <div style="margin-top:28px;">
+      <a href="../index.html" class="backlink">← Back to home</a>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-row">
+      <div>© 2026 Mariano Funes</div>
+      <div class="footer-links">
+        <a href="mailto:marianolfunes@gmail.com">Email</a>
+        <a href="https://x.com/marianofunes" target="_blank" rel="noopener">X</a>
+      </div>
+    </div>
+    <div class="built-with">Built with <a href="https://claude.com/claude-code" target="_blank" rel="noopener">Claude Code</a> — no framework, one HTML file.</div>
+  </div>
+</footer>
+
+</body>
+</html>
