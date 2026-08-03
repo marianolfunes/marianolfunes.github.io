@@ -50,6 +50,7 @@ Hosted on GitHub Pages as a user-site (`https://marianolfunes.github.io`). Local
 | What | Where |
 |---|---|
 | Homepage (catalog) | `index.html` |
+| Spanish version | `es/` — mirror of the homepage (pieces translate progressively). **Sync rule: an edit to an English page is not done until its `es/` twin is updated in the same session** (or the gap is explicitly flagged to Mariano). EN↔ES linked via `hreflang` tags + a discreet `en`/`es` nav link; no auto-redirect — the distributed URL selects the language. |
 | Pieces (one HTML file each) | `pieces/<slug>.html` |
 | Design system (when needed) | `design-system.html` |
 | Static assets (images, fonts) | `assets/` |
