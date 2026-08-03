@@ -154,5 +154,20 @@
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "4641a5512d8f4fb2891d4db3129da1ca"}'></script><!-- End Cloudflare Web Analytics -->
 
 
+<script>
+(function () {
+  if (new URLSearchParams(location.search).get('lang') !== 'es') return;
+  var HOME = '../index.html';
+  document.querySelectorAll('a[href]').forEach(function (a) {
+    var h = a.getAttribute('href');
+    if (!h || /^(https?:|mailto:|#)/.test(h)) return;
+    if (h.indexOf(HOME) === 0) { a.setAttribute('href', '../es/' + h.slice(HOME.length)); return; }
+    if (/\.html(#|$)/.test(h)) {
+      var i = h.indexOf('#');
+      a.setAttribute('href', i < 0 ? h + '?lang=es' : h.slice(0, i) + '?lang=es' + h.slice(i));
+    }
+  });
+})();
+</script>
 </body>
 </html>
