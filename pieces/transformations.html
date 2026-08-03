@@ -203,7 +203,9 @@
 
 <script>
 (function () {
-  if (new URLSearchParams(location.search).get('lang') !== 'es') return;
+  var fromES = new URLSearchParams(location.search).get('lang') === 'es'
+            || /\/es\/?([?#]|$)/.test(document.referrer);
+  if (!fromES) return;
   var HOME = '../index.html';
   document.querySelectorAll('a[href]').forEach(function (a) {
     var h = a.getAttribute('href');
