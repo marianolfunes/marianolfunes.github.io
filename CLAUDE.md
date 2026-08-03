@@ -50,7 +50,7 @@ Hosted on GitHub Pages as a user-site (`https://marianolfunes.github.io`). Local
 | What | Where |
 |---|---|
 | Homepage (catalog) | `index.html` |
-| Spanish version | `es/` — mirror of the homepage (pieces translate progressively). **Sync rule: an edit to an English page is not done until its `es/` twin is updated in the same session** (or the gap is explicitly flagged to Mariano). EN↔ES linked via `hreflang` tags + a discreet `en`/`es` nav link; no auto-redirect — the distributed URL selects the language. |
+| Spanish version | `es/` — **the homepage only. Piece pages are NOT translated and there is no `es/pieces/` tree** (decided 2026-08-03: the translation and sync cost is not worth it; both homepages link to the same English pieces). **Blog entries are written in the language of the article they point at** — today all six are English, so both homepages list them in English; a Spanish piece would get a Spanish entry on both. **Sync rule: an edit to an English homepage is not done until its `es/` twin is updated in the same session** (or the gap is explicitly flagged to Mariano). EN↔ES linked via `hreflang` tags + a discreet `en`/`es` nav link; no auto-redirect — the distributed URL selects the language. **The two homepages are allowed to diverge in content, not only in language** (e.g. the Cupertino exit reason is on the EN page and not the ES one) — the ES page is written from the English, never translated from it, and its timeline and Perfil are **first person** while the EN stays impersonal. |
 | Pieces (one HTML file each) | `pieces/<slug>.html` |
 | Design system (when needed) | `design-system.html` |
 | Static assets (images, fonts) | `assets/` |
