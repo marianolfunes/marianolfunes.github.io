@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Integración - IA</title><style>
+
+:root{--bg:#fbfaf8;--fg:#1a1a18;--muted:#6b6862;--rule:#e2ded6;--accent:#8a5a2b;
+--card:#fff;--th:#f3f0ea;--mark:#fff6d9;--code:#f0ede6}
+@media (prefers-color-scheme:dark){:root{--bg:#16151a;--fg:#e8e6e1;--muted:#9c988f;
+--rule:#2f2d35;--accent:#d59b62;--card:#1d1c22;--th:#26242c;--mark:#3a3320;--code:#24222a}}
+:root[data-theme=dark]{--bg:#16151a;--fg:#e8e6e1;--muted:#9c988f;--rule:#2f2d35;
+--accent:#d59b62;--card:#1d1c22;--th:#26242c;--mark:#3a3320;--code:#24222a}
+:root[data-theme=light]{--bg:#fbfaf8;--fg:#1a1a18;--muted:#6b6862;--rule:#e2ded6;
+--accent:#8a5a2b;--card:#fff;--th:#f3f0ea;--mark:#fff6d9;--code:#f0ede6}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);
+font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+-webkit-font-smoothing:antialiased}
+.wrap{max-width:60rem;margin:0 auto;padding:3rem 1.5rem 6rem}
+.meta{color:var(--muted);font-size:.8rem;border-bottom:1px solid var(--rule);
+padding-bottom:1rem;margin-bottom:2.5rem;letter-spacing:.02em}
+h1{font-size:1.9rem;line-height:1.2;margin:0 0 1.5rem;letter-spacing:-.02em}
+h2{font-size:1.3rem;margin:3rem 0 1rem;padding-top:1.2rem;border-top:1px solid var(--rule);
+letter-spacing:-.01em}
+h3{font-size:1.05rem;margin:2rem 0 .6rem;color:var(--accent)}
+p{margin:0 0 1rem}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(138,90,43,.3);
+word-break:break-word}
+a:hover{border-bottom-color:currentColor}
+strong{font-weight:650}
+code{background:var(--code);padding:.12em .38em;border-radius:3px;
+font:.88em/1.4 ui-monospace,SFMono-Regular,Menlo,monospace}
+ul,ol{margin:0 0 1rem;padding-left:1.4rem}
+li{margin:.35rem 0}
+blockquote{margin:1.5rem 0;padding:1rem 1.2rem;background:var(--card);
+border-left:3px solid var(--accent);border-radius:0 4px 4px 0}
+blockquote p:last-child{margin-bottom:0}
+hr{border:0;border-top:1px solid var(--rule);margin:2.5rem 0}
+.tw{overflow-x:auto;margin:1.2rem 0;border:1px solid var(--rule);border-radius:6px}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th{background:var(--th);text-align:left;font-weight:650;white-space:nowrap}
+th,td{padding:.6rem .8rem;border-bottom:1px solid var(--rule);vertical-align:top}
+tr:last-child td{border-bottom:0}
+td:first-child{white-space:nowrap}
+@media(max-width:640px){td:first-child{white-space:normal}.wrap{padding:2rem 1rem 4rem}}
+figure{margin:2rem 0;padding:1.4rem;background:var(--card);border:1px solid var(--rule);
+border-radius:6px;overflow-x:auto}
+figure svg{display:block;margin:0 auto;max-width:100%;height:auto}
+figcaption{margin-top:.9rem;color:var(--muted);font-size:.82rem;line-height:1.5;text-align:left}
+.svg-fill-a{fill:var(--card)}.svg-fill-b{fill:var(--th)}
+.svg-stroke{stroke:var(--rule)}.svg-accent{fill:var(--accent)}
+.svg-text{fill:var(--fg);font:11px -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,sans-serif}
+.svg-small{fill:var(--muted);font:9.5px -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,sans-serif}
+.lede{font-size:1.05rem;line-height:1.7;color:var(--fg)}
+.keyfig{display:grid;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));gap:1px;
+background:var(--rule);border:1px solid var(--rule);border-radius:6px;overflow:hidden;margin:1.5rem 0}
+.keyfig>div{background:var(--card);padding:1rem 1.1rem}
+.keyfig .n{font-size:1.35rem;font-weight:650;letter-spacing:-.02em;
+font-variant-numeric:tabular-nums;display:block;margin-bottom:.15rem}
+.keyfig .l{color:var(--muted);font-size:.76rem;line-height:1.4;display:block}
+
+s{color:var(--muted)}
+h4{font-size:.95rem;margin:1.6rem 0 .5rem;color:var(--accent)}
+</style></head>
+<body><div class="wrap">
+
+
+<h1>Integración - IA</h1>
+
+<p class="lede">Supercemento &middot; Agosto 2026</p>
+
+<hr>
+
+<h2>About</h2>
+
+<p>Este documento establece el plan preliminar y alcance con el objetivo de integrar IA en Supercemento.</p>
+
+<hr>
+
+<h2>Relevamiento</h2>
+
+<p>Relevamiento rápido - requerimientos del negocio y cómo IT los provee.</p>
+
+<ul>
+<li><strong>Empresa.</strong> Organización - procesos core que corren sobre software, visión de IA de los responsables de esos procesos.</li>
+<li><strong>IT.</strong> Organización - capacidades, software stack, technical debt, plan de sistemas y de IA, implementaciones previas.</li>
+</ul>
+
+<p>El output es el plan revisado y dimensionado.</p>
+
+<h2>Productividad individual</h2>
+
+<p><strong>Contexto</strong></p>
+
+<p>Las aplicaciones enterprise LLM se licencian por usuario y se integran a las herramientas de trabajo. Hoy los principales productos son Claude, ChatGPT Enterprise, Microsoft Copilot y Google Gemini.</p>
+
+<p>Los market leaders ya las implementaron en sus organizaciones. Accenture, unas 743.000 personas. JPMorgan, 200.000 usuarios en ocho meses. Goldman Sachs, toda la firma después de un piloto de 10.000. En construcción, Techint implementó Microsoft Copilot de manera masiva a fines de 2025.</p>
+
+<p>El objetivo es implementar la aplicación elegida en grupos determinados de usuarios, apuntando a productividad individual, despliegue controlado y una organización preparada para implementaciones más complejas.</p>
+
+<p>Secuencia:</p>
+
+<ol>
+<li>Selección de la aplicación LLM</li>
+<li>Licencias</li>
+</ol>
+
+<p>Por grupo:</p>
+
+<ol start="3">
+<li>Capacitación estándar</li>
+<li>Discovery workshops</li>
+<li>Implementación, coaching</li>
+</ol>
+
+<p><strong>Casos de uso</strong></p>
+
+<ul>
+<li><strong>Generales.</strong> Trabajo dentro de Excel. Revisión de documentos y extracción de datos. Análisis y visualización. Herramientas interactivas a partir de planillas y presentaciones.</li>
+<li><strong>Licitaciones.</strong> Análisis de pliegos y armado del checklist de requisitos. Cotizaciones de subcontratistas y proveedores comparadas sobre una misma base. Revisión de documentación técnica.</li>
+<li><strong>Administración de contratos.</strong> Armado de expedientes de adicionales y reclamos con registros de obra y programa de trabajos. Proceso de certificaciones.</li>
+<li><strong>Compras.</strong> Normalización de cotizaciones. Conciliación entre fuentes de datos. Redeterminación de precios.</li>
+<li><strong>Costos y planificación.</strong> Presupuesto contra ejecución. Flujo de fondos a partir del plan de certificaciones.</li>
+<li><strong>Obra.</strong> Partes diarios resumidos en un reporte semanal. Seguimiento de no conformidades. Cumplimiento documental de subcontratistas.</li>
+</ul>
+
+<p><strong>Casos de uso - avanzados</strong></p>
+
+<ul>
+<li><strong>Background.</strong> Extracción de datos, armado de informes, organización de archivos.</li>
+<li><strong>Tareas programadas.</strong> Recurrentes.</li>
+<li><strong>Sistemas.</strong> Conexión con las aplicaciones de la empresa.</li>
+</ul>
+
+<h2>Coding tools</h2>
+
+<p><strong>Contexto</strong></p>
+
+<p><em>"We are at the point where AI is writing most of the code. We have almost complete automation of code writing."</em><br>&mdash; David Sacks, mayo de 2026</p>
+
+<p><em>"We have 50 years of accumulated tech debt as a world&hellip; hundreds of trillions of lines of just pretty marginal, mediocre code to bad code."</em><br>&mdash; Chamath Palihapitiya, abril de 2026</p>
+
+<p><em>"I would never hire a finance person who didn't know how to use Excel, and I pretty much probably wouldn't hire a finance person today that doesn't know how to use a tool like Codex."</em><br>&mdash; Sarah Friar, directora financiera de OpenAI, junio de 2026</p>
+
+<p>Las coding tools son aplicaciones LLM para desarrollo de software. Las principales son Claude Code, Codex, Cursor, GitHub Copilot y Gemini Code Assist.</p>
+
+<p>El objetivo es implementar coding tools en los usuarios técnicos y key users que puedan aplicarlas en su trabajo.</p>
+
+<h2>Software - procesos core</h2>
+
+<p><strong>Relevamiento.</strong> Plan de IT, technical debt, software utilizado en cada proceso core.</p>
+
+<p><strong>Benchmark.</strong> Procesos core que el software no cubre.</p>
+
+<p>Dos vías de ejecución:</p>
+
+<ul>
+<li><strong>Tercerizada.</strong> Producto off-the-shelf, producto customizado o desarrollo a medida.</li>
+<li><strong>Interna.</strong> Equipo de IT con coding tools, en ciclos cortos y con el usuario presente.</li>
+</ul>
+
+<h2>Automatización de procesos - agentes</h2>
+
+<p><strong>Contexto</strong></p>
+
+<p><em>"An agent is an application that completes a task by planning its own steps and calling tools."</em><br>&mdash; Anthropic</p>
+
+<p>Anthropic, OpenAI, Google, Microsoft, Amazon, xAI y Mistral tienen plataformas para construir agentes. LangChain y otros frameworks permiten construirlos sin atarse a un modelo.</p>
+
+<p>Existen algunas implementaciones, sin adopción masiva.</p>
+
+<p>Lo anterior es la base de cualquier desarrollo e implementación de agentes.</p>
+
+<p>Tres pasos:</p>
+
+<ol>
+<li>Selección de procesos</li>
+<li>Relevamiento y documentación de los procesos</li>
+<li>Construcción, prueba e implementación</li>
+</ol>
+
+<hr>
+
+<h2>Alcance</h2>
+
+<p><strong>Estrategia.</strong> Definición de qué se integra y por qué.</p>
+
+<p><strong>Gestión del plan.</strong> Secuencia, avance y reporte.</p>
+
+<p><strong>Proyectos.</strong> Gerenciamiento de proyectos individuales - ejecución selectiva.</p>
+
+<hr>
+
+<p><em>Preparado por Mariano Funes con Claude (Anthropic).</em></p>
+
+</div></body></html>
