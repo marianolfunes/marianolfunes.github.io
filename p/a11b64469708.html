@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Enterprise LLM applications — comparison</title><style>
+:root{--bg:#fbfaf8;--fg:#1a1a18;--muted:#6b6862;--rule:#e2ded6;--accent:#8a5a2b;
+--card:#fff;--th:#f3f0ea;--mark:#fff6d9;--code:#f0ede6}
+@media (prefers-color-scheme:dark){:root{--bg:#16151a;--fg:#e8e6e1;--muted:#9c988f;
+--rule:#2f2d35;--accent:#d59b62;--card:#1d1c22;--th:#26242c;--mark:#3a3320;--code:#24222a}}
+:root[data-theme=dark]{--bg:#16151a;--fg:#e8e6e1;--muted:#9c988f;--rule:#2f2d35;
+--accent:#d59b62;--card:#1d1c22;--th:#26242c;--mark:#3a3320;--code:#24222a}
+:root[data-theme=light]{--bg:#fbfaf8;--fg:#1a1a18;--muted:#6b6862;--rule:#e2ded6;
+--accent:#8a5a2b;--card:#fff;--th:#f3f0ea;--mark:#fff6d9;--code:#f0ede6}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);
+font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+-webkit-font-smoothing:antialiased}
+.wrap{max-width:60rem;margin:0 auto;padding:3rem 1.5rem 6rem}
+body.wide .wrap{max-width:82rem}
+.meta{color:var(--muted);font-size:.8rem;border-bottom:1px solid var(--rule);
+padding-bottom:1rem;margin-bottom:2.5rem;letter-spacing:.02em}
+h1{font-size:1.9rem;line-height:1.2;margin:0 0 1.5rem;letter-spacing:-.02em}
+h2{font-size:1.3rem;margin:3rem 0 1rem;padding-top:1.2rem;border-top:1px solid var(--rule);
+letter-spacing:-.01em}
+h3{font-size:1.05rem;margin:2rem 0 .6rem;color:var(--accent)}
+p{margin:0 0 1rem}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(138,90,43,.3);
+word-break:break-word}
+a:hover{border-bottom-color:currentColor}
+strong{font-weight:650}
+code{background:var(--code);padding:.12em .38em;border-radius:3px;
+font:.88em/1.4 ui-monospace,SFMono-Regular,Menlo,monospace}
+ul,ol{margin:0 0 1rem;padding-left:1.4rem}
+li{margin:.35rem 0}
+blockquote{margin:1.5rem 0;padding:1rem 1.2rem;background:var(--card);
+border-left:3px solid var(--accent);border-radius:0 4px 4px 0}
+blockquote p:last-child{margin-bottom:0}
+hr{border:0;border-top:1px solid var(--rule);margin:2.5rem 0}
+.tw{overflow-x:auto;margin:1.2rem 0;border:1px solid var(--rule);border-radius:6px}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+table.fixed{table-layout:fixed}
+table.fixed th:first-child,table.fixed td:first-child{width:19%}
+table.fixed th{white-space:normal}
+table.fixed td:first-child{white-space:normal}
+table.fixed th,table.fixed td{overflow-wrap:break-word}
+th .logo{display:block;margin:0 auto .35rem;width:22px;height:22px}
+th.brand{text-align:center;font-weight:650}
+th{background:var(--th);text-align:left;font-weight:650;white-space:nowrap}
+th,td{padding:.6rem .8rem;border-bottom:1px solid var(--rule);vertical-align:top}
+tr:last-child td{border-bottom:0}
+td:first-child{white-space:nowrap}
+@media(max-width:640px){td:first-child{white-space:normal}.wrap{padding:2rem 1rem 4rem}}
+figure{margin:2rem 0;padding:1.4rem;background:var(--card);border:1px solid var(--rule);
+border-radius:6px;overflow-x:auto}
+figure svg{display:block;margin:0 auto;max-width:100%;height:auto}
+figcaption{margin-top:.9rem;color:var(--muted);font-size:.82rem;line-height:1.5;text-align:left}
+.svg-fill-a{fill:var(--card)}.svg-fill-b{fill:var(--th)}
+.svg-stroke{stroke:var(--rule)}.svg-accent{fill:var(--accent)}
+.svg-text{fill:var(--fg);font:11px -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,sans-serif}
+.svg-small{fill:var(--muted);font:9.5px -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,sans-serif}
+.lede{font-size:1.05rem;line-height:1.7;color:var(--fg)}
+.keyfig{display:grid;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));gap:1px;
+background:var(--rule);border:1px solid var(--rule);border-radius:6px;overflow:hidden;margin:1.5rem 0}
+.keyfig>div{background:var(--card);padding:1rem 1.1rem}
+.keyfig .n{font-size:1.35rem;font-weight:650;letter-spacing:-.02em;
+font-variant-numeric:tabular-nums;display:block;margin-bottom:.15rem}
+.keyfig .l{color:var(--muted);font-size:.76rem;line-height:1.4;display:block}
+</style></head>
+<body class="wide"><div class="wrap">
+<p style="color:var(--muted);font-size:.85rem;margin:0 0 2rem"><strong style="color:var(--fg)">English</strong>&nbsp;&nbsp;·&nbsp;&nbsp;<a href="d24b9144b367.html">Español</a></p>
+<h1>Enterprise LLM applications — comparison</h1>
+<p>Supercemento · August 2026</p>
+<hr>
+<h2>Executive summary</h2>
+<p>This document assesses the LLM applications suitable for individual productivity, as part of the AI integration plan for Supercemento.</p>
+<p><strong>Recommended: Claude Team.</strong> It ranks first on both axes assessed: <strong>power</strong> — the app, the harness and the models combined — and <strong>adoption</strong> by a non-technical user. It reaches Microsoft 365 through connectors: reads mail, calendar, files and Teams, writes to mail, calendar and files.</p>
+<hr>
+<h2>Product comparison</h2>
+<div class="tw"><table class="fixed"><thead><tr>
+<th></th>
+<th class="brand"><svg class="logo" viewBox="0 0 24 24" fill="#D97757" aria-hidden="true"><path d="m4.7144 15.9555 4.7174-2.6471.079-.2307-.079-.1275h-.2307l-.7893-.0486-2.6956-.0729-2.3375-.0971-2.2646-.1214-.5707-.1215-.5343-.7042.0546-.3522.4797-.3218.686.0608 1.5179.1032 2.2767.1578 1.6514.0972 2.4468.255h.3886l.0546-.1579-.1336-.0971-.1032-.0972L6.973 9.8356l-2.55-1.6879-1.3356-.9714-.7225-.4918-.3643-.4614-.1578-1.0078.6557-.7225.8803.0607.2246.0607.8925.686 1.9064 1.4754 2.4893 1.8336.3643.3035.1457-.1032.0182-.0728-.164-.2733-1.3539-2.4467-1.445-2.4893-.6435-1.032-.17-.6194c-.0607-.255-.1032-.4674-.1032-.7285L6.287.1335 6.6997 0l.9957.1336.419.3642.6192 1.4147 1.0018 2.2282 1.5543 3.0296.4553.8985.2429.8318.091.255h.1579v-.1457l.1275-1.706.2368-2.0947.2307-2.6957.0789-.7589.3764-.9107.7468-.4918.5828.2793.4797.686-.0668.4433-.2853 1.8517-.5586 2.9021-.3643 1.9429h.2125l.2429-.2429.9835-1.3053 1.6514-2.0643.7286-.8196.85-.9046.5464-.4311h1.0321l.759 1.1293-.34 1.1657-1.0625 1.3478-.8804 1.1414-1.2628 1.7-.7893 1.36.0729.1093.1882-.0183 2.8535-.607 1.5421-.2794 1.8396-.3157.8318.3886.091.3946-.3278.8075-1.967.4857-2.3072.4614-3.4364.8136-.0425.0304.0486.0607 1.5482.1457.6618.0364h1.621l3.0175.2247.7892.522.4736.6376-.079.4857-1.2142.6193-1.6393-.3886-3.825-.9107-1.3113-.3279h-.1822v.1093l1.0929 1.0686 2.0035 1.8092 2.5075 2.3314.1275.5768-.3218.4554-.34-.0486-2.2039-1.6575-.85-.7468-1.9246-1.621h-.1275v.17l.4432.6496 2.3436 3.5214.1214 1.0807-.17.3521-.6071.2125-.6679-.1214-1.3721-1.9246L14.38 17.959l-1.1414-1.9428-.1397.079-.674 7.2552-.3156.3703-.7286.2793-.6071-.4614-.3218-.7468.3218-1.4753.3886-1.9246.3157-1.53.2853-1.9004.17-.6314-.0121-.0425-.1397.0182-1.4328 1.9672-2.1796 2.9446-1.7243 1.8456-.4128.164-.7164-.3704.0667-.6618.4008-.5889 2.386-3.0357 1.4389-1.882.929-1.0868-.0062-.1579h-.0546l-6.3385 4.1164-1.1293.1457-.4857-.4554.0608-.7467.2307-.2429 1.9064-1.3114Z"/></svg>Anthropic</th>
+<th class="brand"><svg class="logo" viewBox="0 0 24 24" fill="#8E75B2" aria-hidden="true"><path d="M11.04 19.32Q12 21.51 12 24q0-2.49.93-4.68.96-2.19 2.58-3.81t3.81-2.55Q21.51 12 24 12q-2.49 0-4.68-.93a12.3 12.3 0 0 1-3.81-2.58 12.3 12.3 0 0 1-2.58-3.81Q12 2.49 12 0q0 2.49-.96 4.68-.93 2.19-2.55 3.81a12.3 12.3 0 0 1-3.81 2.58Q2.49 12 0 12q2.49 0 4.68.96 2.19.93 3.81 2.55t2.55 3.81"/></svg>Google</th>
+<th class="brand"><svg class="logo" viewBox="0 0 24 24" fill="#5E5E5E" aria-hidden="true"><path d="M0 0v11.408h11.408V0zm12.594 0v11.408H24V0zM0 12.594V24h11.408V12.594zm12.594 0V24H24V12.594z"/></svg>Microsoft</th>
+<th class="brand"><svg class="logo" viewBox="0 0 24 24" fill="#412991" aria-hidden="true"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z"/></svg>OpenAI</th>
+<th class="brand"><svg class="logo" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.56h3.182l5.965 8.532.929 1.329 7.754 11.09h-3.182z"/></svg>xAI</th>
+</tr></thead><tbody>
+<tr><td><strong>Plan</strong></td><td>Claude Team</td><td>Gemini Enterprise Business</td><td>Microsoft Copilot</td><td>ChatGPT Business</td><td>Grok Business</td></tr>
+<tr><td><strong>Models</strong></td><td>Opus 5 · Sonnet 5 · Haiku 4.5 · Fable 5</td><td>Gemini 3.5 Flash, enabled for all users and not disableable. Further models are turned on by an administrator</td><td>Auto · GPT 5.5 Frontier · GPT 5.6 Sol · GPT 5.6 Terra · Claude Opus 5 · Claude Sonnet 5 · Claude Fable 5, preview and off by default</td><td>GPT-5.6 Sol · Sol Pro · Terra · Luna · GPT-5 Thinking Mini</td><td>All Grok models</td></tr>
+<tr><td><strong>Document handling</strong></td><td>Read whole into context. 200k or 1M tokens — Anthropic's own pages state both. PDF to 1,000 pages, images read to page 100. Projects switch to retrieval near the window</td><td>Indexed and retrieved. No context window published for this edition; 25 GiB of indexing per seat</td><td>Indexed and retrieved — Microsoft's Retrieval API returns <em>"relevant text chunks"</em>. No context window published. 512 MB per file, five files per action in OneDrive</td><td>Read whole into context. 54K and 256K on the pricing page, 128K and 272K on the models page — OpenAI's own pages state both. Images are discarded from uploads</td><td>Not published</td></tr>
+<tr><td><strong>Coding agent</strong></td><td>Claude Code, in the seat. Same usage pool as the app</td><td>Not included. Gemini Code Assist is Standard or Plus, or $19 a seat standalone</td><td>Not included. GitHub Copilot is a separate product, $19 a seat</td><td>Codex, in the seat. Shared usage pool</td><td>Grok Build, in the seat. Shared usage pool</td></tr>
+<tr><td><strong>Ready to use templates</strong></td><td>Industry packages — financial services, legal, life sciences, small business — connectors, skills and agent templates</td><td>Deep Research, Gemini Notebook, Data Insights. Partner agents and an Agent Designer</td><td>Sales, Service and Finance agents. Researcher, Analyst, Facilitator. An Agent Store</td><td>None found. Apps and plugins, built by the customer</td><td>Solution pages only. No package found</td></tr>
+<tr><td><strong>Training material</strong></td><td>Claude Academy — courses, quizzes, webinars, four proctored certifications</td><td>Skillshop courses and a resources hub</td><td>Success Kit, Copilot Academy, Microsoft Learn paths</td><td>OpenAI Academy — three course tracks and live events</td><td>Product guide only; no programme found</td></tr>
+<tr><td><strong>Training in Spanish</strong></td><td>—</td><td>Yes</td><td>Yes</td><td>—</td><td>—</td></tr>
+<tr><td><strong>MS 365 integration</strong></td><td>Add-ins for Excel, Word and PowerPoint; Outlook in beta. Reads SharePoint, OneDrive, Outlook and Teams, including meeting transcripts. Writes to mail, calendar and files; never to Teams</td><td>No add-ins. Reads SharePoint, OneDrive, Outlook and Teams. Write actions are still in preview</td><td>Native</td><td>Add-ins for Excel and PowerPoint. Reads and writes SharePoint, OneDrive, Outlook and Teams. Calendar is read-only; meeting transcripts are Enterprise only</td><td>Add-ins for Word, Excel, PowerPoint and Outlook. Reads and writes SharePoint, OneDrive, Outlook and Teams. SharePoint and OneDrive need the Business tier</td></tr>
+<tr><td><strong>Single sign-on</strong></td><td>Yes, SAML 2.0. Just-in-time provisioning; no SCIM</td><td>—</td><td>Yes, through the Microsoft 365 accounts the company already has</td><td>Yes, SAML and OIDC, enforceable; no SCIM</td><td>—</td></tr>
+<tr><td><strong>Audit logs</strong></td><td>No. Usage analytics only — connector read and write counts, file operations, spend export</td><td>—</td><td>Yes, Purview. Prompts, responses and file access, 180 days</td><td>Admin activity only; conversation content is Enterprise</td><td>Yes, a team log of API and admin activity</td></tr>
+<tr><td><strong>Per user, annual / monthly</strong></td><td>$20 / $25</td><td>$21 / not published</td><td>$30 / —</td><td>$20 / $25</td><td>$30 / $30</td></tr>
+<tr><td><strong>Paid above the seat</strong></td><td>Optional credits past the limit</td><td>None found</td><td><strong>Yes.</strong> Cowork agents and workflows are not included in the seat. $0.01 per credit</td><td>Optional credits past the limit</td><td>Optional credits past the limit</td></tr>
+</tbody></table></div>
+<hr>
+<h2>Assessment</h2>
+<figure style="max-width:960px;margin-left:auto;margin-right:auto">
+<svg viewBox="0 0 900 508" width="900" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Adoption against power, five enterprise LLM applications">
+  <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+
+    <line x1="130" y1="40" x2="130" y2="370" stroke="var(--rule)" stroke-width="1.5"/>
+    <line x1="130" y1="370" x2="850" y2="370" stroke="var(--rule)" stroke-width="1.5"/>
+
+    <text x="120" y="46" text-anchor="end" font-size="12" fill="var(--muted)">high</text>
+    <text x="120" y="370" text-anchor="end" font-size="12" fill="var(--muted)">low</text>
+    <text transform="translate(64,205) rotate(-90)" text-anchor="middle" font-size="14" font-weight="650" fill="var(--fg)" letter-spacing="0.08em">POWER</text>
+    <text transform="translate(82,205) rotate(-90)" text-anchor="middle" font-size="11.5" fill="var(--muted)">app + harness + models</text>
+
+    <text x="130" y="393" text-anchor="start" font-size="12" fill="var(--muted)">complex</text>
+    <text x="490" y="393" text-anchor="middle" font-size="14" font-weight="650" fill="var(--fg)" letter-spacing="0.08em">USER ADOPTION</text>
+    <text x="490" y="411" text-anchor="middle" font-size="11.5" fill="var(--muted)">workflows, organising work, templates, training</text>
+    <text x="850" y="393" text-anchor="end" font-size="12" fill="var(--muted)">friendly</text>
+
+    <circle cx="760" cy="69" r="12" fill="#8fbc8f" stroke="var(--bg)" stroke-width="2.5"/>
+    <text x="742" y="74" text-anchor="end" font-size="15" font-weight="650" fill="var(--fg)">Claude</text>
+
+    <circle cx="610" cy="212" r="12" fill="#8fbc8f" stroke="var(--bg)" stroke-width="2.5"/>
+    <text x="628" y="217" font-size="15" font-weight="650" fill="var(--fg)">ChatGPT</text>
+
+    <circle cx="730" cy="341" r="12" fill="#dfc233" stroke="var(--bg)" stroke-width="2.5"/>
+    <text x="748" y="346" font-size="15" font-weight="650" fill="var(--fg)">Gemini</text>
+
+    <circle cx="610" cy="327" r="12" fill="#2e7d32" stroke="var(--bg)" stroke-width="2.5"/>
+    <text x="628" y="332" font-size="15" font-weight="650" fill="var(--fg)">Copilot</text>
+
+    <circle cx="220" cy="341" r="12" fill="#8fbc8f" stroke="var(--bg)" stroke-width="2.5"/>
+    <text x="238" y="346" font-size="15" font-weight="650" fill="var(--fg)">Grok</text>
+
+    <text x="130" y="460" font-size="12" font-weight="650" fill="var(--fg)">Integration to MS 365</text>
+    <circle cx="137" cy="484" r="7" fill="#2e7d32"/><text x="151" y="489" font-size="12" fill="var(--muted)">native</text>
+    <circle cx="233" cy="484" r="7" fill="#8fbc8f"/><text x="247" y="489" font-size="12" fill="var(--muted)">connectors, read and write</text>
+    <circle cx="443" cy="484" r="7" fill="#dfc233"/><text x="457" y="489" font-size="12" fill="var(--muted)">connectors, write in preview</text>
+
+  </g>
+</svg>
+</figure>
+<p><strong>Power:</strong> what can be achieved with the app, the harness and the models together.</p>
+<p><strong>Adoption:</strong> ease of adoption for a non-technical user — building workflows, organising work, templates, training.</p>
+<p><strong>Integration:</strong> native, or through connectors authorised in the tenant.</p>
+<h2>Assessment table</h2>
+<div class="tw"><table><thead><tr>
+<th></th>
+<th>Power</th>
+<th>Adoption</th>
+</tr></thead><tbody>
+<tr><td><svg class="logo" width="18" height="18" style="vertical-align:-3px;margin-right:.4rem" viewBox="0 0 24 24" fill="#D97757" aria-hidden="true"><path d="m4.7144 15.9555 4.7174-2.6471.079-.2307-.079-.1275h-.2307l-.7893-.0486-2.6956-.0729-2.3375-.0971-2.2646-.1214-.5707-.1215-.5343-.7042.0546-.3522.4797-.3218.686.0608 1.5179.1032 2.2767.1578 1.6514.0972 2.4468.255h.3886l.0546-.1579-.1336-.0971-.1032-.0972L6.973 9.8356l-2.55-1.6879-1.3356-.9714-.7225-.4918-.3643-.4614-.1578-1.0078.6557-.7225.8803.0607.2246.0607.8925.686 1.9064 1.4754 2.4893 1.8336.3643.3035.1457-.1032.0182-.0728-.164-.2733-1.3539-2.4467-1.445-2.4893-.6435-1.032-.17-.6194c-.0607-.255-.1032-.4674-.1032-.7285L6.287.1335 6.6997 0l.9957.1336.419.3642.6192 1.4147 1.0018 2.2282 1.5543 3.0296.4553.8985.2429.8318.091.255h.1579v-.1457l.1275-1.706.2368-2.0947.2307-2.6957.0789-.7589.3764-.9107.7468-.4918.5828.2793.4797.686-.0668.4433-.2853 1.8517-.5586 2.9021-.3643 1.9429h.2125l.2429-.2429.9835-1.3053 1.6514-2.0643.7286-.8196.85-.9046.5464-.4311h1.0321l.759 1.1293-.34 1.1657-1.0625 1.3478-.8804 1.1414-1.2628 1.7-.7893 1.36.0729.1093.1882-.0183 2.8535-.607 1.5421-.2794 1.8396-.3157.8318.3886.091.3946-.3278.8075-1.967.4857-2.3072.4614-3.4364.8136-.0425.0304.0486.0607 1.5482.1457.6618.0364h1.621l3.0175.2247.7892.522.4736.6376-.079.4857-1.2142.6193-1.6393-.3886-3.825-.9107-1.3113-.3279h-.1822v.1093l1.0929 1.0686 2.0035 1.8092 2.5075 2.3314.1275.5768-.3218.4554-.34-.0486-2.2039-1.6575-.85-.7468-1.9246-1.621h-.1275v.17l.4432.6496 2.3436 3.5214.1214 1.0807-.17.3521-.6071.2125-.6679-.1214-1.3721-1.9246L14.38 17.959l-1.1414-1.9428-.1397.079-.674 7.2552-.3156.3703-.7286.2793-.6071-.4614-.3218-.7468.3218-1.4753.3886-1.9246.3157-1.53.2853-1.9004.17-.6314-.0121-.0425-.1397.0182-1.4328 1.9672-2.1796 2.9446-1.7243 1.8456-.4128.164-.7164-.3704.0667-.6618.4008-.5889 2.386-3.0357 1.4389-1.882.929-1.0868-.0062-.1579h-.0546l-6.3385 4.1164-1.1293.1457-.4857-.4554.0608-.7467.2307-.2429 1.9064-1.3114Z"/></svg><strong>Anthropic</strong> · Claude Team</td><td>Frontier models. A document is read whole in chat, images included to page 100 of a PDF. One skill runs in the app, in the Office add-ins and in Claude Code</td><td>Workflows built by describing them, or by recording yourself doing one. Projects hold documents and instructions. Templates for the file types it produces. Courses, quizzes and four certifications, in English</td></tr>
+<tr><td><svg class="logo" width="18" height="18" style="vertical-align:-3px;margin-right:.4rem" viewBox="0 0 24 24" fill="#8E75B2" aria-hidden="true"><path d="M11.04 19.32Q12 21.51 12 24q0-2.49.93-4.68.96-2.19 2.58-3.81t3.81-2.55Q21.51 12 24 12q-2.49 0-4.68-.93a12.3 12.3 0 0 1-3.81-2.58 12.3 12.3 0 0 1-2.58-3.81Q12 2.49 12 0q0 2.49-.96 4.68-.93 2.19-2.55 3.81a12.3 12.3 0 0 1-3.81 2.58Q2.49 12 0 12q2.49 0 4.68.96 2.19.93 3.81 2.55t2.55 3.81"/></svg><strong>Google</strong> · Gemini Enterprise Business</td><td>Gemini models, with further models enabled by an administrator. Documents are indexed and retrieved, not read whole; no context window is published for this edition. Gems hold instructions; they do not run workflows</td><td>Four steps from the Gem manager to a working Gem. Ten premade Gems to copy, half of them business. A course produced in Spanish</td></tr>
+<tr><td><svg class="logo" width="18" height="18" style="vertical-align:-3px;margin-right:.4rem" viewBox="0 0 24 24" fill="#5E5E5E" aria-hidden="true"><path d="M0 0v11.408h11.408V0zm12.594 0v11.408H24V0zM0 12.594V24h11.408V12.594zm12.594 0V24H24V12.594z"/></svg><strong>Microsoft</strong> · Copilot</td><td>Frontier models, bought from OpenAI and Anthropic. Documents are indexed and retrieved, not read whole, and no context window is published. Reaching a service outside Microsoft 365 needs Copilot Studio, a separate product with its own billing</td><td>Copilot Notebooks hold up to 300 files with standing instructions. Agent Builder configures an agent from eight named fields; an agent that reaches an external service is outside the seat. 21 agent templates. Training material published in Spanish</td></tr>
+<tr><td><svg class="logo" width="18" height="18" style="vertical-align:-3px;margin-right:.4rem" viewBox="0 0 24 24" fill="#412991" aria-hidden="true"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z"/></svg><strong>OpenAI</strong> · ChatGPT Business</td><td>Frontier models. Images are discarded from uploads, so a scan returns text only. Custom GPTs run in the ChatGPT app only; anything beyond is the API</td><td>Describe what you want and ChatGPT drafts it. Projects hold documents. No templates and no worked example published. Three course tracks, in English</td></tr>
+<tr><td><svg class="logo" width="18" height="18" style="vertical-align:-3px;margin-right:.4rem" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.56h3.182l5.965 8.532.929 1.329 7.754 11.09h-3.182z"/></svg><strong>xAI</strong> · Grok Business</td><td>All Grok models. Five built-in skills produce documents, spreadsheets, decks and PDFs. No context window, document limit or build procedure appears on any Business page</td><td>Skills created by describing them in conversation; no build procedure is published. Projects and Collections hold document sets, built around data rooms. No training material</td></tr>
+</tbody></table></div>
+<p>Sourced to each vendor's own pages, read 21 and 22-Aug-2026.</p>
+<hr>
+<h2>Claude Team — Details</h2>
+<p><strong>Included.</strong> Frontier models. A document read whole in chat. Claude Code in the seat — terminal and the main code editors, on the same usage pool as the app. One skill runs in the app, in the Office add-ins and in Claude Code. Projects. Single sign-on.</p>
+<p><strong>Not included.</strong></p>
+<ul>
+<li><strong>Audit logs.</strong> Enterprise only. Team sees usage counts, not who did what.</li>
+<li><strong>Writing to Teams.</strong> It reads Teams but cannot post, at any tier.</li>
+<li><strong>Scoping SharePoint.</strong> All sites the user can already see, or none.</li>
+<li><strong>Training material in Spanish.</strong> English only.</li>
+</ul>
+<hr>
+<h2>Annex</h2>
+<h3>Not compared</h3>
+<p><strong>Grok Bot</strong>, launched 11-Aug-2026 in beta, is sold to SuperGrok Plus and Heavy and to Cursor tiers. Enterprise is waitlist-only and Business is not listed. Each bot runs on its own cloud machine with its own logins.</p>
+<hr>
+<p><em>Prepared by Mariano Funes with Claude (Anthropic).</em></p>
+</div></body></html>
