@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow,noarchive">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Integración - IA</title><style>
-
+<title>Integración AI</title><style>
 :root{--bg:#fbfaf8;--fg:#1a1a18;--muted:#6b6862;--rule:#e2ded6;--accent:#8a5a2b;
 --card:#fff;--th:#f3f0ea;--mark:#fff6d9;--code:#f0ede6}
 @media (prefers-color-scheme:dark){:root{--bg:#16151a;--fg:#e8e6e1;--muted:#9c988f;
@@ -16,6 +16,7 @@ body{margin:0;background:var(--bg);color:var(--fg);
 font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
 -webkit-font-smoothing:antialiased}
 .wrap{max-width:60rem;margin:0 auto;padding:3rem 1.5rem 6rem}
+body.wide .wrap{max-width:82rem}
 .meta{color:var(--muted);font-size:.8rem;border-bottom:1px solid var(--rule);
 padding-bottom:1rem;margin-bottom:2.5rem;letter-spacing:.02em}
 h1{font-size:1.9rem;line-height:1.2;margin:0 0 1.5rem;letter-spacing:-.02em}
@@ -37,6 +38,13 @@ blockquote p:last-child{margin-bottom:0}
 hr{border:0;border-top:1px solid var(--rule);margin:2.5rem 0}
 .tw{overflow-x:auto;margin:1.2rem 0;border:1px solid var(--rule);border-radius:6px}
 table{border-collapse:collapse;width:100%;font-size:.9rem}
+table.fixed{table-layout:fixed}
+table.fixed th:first-child,table.fixed td:first-child{width:19%}
+table.fixed th{white-space:normal}
+table.fixed td:first-child{white-space:normal}
+table.fixed th,table.fixed td{overflow-wrap:break-word}
+th .logo{display:block;margin:0 auto .35rem;width:22px;height:22px}
+th.brand{text-align:center;font-weight:650}
 th{background:var(--th);text-align:left;font-weight:650;white-space:nowrap}
 th,td{padding:.6rem .8rem;border-bottom:1px solid var(--rule);vertical-align:top}
 tr:last-child td{border-bottom:0}
@@ -57,150 +65,89 @@ background:var(--rule);border:1px solid var(--rule);border-radius:6px;overflow:h
 .keyfig .n{font-size:1.35rem;font-weight:650;letter-spacing:-.02em;
 font-variant-numeric:tabular-nums;display:block;margin-bottom:.15rem}
 .keyfig .l{color:var(--muted);font-size:.76rem;line-height:1.4;display:block}
-
-
-s{color:var(--muted)}
-h4{font-size:.95rem;margin:1.6rem 0 .5rem;color:var(--accent)}
 </style></head>
 <body><div class="wrap">
-
-
-<h1>Integración - IA</h1>
-
-<p class="lede">Supercemento &middot; Agosto 2026</p>
-
+<p style="color:var(--muted);font-size:.85rem;margin:0 0 2rem"><strong style="color:var(--fg)">Español</strong>&nbsp;&nbsp;·&nbsp;&nbsp;<a href="49045f9e185b.html">English</a></p>
+<h1>Integración AI</h1>
+<p>Supercemento · Agosto 2026 · preliminar</p>
 <hr>
-
-<p>Este documento establece el plan preliminar y alcance con el objetivo de integrar IA en Supercemento.</p>
-
+<p><strong>Objetivo.</strong> Integrar IA en los procesos y actividades de la empresa — primero como herramienta, después como práctica estándar.</p>
 <hr>
-
 <h2>Etapas</h2>
-
-<ul>
-<li>Relevamiento</li>
-<li>Productividad individual</li>
-<li>Coding tools</li>
-<li>Software - procesos core</li>
-<li>Automatización de procesos - agentes</li>
-</ul>
-
+<figure>
+<svg viewBox="0 0 800 250" style="width:100%;max-width:820px" role="img" aria-label="Etapas en fila ordenadas por complejidad, relevamiento primero; las dos últimas etapas van apiladas en un mismo lugar, en paralelo">
+  <rect x="15" y="30" width="144" height="120" rx="5" class="svg-fill-b"/>
+  <text x="87" y="96" text-anchor="middle" class="svg-text" style="font-size:14px" font-weight="700">Relevamiento</text>
+  <rect x="173" y="30" width="144" height="120" rx="5" fill="#3b7ea1" fill-opacity="0.12"/>
+  <text x="245" y="82" text-anchor="middle" class="svg-text" style="font-size:14px" font-weight="700">Productividad</text>
+  <text x="245" y="100" text-anchor="middle" class="svg-text" style="font-size:14px" font-weight="700">general</text>
+  <text x="245" y="124" text-anchor="middle" class="svg-small" style="font-size:13px">app</text>
+  <rect x="331" y="30" width="144" height="120" rx="5" fill="#3b7ea1" fill-opacity="0.24"/>
+  <text x="403" y="82" text-anchor="middle" class="svg-text" style="font-size:14px" font-weight="700">Productividad</text>
+  <text x="403" y="100" text-anchor="middle" class="svg-text" style="font-size:14px" font-weight="700">técnica de IT</text>
+  <text x="403" y="124" text-anchor="middle" class="svg-small" style="font-size:13px">coding tools</text>
+  <rect x="489" y="30" width="302" height="53" rx="5" fill="#3b7ea1" fill-opacity="0.42"/>
+  <text x="640" y="51" text-anchor="middle" class="svg-text" style="font-size:14px" font-weight="700">Technical debt</text>
+  <text x="640" y="69" text-anchor="middle" class="svg-small" style="font-size:13px">software</text>
+  <rect x="489" y="97" width="302" height="53" rx="5" fill="#3b7ea1" fill-opacity="0.42"/>
+  <text x="640" y="118" text-anchor="middle" class="svg-text" style="font-size:14px" font-weight="700">Automatización de procesos</text>
+  <text x="640" y="136" text-anchor="middle" class="svg-small" style="font-size:13px">agentes</text>
+  <path d="M173 186 H774" stroke="#3b7ea1" stroke-width="2" fill="none"/>
+  <path d="M790 186 L772 178 L772 194 Z" fill="#3b7ea1"/>
+  <text x="482" y="216" text-anchor="middle" class="svg-small" style="font-size:13px">complejidad — orden de implementación</text>
+</svg>
+</figure>
 <hr>
-
 <h2>Relevamiento</h2>
-
-<p>Relevamiento rápido - requerimientos del negocio y cómo IT los provee.</p>
-
+<p>Relevamiento de los requerimientos de la empresa y cómo IT los provee.</p>
 <ul>
-<li><strong>Empresa.</strong> Organización - procesos core que corren sobre software, visión de IA de los responsables de esos procesos.</li>
-<li><strong>IT.</strong> Organización - capacidades, software stack, technical debt, plan de sistemas y de IA, implementaciones previas.</li>
+<li><strong>Empresa.</strong> Organización, qué procesos core corren sobre software, y cómo ven la IA los responsables de esas áreas.</li>
+<li><strong>IT.</strong> Equipo y recursos, software stack, plan de sistemas y de IA, technical debt, implementaciones previas.</li>
 </ul>
-
 <p>El output es el plan revisado y dimensionado.</p>
-
-<h2>Productividad individual</h2>
-
+<h2>Productividad general — app</h2>
 <p><strong>Contexto</strong></p>
-
-<p>Las aplicaciones enterprise LLM se licencian por usuario y se integran a las herramientas de trabajo. Hoy los principales productos son Claude, ChatGPT Enterprise, Microsoft Copilot y Google Gemini.</p>
-
-<p>Los market leaders ya las implementaron en sus organizaciones. Accenture, unas 743.000 personas. JPMorgan, 200.000 usuarios en ocho meses. Goldman Sachs, toda la firma después de un piloto de 10.000. En construcción, Techint implementó Microsoft Copilot de manera masiva a fines de 2025.</p>
-
-<p>El objetivo es implementar la aplicación elegida en grupos determinados de usuarios.</p>
-
-<p>Secuencia:</p>
-
+<p>Las aplicaciones enterprise LLM se licencian por usuario y se integran a las herramientas de trabajo. A agosto de 2026 los principales productos son Claude, ChatGPT Enterprise, Microsoft Copilot y Google Gemini. Claude fue seleccionado el 25 de agosto de 2026.</p>
+<p>Los market leaders ya las implementaron en sus organizaciones. Accenture, unas 743.000 personas. JPMorgan, 200.000 usuarios en ocho meses. Goldman Sachs, toda la firma después de un piloto de 10.000. En construcción, Techint implementó Microsoft Copilot a fines de 2025.</p>
+<p>Implementación:</p>
 <ol>
-<li>Selección de la aplicación LLM</li>
-<li>Licencias</li>
+<li>Entrenamiento estándar</li>
+<li>Workshops de discovery y desarrollo</li>
+<li>Soporte en la aplicación a los procesos de cada usuario</li>
 </ol>
-
-<p>Por grupo:</p>
-
-<ol start="3">
-<li>Capacitación estándar</li>
-<li>Discovery workshops</li>
-<li>Implementación, coaching</li>
-</ol>
-
 <p><strong>Casos de uso</strong></p>
-
-<ul>
-<li><strong>Generales.</strong> Trabajo dentro de Excel. Revisión de documentos y extracción de datos. Análisis y visualización. Herramientas interactivas a partir de planillas y presentaciones.</li>
-<li><strong>Licitaciones.</strong> Análisis de pliegos y armado del checklist de requisitos. Cotizaciones de subcontratistas y proveedores comparadas sobre una misma base. Revisión de documentación técnica.</li>
-<li><strong>Administración de contratos.</strong> Armado de expedientes de adicionales y reclamos con registros de obra y programa de trabajos. Proceso de certificaciones.</li>
-<li><strong>Compras.</strong> Normalización de cotizaciones. Conciliación entre fuentes de datos. Redeterminación de precios.</li>
-<li><strong>Costos y planificación.</strong> Presupuesto contra ejecución. Flujo de fondos a partir del plan de certificaciones.</li>
-<li><strong>Obra.</strong> Partes diarios resumidos en un reporte semanal. Seguimiento de no conformidades. Cumplimiento documental de subcontratistas.</li>
-</ul>
-
-<p><strong>Casos de uso - avanzados</strong></p>
-
-<ul>
-<li><strong>Background.</strong> Extracción de datos, armado de informes, organización de archivos.</li>
-<li><strong>Tareas programadas.</strong> Recurrentes.</li>
-<li><strong>Sistemas.</strong> Conexión con las aplicaciones de la empresa.</li>
-</ul>
-
-<h2>Coding tools</h2>
-
+<p><strong>Generales.</strong> Excel, revisión de documentos, extracción de datos, análisis, licitaciones, administración de contratos, compras, costos y planificación, obra. Por ejemplo: análisis de pliegos y armado del checklist de requisitos, comparación de cotizaciones de subcontratistas, redeterminación de precios. <strong>Avanzados.</strong> Tareas automáticas, programadas o recurrentes, y conexión con las aplicaciones de la empresa.</p>
+<h2>Productividad técnica de IT — coding tools</h2>
 <p><strong>Contexto</strong></p>
-
-<p><em>"We are at the point where AI is writing most of the code. We have almost complete automation of code writing."</em><br>&mdash; David Sacks, mayo de 2026</p>
-
-<p><em>"We have 50 years of accumulated tech debt as a world&hellip; hundreds of trillions of lines of just pretty marginal, mediocre code to bad code."</em><br>&mdash; Chamath Palihapitiya, abril de 2026</p>
-
-<p><em>"I would never hire a finance person who didn't know how to use Excel, and I pretty much probably wouldn't hire a finance person today that doesn't know how to use a tool like Codex."</em><br>&mdash; Sarah Friar, directora financiera de OpenAI, junio de 2026</p>
-
-<p>Las coding tools son aplicaciones LLM para desarrollo de software. Las principales son Claude Code, Codex, Cursor, GitHub Copilot y Gemini Code Assist.</p>
-
-<p>La oportunidad es implementar coding tools en los usuarios técnicos y key users que puedan aplicarlas en su trabajo.</p>
-
-<h2>Software - procesos core</h2>
-
-<p><strong>Relevamiento.</strong> Plan de IT, technical debt, software utilizado en cada proceso core.</p>
-
-<p><strong>Benchmark.</strong> Procesos core que el software no cubre.</p>
-
+<p><em>"We are at the point where AI is writing most of the code. We have almost complete automation of code writing."</em> — David Sacks, mayo de 2026</p>
+<p><em>"I would never hire a finance person who didn't know how to use Excel, and I pretty much probably wouldn't hire a finance person today that doesn't know how to use a tool like Codex."</em> — Sarah Friar, directora financiera de OpenAI, junio de 2026</p>
+<p>Las herramientas de codificación (coding tools) son aplicaciones LLM para desarrollo de software. A agosto de 2026 las principales son Claude Code, Codex, Cursor, GitHub Copilot y Gemini Code Assist.</p>
+<p>Estas herramientas operan sobre el código, la línea de comandos y los sistemas. Para un usuario técnico son la interfaz de trabajo con el software de la empresa y la base de los proyectos de desarrollo.</p>
+<p>Se implementa en IT y se extiende a cualquier usuario con capacidad técnica.</p>
+<h2>Technical debt — software</h2>
+<p><strong>Contexto</strong></p>
+<p><em>"We have 50 years of accumulated tech debt as a world… hundreds of trillions of lines of just pretty marginal, mediocre code to bad code."</em> — Chamath Palihapitiya, abril de 2026</p>
+<p>El relevamiento identifica el plan de IT, el software que soporta cada proceso core y los procesos sin soporte de sistemas. Software obsoleto y ausencia de sistemas constituyen el mismo gap.</p>
+<p>Las coding tools cambian la ecuación de costo de la generación de código, testing y migración, afectando el costo total de generación de aplicaciones. Desarrollos que antes no justificaban un proyecto pasan a ser viables, por cualquiera de las dos vías.</p>
 <p>Dos vías de ejecución:</p>
-
 <ul>
-<li><strong>Tercerizada.</strong> Producto off-the-shelf, producto customizado o desarrollo a medida.</li>
+<li><strong>Tercerizada.</strong> Producto off-the-shelf, producto customizado, o una empresa contratada para desarrollar.</li>
 <li><strong>Interna.</strong> Equipo de IT con coding tools, en ciclos cortos y con el usuario presente.</li>
 </ul>
-
-<h2>Automatización de procesos - agentes</h2>
-
+<h2>Automatización de procesos — agentes</h2>
 <p><strong>Contexto</strong></p>
-
-<p><em>"An agent is an application that completes a task by planning its own steps and calling tools."</em><br>&mdash; Anthropic</p>
-
-<p>Anthropic, OpenAI, Google, Microsoft, Amazon, xAI y Mistral tienen plataformas para construir agentes. LangChain y otros frameworks permiten construirlos sin atarse a un modelo.</p>
-
-<p>Existen algunas implementaciones, sin adopción masiva.</p>
-
-<p>Lo anterior es la base de cualquier desarrollo e implementación de agentes.</p>
-
-<p>Tres pasos:</p>
-
+<p><em>"An agent is an application that completes a task by planning its own steps and calling tools."</em> — Anthropic</p>
+<p><em>"End-to-end process redesign is what separates organizations that achieve 60% cost reductions from those that capture less than 20%."</em> — BCG, sobre sus implementaciones de agentes, junio de 2026</p>
+<p>Anthropic, OpenAI, Google, Microsoft, Amazon, xAI y Mistral tienen plataformas para construir agentes, y frameworks como LangChain permiten construirlos sin atarse a un modelo. A la fecha existen algunas implementaciones, pero sin una aplicación generalizada.</p>
+<p>El caso típico sería un agente ejecutando un proceso simple de punta a punta, decidiendo e implementando, con intervención humana (human in the loop) sobre las excepciones. Otro tipo sería un agente como interfaz entre las personas y los sistemas, capturando datos en lenguaje natural en el punto donde se genera el trabajo.</p>
+<p>Pasos:</p>
 <ol>
 <li>Selección de procesos</li>
-<li>Relevamiento y documentación de los procesos</li>
+<li>Relevamiento y documentación</li>
+<li>Racionalización</li>
 <li>Construcción, prueba e implementación</li>
 </ol>
-
 <hr>
-
-<h2>Alcance</h2>
-
-<p><strong>Estrategia.</strong> Definición de qué se integra y por qué.</p>
-
-<p><strong>Gestión del plan.</strong> Secuencia, avance y reporte.</p>
-
-<p><strong>Proyectos.</strong> Gerenciamiento de proyectos individuales - ejecución selectiva.</p>
-
-<hr>
-
+<p>Fuentes: Microsoft newsroom, 27 de abril de 2026; JPMorgan technology blog, 3 de junio de 2025; Fox Business, 23 de junio de 2025, leídos el 17 de agosto de 2026. BCG, 15 de junio de 2026, leído el 28 de agosto de 2026. Techint, por un director de Techint E&amp;C, no publicado.</p>
 <p><em>Preparado por Mariano Funes con Claude (Anthropic).</em></p>
-
 </div></body></html>

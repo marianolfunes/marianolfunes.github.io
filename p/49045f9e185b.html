@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI integration</title><style>
+:root{--bg:#fbfaf8;--fg:#1a1a18;--muted:#6b6862;--rule:#e2ded6;--accent:#8a5a2b;
+--card:#fff;--th:#f3f0ea;--mark:#fff6d9;--code:#f0ede6}
+@media (prefers-color-scheme:dark){:root{--bg:#16151a;--fg:#e8e6e1;--muted:#9c988f;
+--rule:#2f2d35;--accent:#d59b62;--card:#1d1c22;--th:#26242c;--mark:#3a3320;--code:#24222a}}
+:root[data-theme=dark]{--bg:#16151a;--fg:#e8e6e1;--muted:#9c988f;--rule:#2f2d35;
+--accent:#d59b62;--card:#1d1c22;--th:#26242c;--mark:#3a3320;--code:#24222a}
+:root[data-theme=light]{--bg:#fbfaf8;--fg:#1a1a18;--muted:#6b6862;--rule:#e2ded6;
+--accent:#8a5a2b;--card:#fff;--th:#f3f0ea;--mark:#fff6d9;--code:#f0ede6}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);
+font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+-webkit-font-smoothing:antialiased}
+.wrap{max-width:60rem;margin:0 auto;padding:3rem 1.5rem 6rem}
+body.wide .wrap{max-width:82rem}
+.meta{color:var(--muted);font-size:.8rem;border-bottom:1px solid var(--rule);
+padding-bottom:1rem;margin-bottom:2.5rem;letter-spacing:.02em}
+h1{font-size:1.9rem;line-height:1.2;margin:0 0 1.5rem;letter-spacing:-.02em}
+h2{font-size:1.3rem;margin:3rem 0 1rem;padding-top:1.2rem;border-top:1px solid var(--rule);
+letter-spacing:-.01em}
+h3{font-size:1.05rem;margin:2rem 0 .6rem;color:var(--accent)}
+p{margin:0 0 1rem}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(138,90,43,.3);
+word-break:break-word}
+a:hover{border-bottom-color:currentColor}
+strong{font-weight:650}
+code{background:var(--code);padding:.12em .38em;border-radius:3px;
+font:.88em/1.4 ui-monospace,SFMono-Regular,Menlo,monospace}
+ul,ol{margin:0 0 1rem;padding-left:1.4rem}
+li{margin:.35rem 0}
+blockquote{margin:1.5rem 0;padding:1rem 1.2rem;background:var(--card);
+border-left:3px solid var(--accent);border-radius:0 4px 4px 0}
+blockquote p:last-child{margin-bottom:0}
+hr{border:0;border-top:1px solid var(--rule);margin:2.5rem 0}
+.tw{overflow-x:auto;margin:1.2rem 0;border:1px solid var(--rule);border-radius:6px}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+table.fixed{table-layout:fixed}
+table.fixed th:first-child,table.fixed td:first-child{width:19%}
+table.fixed th{white-space:normal}
+table.fixed td:first-child{white-space:normal}
+table.fixed th,table.fixed td{overflow-wrap:break-word}
+th .logo{display:block;margin:0 auto .35rem;width:22px;height:22px}
+th.brand{text-align:center;font-weight:650}
+th{background:var(--th);text-align:left;font-weight:650;white-space:nowrap}
+th,td{padding:.6rem .8rem;border-bottom:1px solid var(--rule);vertical-align:top}
+tr:last-child td{border-bottom:0}
+td:first-child{white-space:nowrap}
+@media(max-width:640px){td:first-child{white-space:normal}.wrap{padding:2rem 1rem 4rem}}
+figure{margin:2rem 0;padding:1.4rem;background:var(--card);border:1px solid var(--rule);
+border-radius:6px;overflow-x:auto}
+figure svg{display:block;margin:0 auto;max-width:100%;height:auto}
+figcaption{margin-top:.9rem;color:var(--muted);font-size:.82rem;line-height:1.5;text-align:left}
+.svg-fill-a{fill:var(--card)}.svg-fill-b{fill:var(--th)}
+.svg-stroke{stroke:var(--rule)}.svg-accent{fill:var(--accent)}
+.svg-text{fill:var(--fg);font:11px -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,sans-serif}
+.svg-small{fill:var(--muted);font:9.5px -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,sans-serif}
+.lede{font-size:1.05rem;line-height:1.7;color:var(--fg)}
+.keyfig{display:grid;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));gap:1px;
+background:var(--rule);border:1px solid var(--rule);border-radius:6px;overflow:hidden;margin:1.5rem 0}
+.keyfig>div{background:var(--card);padding:1rem 1.1rem}
+.keyfig .n{font-size:1.35rem;font-weight:650;letter-spacing:-.02em;
+font-variant-numeric:tabular-nums;display:block;margin-bottom:.15rem}
+.keyfig .l{color:var(--muted);font-size:.76rem;line-height:1.4;display:block}
+</style></head>
+<body><div class="wrap">
+<p style="color:var(--muted);font-size:.85rem;margin:0 0 2rem"><strong style="color:var(--fg)">English</strong>&nbsp;&nbsp;·&nbsp;&nbsp;<a href="e77b35102ca8.html">Español</a></p>
+<h1>AI integration</h1>
+<p>Supercemento · August 2026 · preliminary</p>
+<hr>
+<p><strong>Objective.</strong> Integrate AI into the company's processes and activities — first as a tool, then as standard practice.</p>
+<hr>
+<h2>Stages</h2>
+<figure>
+<svg viewBox="0 0 800 250" style="width:100%;max-width:820px" role="img" aria-label="Boxes in a row ordered by complexity, assessment first; the last two stages are stacked in one double-width slot, run in parallel">
+  <rect x="15" y="30" width="144" height="120" rx="5" class="svg-fill-b"/>
+  <text x="87" y="96" text-anchor="middle" class="svg-text" style="font-size:14px" font-weight="700">Assessment</text>
+  <rect x="173" y="30" width="144" height="120" rx="5" fill="#3b7ea1" fill-opacity="0.12"/>
+  <text x="245" y="82" text-anchor="middle" class="svg-text" style="font-size:14px" font-weight="700">General</text>
+  <text x="245" y="100" text-anchor="middle" class="svg-text" style="font-size:14px" font-weight="700">productivity</text>
+  <text x="245" y="124" text-anchor="middle" class="svg-small" style="font-size:13px">app</text>
+  <rect x="331" y="30" width="144" height="120" rx="5" fill="#3b7ea1" fill-opacity="0.24"/>
+  <text x="403" y="82" text-anchor="middle" class="svg-text" style="font-size:14px" font-weight="700">IT technical</text>
+  <text x="403" y="100" text-anchor="middle" class="svg-text" style="font-size:14px" font-weight="700">productivity</text>
+  <text x="403" y="124" text-anchor="middle" class="svg-small" style="font-size:13px">coding tools</text>
+  <rect x="489" y="30" width="302" height="53" rx="5" fill="#3b7ea1" fill-opacity="0.42"/>
+  <text x="640" y="51" text-anchor="middle" class="svg-text" style="font-size:14px" font-weight="700">Technical debt</text>
+  <text x="640" y="69" text-anchor="middle" class="svg-small" style="font-size:13px">software</text>
+  <rect x="489" y="97" width="302" height="53" rx="5" fill="#3b7ea1" fill-opacity="0.42"/>
+  <text x="640" y="118" text-anchor="middle" class="svg-text" style="font-size:14px" font-weight="700">Process automation</text>
+  <text x="640" y="136" text-anchor="middle" class="svg-small" style="font-size:13px">agents</text>
+  <path d="M173 186 H774" stroke="#3b7ea1" stroke-width="2" fill="none"/>
+  <path d="M790 186 L772 178 L772 194 Z" fill="#3b7ea1"/>
+  <text x="482" y="216" text-anchor="middle" class="svg-small" style="font-size:13px">complexity — implementation order</text>
+</svg>
+</figure>
+<hr>
+<h2>Assessment</h2>
+<p>Assessment of what the business requires and how IT supplies it.</p>
+<ul>
+<li><strong>The business.</strong> How the organisation is set up, which core processes run on software, and how the managers of those areas see AI.</li>
+<li><strong>IT.</strong> Its people and resources, the software stack, the plan, the technical debt, what is already planned for AI, and what has been attempted before.</li>
+</ul>
+<p>The output is the plan revised and sized.</p>
+<h2>General productivity — app</h2>
+<p><strong>Context</strong></p>
+<p>Enterprise LLM applications are licensed per user and integrated into the workplace suite. As of August 2026 the main products are Claude, ChatGPT Enterprise, Microsoft Copilot and Google Gemini. Claude was selected on 25 August 2026.</p>
+<p>Market leaders have deployed across their organisations. Accenture is rolling out to about 743,000 people. JPMorgan reached 200,000 users in eight months. Goldman Sachs went firmwide after piloting with 10,000. In the construction sector, Techint deployed Microsoft Copilot at the end of 2025.</p>
+<p>The implementation:</p>
+<ol>
+<li>Standard training</li>
+<li>Discovery and development workshops</li>
+<li>Support applying it to each user's processes</li>
+</ol>
+<p><strong>Uses</strong></p>
+<p><strong>General.</strong> Excel, document review, data extraction, analysis, tendering, contract administration, procurement, cost and planning, site. For example: pliego analysis into a requirements checklist, subcontractor quote comparison, price redetermination. <strong>Advanced.</strong> Automated tasks, scheduled or recurring, and connections to the company's own applications.</p>
+<h2>IT technical productivity — coding tools</h2>
+<p><strong>Context</strong></p>
+<p><em>"We are at the point where AI is writing most of the code. We have almost complete automation of code writing."</em> — David Sacks, May 2026</p>
+<p><em>"I would never hire a finance person who didn't know how to use Excel, and I pretty much probably wouldn't hire a finance person today that doesn't know how to use a tool like Codex."</em> — Sarah Friar, Chief Financial Officer of OpenAI, June 2026</p>
+<p>AI coding tools are LLM applications for software development. As of August 2026 the main tools are Claude Code, Codex, Cursor, GitHub Copilot and Gemini Code Assist.</p>
+<p>The tool reaches the code, the command line and the systems themselves. For a technical user that is the working interface to the company's software, and the ground for development projects.</p>
+<p>Rolled out to IT, and open to any user with the technical capability for it.</p>
+<h2>Technical debt — software</h2>
+<p><strong>Context</strong></p>
+<p><em>"We have 50 years of accumulated tech debt as a world… hundreds of trillions of lines of just pretty marginal, mediocre code to bad code."</em> — Chamath Palihapitiya, April 2026</p>
+<p>Assessment provides IT's plan, the software each core process runs on, and the processes running on none. Old software and no software are the same debt.</p>
+<p>AI coding tools change the cost equation of writing code, testing it and migrating data, and with it the total cost of producing an application. Work that could not justify a project before can now, on either route.</p>
+<p>Two delivery routes:</p>
+<ul>
+<li><strong>Outsourced.</strong> A vendor product as it comes, a vendor product adapted, or a firm engaged to develop.</li>
+<li><strong>Internally led.</strong> People from IT with AI coding tools, in short cycles with the user present.</li>
+</ul>
+<h2>Process automation — agents</h2>
+<p><strong>Context</strong></p>
+<p><em>"An agent is an application that completes a task by planning its own steps and calling tools."</em> — Anthropic</p>
+<p><em>"End-to-end process redesign is what separates organizations that achieve 60% cost reductions from those that capture less than 20%."</em> — BCG, on its agentic deployments, June 2026</p>
+<p>Anthropic, OpenAI, Google, Microsoft, Amazon, xAI and Mistral all have platforms for building agents, and frameworks like LangChain build them without tying to one model. As of August 2026 deployments exist; general adoption does not.</p>
+<p>The default implementation would be an agent running a simple process end to end, deciding and implementing, with a human in the loop (HIL) managing the exceptions. A different type would be an agent as the interface between people and the systems, capturing data in natural language where the work happens.</p>
+<p>Steps:</p>
+<ol>
+<li>Selection of processes</li>
+<li>Assessment and documentation</li>
+<li>Rationalisation</li>
+<li>Building, testing and deployment</li>
+</ol>
+<hr>
+<p>Sources: Microsoft newsroom, 27 April 2026; JPMorgan technology blog, 3 June 2025; Fox Business, 23 June 2025, all read 17 August 2026. BCG, 15 June 2026, read 28 August 2026. Techint, from a director at Techint E&amp;C, unpublished.</p>
+<p><em>Prepared by Mariano Funes with Claude (Anthropic).</em></p>
+</div></body></html>
