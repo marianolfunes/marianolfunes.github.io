@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>General productivity — deployment</title><style>
+:root{--bg:#fbfaf8;--fg:#1a1a18;--muted:#6b6862;--rule:#e2ded6;--accent:#8a5a2b;
+--card:#fff;--th:#f3f0ea;--mark:#fff6d9;--code:#f0ede6}
+@media (prefers-color-scheme:dark){:root{--bg:#16151a;--fg:#e8e6e1;--muted:#9c988f;
+--rule:#2f2d35;--accent:#d59b62;--card:#1d1c22;--th:#26242c;--mark:#3a3320;--code:#24222a}}
+:root[data-theme=dark]{--bg:#16151a;--fg:#e8e6e1;--muted:#9c988f;--rule:#2f2d35;
+--accent:#d59b62;--card:#1d1c22;--th:#26242c;--mark:#3a3320;--code:#24222a}
+:root[data-theme=light]{--bg:#fbfaf8;--fg:#1a1a18;--muted:#6b6862;--rule:#e2ded6;
+--accent:#8a5a2b;--card:#fff;--th:#f3f0ea;--mark:#fff6d9;--code:#f0ede6}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);
+font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+-webkit-font-smoothing:antialiased}
+.wrap{max-width:60rem;margin:0 auto;padding:3rem 1.5rem 6rem}
+body.wide .wrap{max-width:82rem}
+.meta{color:var(--muted);font-size:.8rem;border-bottom:1px solid var(--rule);
+padding-bottom:1rem;margin-bottom:2.5rem;letter-spacing:.02em}
+h1{font-size:1.9rem;line-height:1.2;margin:0 0 1.5rem;letter-spacing:-.02em}
+h2{font-size:1.3rem;margin:3rem 0 1rem;padding-top:1.2rem;border-top:1px solid var(--rule);
+letter-spacing:-.01em}
+h3{font-size:1.05rem;margin:2rem 0 .6rem;color:var(--accent)}
+p{margin:0 0 1rem}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(138,90,43,.3);
+word-break:break-word}
+a:hover{border-bottom-color:currentColor}
+strong{font-weight:650}
+code{background:var(--code);padding:.12em .38em;border-radius:3px;
+font:.88em/1.4 ui-monospace,SFMono-Regular,Menlo,monospace}
+ul,ol{margin:0 0 1rem;padding-left:1.4rem}
+li{margin:.35rem 0}
+blockquote{margin:1.5rem 0;padding:1rem 1.2rem;background:var(--card);
+border-left:3px solid var(--accent);border-radius:0 4px 4px 0}
+blockquote p:last-child{margin-bottom:0}
+hr{border:0;border-top:1px solid var(--rule);margin:2.5rem 0}
+.tw{overflow-x:auto;margin:1.2rem 0;border:1px solid var(--rule);border-radius:6px}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+table.fixed{table-layout:fixed}
+table.fixed th:first-child,table.fixed td:first-child{width:19%}
+table.fixed th{white-space:normal}
+table.fixed td:first-child{white-space:normal}
+table.fixed th,table.fixed td{overflow-wrap:break-word}
+th .logo{display:block;margin:0 auto .35rem;width:22px;height:22px}
+th.brand{text-align:center;font-weight:650}
+th{background:var(--th);text-align:left;font-weight:650;white-space:nowrap}
+th,td{padding:.6rem .8rem;border-bottom:1px solid var(--rule);vertical-align:top}
+tr:last-child td{border-bottom:0}
+td:first-child{white-space:nowrap}
+@media(max-width:640px){td:first-child{white-space:normal}.wrap{padding:2rem 1rem 4rem}}
+figure{margin:2rem 0;padding:1.4rem;background:var(--card);border:1px solid var(--rule);
+border-radius:6px;overflow-x:auto}
+figure svg{display:block;margin:0 auto;max-width:100%;height:auto}
+figcaption{margin-top:.9rem;color:var(--muted);font-size:.82rem;line-height:1.5;text-align:left}
+.svg-fill-a{fill:var(--card)}.svg-fill-b{fill:var(--th)}
+.svg-stroke{stroke:var(--rule)}.svg-accent{fill:var(--accent)}
+.svg-text{fill:var(--fg);font:11px -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,sans-serif}
+.svg-small{fill:var(--muted);font:9.5px -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,sans-serif}
+.lede{font-size:1.05rem;line-height:1.7;color:var(--fg)}
+.keyfig{display:grid;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));gap:1px;
+background:var(--rule);border:1px solid var(--rule);border-radius:6px;overflow:hidden;margin:1.5rem 0}
+.keyfig>div{background:var(--card);padding:1rem 1.1rem}
+.keyfig .n{font-size:1.35rem;font-weight:650;letter-spacing:-.02em;
+font-variant-numeric:tabular-nums;display:block;margin-bottom:.15rem}
+.keyfig .l{color:var(--muted);font-size:.76rem;line-height:1.4;display:block}
+</style></head>
+<body><div class="wrap">
+<p style="color:var(--muted);font-size:.85rem;margin:0 0 2rem"><strong style="color:var(--fg)">English</strong>&nbsp;&nbsp;·&nbsp;&nbsp;<a href="a7acc04cece5.html">Español</a></p>
+<h1>General productivity — deployment</h1>
+<p>Supercemento · September 2026</p>
+<hr>
+<p><strong>Objective.</strong> Deploy Claude, train the users, and work alongside them to apply it to their daily tasks.</p>
+<hr>
+<h2>Deployment standard</h2>
+<p>Dates are for Wave 2.</p>
+<figure>
+<svg viewBox="0 0 800 278" style="width:100%;max-width:820px" role="img" aria-label="Timeline for one wave: sector presentation on 2 September, users setup in the week of 7 September, group presentation on 14 September, two weeks of self-paced training with follow-up meetings on 21 and 28 September, discovery running from the second follow-up to the discovery meeting on Monday 5 October, and support running in parallel from the second follow-up onward.">
+  <text x="150" y="26" text-anchor="end" class="svg-small" style="font-size:12px">Week of</text>
+  <text x="214" y="26" text-anchor="middle" class="svg-small" style="font-size:12px">31 Aug</text>
+  <text x="302" y="26" text-anchor="middle" class="svg-small" style="font-size:12px">7 Sep</text>
+  <text x="390" y="26" text-anchor="middle" class="svg-small" style="font-size:12px">14 Sep</text>
+  <text x="479" y="26" text-anchor="middle" class="svg-small" style="font-size:12px">21 Sep</text>
+  <text x="567" y="26" text-anchor="middle" class="svg-small" style="font-size:12px">28 Sep</text>
+  <text x="655" y="26" text-anchor="middle" class="svg-small" style="font-size:12px">5 Oct</text>
+  <text x="744" y="26" text-anchor="middle" class="svg-small" style="font-size:12px">12 Oct</text>
+
+  <path d="M170 32 V260 M258 32 V260 M346 32 V260 M435 32 V260 M523 32 V260 M611 32 V260 M700 32 V260 M788 32 V260" stroke="#3b7ea1" stroke-opacity="0.15" stroke-width="1" fill="none"/>
+
+  <text x="150" y="52" text-anchor="end" class="svg-text" style="font-size:13px">Sector presentation</text>
+  <path d="M214 38 L224 48 L214 58 L204 48 Z" fill="#3b7ea1"/>
+
+  <text x="150" y="80" text-anchor="end" class="svg-text" style="font-size:13px">Users setup</text>
+  <rect x="262" y="66" width="80" height="20" rx="4" fill="#3b7ea1" fill-opacity="0.30"/>
+
+  <text x="150" y="108" text-anchor="end" class="svg-text" style="font-size:13px">Group presentation</text>
+  <path d="M356 94 L366 104 L356 114 L346 104 Z" fill="#3b7ea1"/>
+
+  <text x="150" y="136" text-anchor="end" class="svg-text" style="font-size:13px">Self-paced training</text>
+  <rect x="348" y="122" width="171" height="20" rx="4" fill="#3b7ea1" fill-opacity="0.30"/>
+
+  <text x="150" y="164" text-anchor="end" class="svg-text" style="font-size:13px">Follow-up meetings</text>
+  <path d="M445 150 L455 160 L445 170 L435 160 Z" fill="#3b7ea1"/>
+  <path d="M533 150 L543 160 L533 170 L523 160 Z" fill="#3b7ea1"/>
+
+  <text x="150" y="192" text-anchor="end" class="svg-text" style="font-size:13px">Discovery</text>
+  <rect x="533" y="178" width="88" height="20" rx="4" fill="#3b7ea1" fill-opacity="0.30"/>
+
+  <text x="150" y="220" text-anchor="end" class="svg-text" style="font-size:13px">Discovery meeting</text>
+  <path d="M621 206 L631 216 L621 226 L611 216 Z" fill="#3b7ea1"/>
+
+  <text x="150" y="248" text-anchor="end" class="svg-text" style="font-size:13px">Deployment support</text>
+  <rect x="533" y="234" width="255" height="20" rx="4" fill="#3b7ea1" fill-opacity="0.30"/>
+  <text x="660" y="248" text-anchor="middle" class="svg-small" style="font-size:11px;fill:#3b7ea1">ongoing</text>
+</svg>
+</figure>
+<div class="tw"><table><thead><tr>
+<th>Step</th>
+<th>What</th>
+</tr></thead><tbody>
+<tr><td>Sector presentation</td><td>The plan is presented to the area. Participants are defined</td></tr>
+<tr><td>Users setup</td><td>Hardware check that the standard machine runs Claude Desktop. Seats are bought, and each selected user gets a seat and what they need to install the application</td></tr>
+<tr><td>Group presentation</td><td>The group sees the tool and gets the training plan. Two blocks, 12.5 hours on Anthropic Academy</td></tr>
+<tr><td>Self-paced training</td><td>Two weeks. The foundations first, then the application. Users work with the tool while they train</td></tr>
+<tr><td>Follow-up meetings</td><td>Two, a week apart, while the training runs</td></tr>
+<tr><td>Discovery</td><td>The week after the second follow-up. Each user collects the recurring tasks from their own work</td></tr>
+<tr><td>Discovery meeting</td><td>The Monday after. Each user brings their tasks and works them through with examples from their own area</td></tr>
+<tr><td>Deployment support</td><td>From the second follow-up onward. One to one: ways of working, automations, and applying the tool to each user's own tasks</td></tr>
+</tbody></table></div>
+<hr>
+<h2>Plan</h2>
+<p>Groups of up to six users.</p>
+<figure>
+<svg viewBox="0 0 800 318" style="width:100%;max-width:820px" role="img" aria-label="August to the first days of March. Assessment runs from 12 August to November. Wave 1 is IT with two users, running continuously from September. Wave 2 is Comercial with four users from 2 September to 5 October, then waves 3 to 7 with six users each start about three and a half weeks apart, except across the December break. Nothing runs in the two weeks from 21 December; wave 7 runs from 28 January to the start of March. Deployment support runs continuously below. Thirty-six users in total.">
+  <text x="209" y="26" text-anchor="middle" class="svg-small" style="font-size:12px">August</text>
+  <text x="285" y="26" text-anchor="middle" class="svg-small" style="font-size:12px">September</text>
+  <text x="361" y="26" text-anchor="middle" class="svg-small" style="font-size:12px">October</text>
+  <text x="437" y="26" text-anchor="middle" class="svg-small" style="font-size:12px">November</text>
+  <text x="514" y="26" text-anchor="middle" class="svg-small" style="font-size:12px">December</text>
+  <text x="591" y="26" text-anchor="middle" class="svg-small" style="font-size:12px">January</text>
+  <text x="665" y="26" text-anchor="middle" class="svg-small" style="font-size:12px">February</text>
+  <text x="760" y="26" text-anchor="middle" class="svg-small" style="font-size:12px">Users</text>
+
+  <rect x="525" y="32" width="36" height="244" fill="#3b7ea1" fill-opacity="0.10"/>
+
+  <path d="M170 32 V276 M248 32 V276 M323 32 V276 M400 32 V276 M475 32 V276 M553 32 V276 M630 32 V276 M700 32 V276" stroke="#3b7ea1" stroke-opacity="0.15" stroke-width="1" fill="none"/>
+
+  <text x="40" y="54" class="svg-text" style="font-size:13px">Assessment</text>
+  <rect x="198" y="40" width="230" height="20" rx="4" fill="#3b7ea1" fill-opacity="0.30"/>
+
+  <text x="40" y="80" class="svg-text" style="font-size:13px">Wave 1</text>
+  <text x="103" y="80" class="svg-text" style="font-size:13px">IT</text>
+  <rect x="248" y="66" width="456" height="20" rx="4" fill="#3b7ea1" fill-opacity="0.30"/>
+  <text x="760" y="80" text-anchor="middle" class="svg-text" style="font-size:13px">2</text>
+
+  <text x="40" y="106" class="svg-text" style="font-size:13px">Wave 2</text>
+  <text x="103" y="106" class="svg-text" style="font-size:13px">Comercial</text>
+  <rect x="250" y="92" width="83" height="20" rx="4" fill="#3b7ea1" fill-opacity="0.30"/>
+  <text x="760" y="106" text-anchor="middle" class="svg-text" style="font-size:13px">4</text>
+
+  <text x="40" y="132" class="svg-text" style="font-size:13px">Wave 3</text>
+  <rect x="315" y="118" width="80" height="20" rx="4" fill="#3b7ea1" fill-opacity="0.30"/>
+  <text x="760" y="132" text-anchor="middle" class="svg-text" style="font-size:13px">6</text>
+
+  <text x="40" y="158" class="svg-text" style="font-size:13px">Wave 4</text>
+  <rect x="375" y="144" width="83" height="20" rx="4" fill="#3b7ea1" fill-opacity="0.30"/>
+  <text x="760" y="158" text-anchor="middle" class="svg-text" style="font-size:13px">6</text>
+
+  <text x="40" y="184" class="svg-text" style="font-size:13px">Wave 5</text>
+  <rect x="438" y="170" width="83" height="20" rx="4" fill="#3b7ea1" fill-opacity="0.30"/>
+  <text x="760" y="184" text-anchor="middle" class="svg-text" style="font-size:13px">6</text>
+
+  <text x="40" y="210" class="svg-text" style="font-size:13px">Wave 6</text>
+  <rect x="560" y="196" width="83" height="20" rx="4" fill="#3b7ea1" fill-opacity="0.30"/>
+  <text x="760" y="210" text-anchor="middle" class="svg-text" style="font-size:13px">6</text>
+
+  <text x="40" y="236" class="svg-text" style="font-size:13px">Wave 7</text>
+  <rect x="621" y="222" width="83" height="20" rx="4" fill="#3b7ea1" fill-opacity="0.30"/>
+  <text x="760" y="236" text-anchor="middle" class="svg-text" style="font-size:13px">6</text>
+
+  <path d="M40 250 H700" stroke="#3b7ea1" stroke-opacity="0.25" stroke-width="1" fill="none"/>
+
+  <text x="40" y="268" class="svg-text" style="font-size:13px">Deployment support</text>
+  <rect x="248" y="254" width="456" height="20" rx="4" fill="#3b7ea1" fill-opacity="0.30"/>
+
+  <path d="M722 288 H788" stroke="#3b7ea1" stroke-opacity="0.35" stroke-width="1" fill="none"/>
+  <text x="722" y="306" text-anchor="end" class="svg-text" style="font-size:13px">Total</text>
+  <text x="760" y="306" text-anchor="middle" class="svg-text" style="font-size:13px">36</text>
+</svg>
+</figure>
+<hr>
+<h2>Training</h2>
+<p>Anthropic Academy.</p>
+<div class="tw">
+<table>
+<thead>
+<tr><th style="width:8%">Week</th><th style="width:26%">Courses</th><th>Content</th><th style="width:8%">Time</th></tr>
+</thead>
+<tbody>
+<tr>
+<td rowspan="2" style="text-align:center;vertical-align:middle">1</td>
+<td>AI Capabilities and Limitations</td>
+<td>Build an accurate mental model of what large language models can and cannot do: next-token prediction, knowledge, working memory, steerability, and context limits</td>
+<td>3.5 hr</td>
+</tr>
+<tr>
+<td>AI Fluency: Framework &amp; Foundations</td>
+<td>Learn to collaborate with AI effectively, efficiently, ethically, and safely using the 4D framework: Delegation, Description, Discernment, and Diligence</td>
+<td>4 hr</td>
+</tr>
+<tr>
+<td rowspan="2" style="text-align:center;vertical-align:middle">2</td>
+<td>Claude 101</td>
+<td>Learn to use Claude for everyday work, from your first conversation and effective prompting to projects, artifacts, skills, and connected tools</td>
+<td>2.5 hr</td>
+</tr>
+<tr>
+<td>Introduction to Claude Cowork</td>
+<td>Delegate multi-step work to Claude in Cowork: set up workspaces, give context, run task loops, and use plugins for research, documents, and browser tasks</td>
+<td>2.5 hr</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<p>Source: <code>academy.claude.com</code>, read 1 September 2026.</p>
+<p><em>Prepared by Mariano Funes with Claude (Anthropic).</em></p>
+</div></body></html>
