@@ -10,7 +10,7 @@
 
 Reference pattern for HOW to render content well (not WHAT to make): Thariq Shihipar's HTML-effectiveness piece (`https://thariqs.github.io/html-effectiveness/`) and his site (`https://www.thariq.io/?mode=professional`).
 
-Hosted on GitHub Pages as a user-site (`https://marianolfunes.github.io`). Local-first workflow: work in this folder, push when a piece is ready to be public.
+Hosted on GitHub Pages as a user-site, served from the custom domain **`https://marianofunes.com`** (set 2026-09-10; `marianolfunes.github.io` redirects to it). Local-first workflow: work in this folder, push when a piece is ready to be public.
 
 ## Operating principles
 
@@ -63,5 +63,5 @@ Hosted on GitHub Pages as a user-site (`https://marianolfunes.github.io`). Local
 
 1. **Local-first.** Work in this folder. Open the generated `.html` in a browser by double-click to preview.
 2. **Push when ready.** First push: `gh repo create marianolfunes.github.io --public --source=. --push`. Subsequent: standard `git add` / `git commit` / `git push`.
-3. **GitHub Pages auto-deploys** within ~30 seconds after push. Verify at `https://marianolfunes.github.io`.
-4. **Custom domain (optional, later).** If Mariano buys `marianolfunes.com`, point CNAME at `marianolfunes.github.io` and add a `CNAME` file to the repo.
+3. **GitHub Pages auto-deploys** within ~30 seconds after push. Verify at `https://marianofunes.com`.
+4. **Custom domain — DONE 2026-09-10.** `marianofunes.com`, registered on Cloudflare. Apex and `www` are CNAMEs to `marianolfunes.github.io`, **DNS-only and never proxied** — GitHub must reach the hostname unproxied to issue the certificate. The `CNAME` file in this repo root is what binds it; do not delete it.
